@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>あなたの社員番号とパスワードを入力してください。</h1>
-<form action="/Bteam/Menu" method="post">
+<form action="/Bteam/Login" method="post">
 社員番号:<input type="text" name="name"><br>
 パスワード:<input type="password" name="pass"><br>
 <input type="submit" value="ログイン">

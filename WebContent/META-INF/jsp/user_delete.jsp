@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form action="/Bteam/User_delete" method="post">
+社員番号:<input type="text" name="name"><br>
+<input type="submit" value="削除">
+</form>
 </body>
 </html>

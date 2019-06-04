@@ -10,6 +10,7 @@
 <% if(loginUser = 1) {%>
 <body>
 <form action="/Bteam/Setting" method="post">
+社員番号:<input type="text" name="pass"><br>
 再設定のパスワード:<input type="password" name="newpass"><br>
 再設定のパスワード:<input type="password" name="newpass"><br>
 <input type="submit" value="再設定">

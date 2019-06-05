@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>新規ユーザー登録</title>
 </head>
 <body>
 <form action="/Bteam/User_new" method="post">
 ユーザー名:<input type="text" name="name"><br>
 パスワード:<input type="text" name="pass"><br>
-所属社:<input type="text" name="can"><br>
 所属部署:<input type="text" name="devi"><br>
-<input type="submit" value="ログイン">
+勤務地:<input type="text" name="work"><br>
+<input type="submit" value="新規登録">
 </form>
 </body>
 </html>

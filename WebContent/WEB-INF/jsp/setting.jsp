@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/Stayle.css">
+<link rel="stylesheet" type="text/css" href="css/Style.css">
 <meta charset="UTF-8">
 <title>パスワード再設定</title>
 </head>

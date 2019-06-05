@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="css/Stayle_Manegi.css">
+<link rel="stylesheet" type="text/css" href="css/Style_Manegi.css">
 <meta charset="UTF-8">
 <title>ユーザー管理</title>
 </head>

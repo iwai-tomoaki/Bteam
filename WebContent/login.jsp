@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="Bteam/WebContent/text/css" href="Stayle.css">
+<link rel="stylesheet" href="Stayle.css">
 <title>login</title>
 </head>
 <body>

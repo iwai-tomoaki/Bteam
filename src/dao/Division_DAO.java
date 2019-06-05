@@ -1,28 +1,56 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
 public class Division_DAO {
-	// データベース接続に使用する情報
-	private static String DRIVER_NAME = "";	// ドライバの名前
-	private static String JDBC_URL ="";		// 接続先のURL
-	private static String DB_USER = ""; 		// 接続先のユーザー名
-	private static String DB_PASS = "";		// 接続先のパスワード
+	// ドライバが読み込まれているかの確認
+	// public static void main(String[] args) throws InstantiationException,
+	// IllegalAccessException{
+	// String msg = "";
+	// try{
+	// Class.forName("").newInstance(
+	// msg = "ドライバのロードに成功しました";
+	// }catch(ClassNotFoundException e){
+	// msg = "ドライバのロードに失敗しました";
+	// }
+	// System.out.println(msg);
+	// }
 
-	// データベースに接続
-	public static Connection getConnection() {
-		Connection con = null;
+
+	public static void main(String[] args) {
+
+		Connection conn = null;
+
 		try {
-			Class.forName(DRIVER_NAME);
-			con = DriverManager.getConnection(JDBC_URL,DB_USER,DB_PASS);
-		}catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}catch(SQLException e) {
-			e.printStackTrace();
+
+			String dbURL = "";		// データベースのURL情報
+			String usre = "";		// データベースのユーザー情報
+			String pass = "";		// SQL serverインストール時に設定したパスワード
+			conn = DriverManager.getConnection(dbURL,usre,pass);
+
+			if(conn != null) {
+				DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
+				System.out.println("Driver name: " + dm.getDriverName());
+				System.out.println("Driver version:"+ dm.getDriverVersion());
+				System.out.println("Product name: " + dm.getDatabaseProductName());
+				System.out.println("Product version: " + dm.getDatabaseProductVersion());
+			}
+
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}finally {
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
 		}
-		return con;
 	}
+
 }

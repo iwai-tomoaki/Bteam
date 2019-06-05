@@ -25,9 +25,9 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		String numbar = request.getParameter("num");
+		String numbar = request.getParameter("user_id");
 		int num = Integer.parseInt(numbar);
-		String pass = request.getParameter("pass");
+		String pass = request.getParameter("password");
 
 		//Userインスタンス(ユーザー情報)の生成
 		User user = new User(num,pass);

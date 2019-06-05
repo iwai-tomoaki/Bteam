@@ -9,6 +9,7 @@
 <title>login</title>
 </head>
 <body>
+<form action="/Bteam/Login" method="post">
     <div class = "main">
 
         <div class="box">
@@ -36,9 +37,10 @@
                 </td>
             </div>
         <div class = "center">
-            <a href="#" class="btn-flat-border">BUTTON</a>
+            <input type="submit" class="btn-flat-border">BUTTON</a>
         </div>
     </div>
+            </form>
 </body>
 </html>
 

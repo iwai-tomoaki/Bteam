@@ -6,7 +6,7 @@ import java.io.Serializable;
 		private int num;  //社員番号
 		private String name;  //ユーザー名
  		private String pass;  //パスワード
-
+ 		
  		public User() {}
  		public User(String name)
  		{

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ユーザー管理</title>
 </head>
 <body>
 <form action="/Bteam/User_delete" method="post">

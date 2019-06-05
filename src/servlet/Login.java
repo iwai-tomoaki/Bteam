@@ -25,11 +25,12 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
+		String numbar = request.getParameter("num");
+		int num = Integer.parseInt(numbar);
 		String pass = request.getParameter("pass");
 
 		//Userインスタンス(ユーザー情報)の生成
-		User user = new User(name,pass);
+		User user = new User(num,pass);
 
 		//ログイン処理
 		LoginLogic loginLogic = new LoginLogic();
@@ -41,11 +42,12 @@ public class Login extends HttpServlet
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
+
  		}
 
 		//ログイン結果画面のフォワード
  		RequestDispatcher dispatcher =
- 				request.getRequestDispatcher("/WEB-INF/jsp/loginResult.jsp");
+ 				request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
  		dispatcher.forward(request, response);
 	}
 }

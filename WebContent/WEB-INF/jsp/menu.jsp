@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>選択画面</title>
 </head>
 <body>
-
+<h1>部署を選択してください。</h1>
 </body>
 </html>

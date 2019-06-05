@@ -27,7 +27,7 @@ public class Division_DAO {
 
 		try {
 
-			String dbURL = "jdbc:sqlserver://MGT2019\\\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
+			String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
 			String usre = "TeamB";		// データベースのユーザー情報
 			String pass = "teamb";		// SQL serverインストール時に設定したパスワード
 			conn = DriverManager.getConnection(dbURL,usre,pass);

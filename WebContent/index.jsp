@@ -8,6 +8,7 @@
 <title>login</title>
 </head>
 <body>
+   <form action="/Bteam/Login" method="post">
    <div class="body">
        <div class="box">
            <div class="wave -one"></div>
@@ -15,7 +16,7 @@
            <div class="wave -three"></div>
            <div class = "title">ログイン画面</div>
        </div>
-       <div class = "between2">
+         <div class = "between2">
            <div>
                ユーザID
            </div>
@@ -32,9 +33,10 @@
            </div>
        </div>
        <div class = "center">
-           <a href="#" class="btn-flat-border">ログイン</a>
+         <a href="#" class="btn-flat-border">ログイン</a>
        </div>
    </div>
+   </form>
 </body>
 </html>
 

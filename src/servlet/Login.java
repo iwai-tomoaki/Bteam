@@ -26,9 +26,16 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		String numbar = request.getParameter("num");
-		int num = Integer.parseInt(numbar);
-		String pass = request.getParameter("pass");
+		int num = 0;
+		String pass = null;
+		try{
+			String numbar = request.getParameter("num");
+			num = Integer.parseInt(numbar);
+			pass = request.getParameter("pass");
+		}catch (Exception e) {
+			response.sendRedirect("/Bteam");
+			return;
+		}
 
 		//Userインスタンス(ユーザー情報)の生成
 		User user = new User(num,pass);

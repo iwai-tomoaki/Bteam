@@ -18,7 +18,7 @@
 		</div>
 		<div class = "between2">
 			<div>
-				ユーザID
+				ユーザID:
 			</div>
 			<div class = "space">
 				<input type="text" name="num" value="" size="24">
@@ -26,7 +26,7 @@
 		</div>
 		<div class = "between">
 			<div>
-				password
+				password:
 			</div>
 			<div class = "space">
 				<input type="password" name="pass" value="" size="24">

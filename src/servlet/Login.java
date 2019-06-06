@@ -52,8 +52,8 @@ public class Login extends HttpServlet
  			session.setAttribute("loginUser",user);
 
  			Division_DAO dao = new Division_DAO();
- 			int aaa = user.getNum();
- 			boolean dao1 = dao.select(aaa);
+ 			int che = user.getNum();
+ 			boolean dao1 = dao.select(che);
  			if(dao1) {
  				//ログイン結果画面のフォワード
 			 	RequestDispatcher dispatcher =

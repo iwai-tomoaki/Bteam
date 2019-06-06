@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import action.Authority;
+import model.User;
 
 
 public class Division_DAO {
@@ -57,9 +58,11 @@ public class Division_DAO {
 	}
 	*/
 
-	public boolean select(int aaa) {
+	public boolean select(User user) {
 
 		Connection conn = null;
+		int ch = user.getNum();
+		String kku = user.getPass();
 		int upid1 = 0;
 
 
@@ -70,12 +73,16 @@ public class Division_DAO {
 			String usree = "TeamB";		// データベースのユーザー情報
 			String pas = "teamb";		// SQL serverインストール時に設定したパスワード
 			conn = DriverManager.getConnection(dbURL,usree,pas);
-			PreparedStatement pstmt = conn.prepareStatement("SELECT auth_id FROM Employee WHERE pass = '1234'");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_id,pass,auth_id FROM Employee");
             ResultSet rs = pstmt.executeQuery();
 
     		while(rs.next()) {
-				upid1 = rs.getInt("auth_id");
-				Authority authority = new Authority(upid1);
+    			int ggg = rs.getInt("emp_id");
+    			String papa = rs.getString("pass");
+    			if(ch==ggg && kku.equals(papa)) {
+    				upid1 = rs.getInt("auth_id");
+    				Authority authority = new Authority(upid1);
+    			}
 			}
 
 		}catch(SQLException ex) {

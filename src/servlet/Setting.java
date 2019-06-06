@@ -34,12 +34,25 @@ public class Setting extends HttpServlet {
 
 			// リクエストパラメータの取得
 			request.setCharacterEncoding("UTF-8");
-			String numbar = request.getParameter("num");
-			int num = Integer.parseInt(numbar);			  // 社員番号の取得
-			String pass = request.getParameter("pass");		  // パスワードの取得
+			int num = 0;
+			String pass = null;
+			String newpass = null;
+			try{
+				String numbar = request.getParameter("num");
+				num = Integer.parseInt(numbar);			  // 社員番号の取得
+				pass = request.getParameter("pass");		  // パスワードの取得
+				newpass = request.getParameter("newpass");		  // 新パスワードの取得
+			}catch (Exception e) {
+				response.sendRedirect("/Bteam");
+				return;
+			}
 
 			//Userインスタンス(ユーザー情報)の生成
-			User user = new User(num,pass);
+			if(num != 0 && newpass != null) {
+				User user = new User(num,newpass);
+			}else {
+				User user = new User(pass,newpass);
+			}
 
 			// 結果をフォワード
 			RequestDispatcher dispatcher =

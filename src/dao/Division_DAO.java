@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import model.User;
 
@@ -56,8 +55,8 @@ public class Division_DAO {
 		return false;
 	}
 
-	public ArrayList<Integer> user_int = new ArrayList<Integer>();
-	public ArrayList<String> user_str = new ArrayList<String>();
+	//public ArrayList<Integer> user_int = new ArrayList<Integer>();
+	//public ArrayList<String> user_str = new ArrayList<String>();
 	public boolean exext(User user,int a) {
 
 		Connection conn = null;

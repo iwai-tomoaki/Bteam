@@ -31,6 +31,10 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
+		public User(String pass, String newpass) {
+			this.pass = pass;
+		}
+
 		public int getId() {
 			return id;
 		}

@@ -26,6 +26,11 @@ import java.io.Serializable;
 			this.auth_id = auth_id;
 		}
 
+		public User(int num, String pass) {
+			this.num = num;
+			this.pass = pass;
+		}
+
 		public int getId() {
 			return id;
 		}

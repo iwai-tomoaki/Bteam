@@ -8,7 +8,6 @@
 <title>login</title>
 </head>
 <body>
-<form action="/Bteam/Login" method="post">
 	<div class="body">
 		<div class="box">
 			<div class="wave -one"></div>
@@ -36,7 +35,6 @@
 			<input type="submit" value="ログイン" class="btn-flat-border">
 		</div>
 	</div>
-</form>
 </body>
 </html>
 

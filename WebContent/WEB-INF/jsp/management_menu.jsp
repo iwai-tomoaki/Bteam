@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理メニュー</title>
 </head>
 <body>
-
+<h1>管理用のメニューです</h1>
 </body>
 </html>

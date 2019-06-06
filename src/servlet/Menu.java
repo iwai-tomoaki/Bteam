@@ -17,10 +17,10 @@ public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-    public Menu() {
-        super();
+   // public Menu() {
+        //super();
         // TODO Auto-generated constructor stub
-    }
+   // }
 
 
 	protected void doGet(HttpServletRequest request,
@@ -29,7 +29,7 @@ public class Menu extends HttpServlet {
 
 		// リクエスト先の指定
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/menu.jsp");
+				"/WebContent/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -41,7 +41,7 @@ public class Menu extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエスト先の指定
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/menu.jsp");
+				"/WebContent/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 
 		//doGet(request, response);

@@ -41,11 +41,11 @@ public class Login extends HttpServlet
 		User user = new User(num,pass);
 
 		//ログイン処理
-		LoginLogic loginLogic = new LoginLogic();
- 		boolean isLogin = loginLogic.execute(user);
+		LoginLogic loginLogic = new LoginLogic(user);
+		String isLogin = loginLogic.singi;
 
  		//ログイン成功時の処理
- 		if(isLogin)
+ 		if(isLogin == "true")
  		{
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();

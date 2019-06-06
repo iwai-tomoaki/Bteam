@@ -1,19 +1,13 @@
 package model;
+import action.Changenum;
 
-public class LoginLogic
-{
-	public boolean execute(User user)
-	{
-		int numda = user.getNum();
-		String numbar = String.valueOf(numda);
-		int numm = numbar.length();
-		StringBuilder nu = new StringBuilder(numbar);
-		for(int a=numm;a<6;a++) {
-			nu.insert(0,"0");
+public class LoginLogic extends Changenum{
+	public String singi;
+	public LoginLogic(User user){
+		super(user);
+		if(numbar.equals("000446") && user.getPass().equals("1234")){singi = "true";}
+		else {
+		singi ="false";
 		}
-		numbar = nu.toString();
-		if(numbar.equals("000446") && user.getPass().equals("1234")){return true;}
-		return false;
 	}
-
 }

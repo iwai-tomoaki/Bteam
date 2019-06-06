@@ -8,6 +8,7 @@
 <title>login</title>
 </head>
 <body>
+<form action="/Bteam/Login" method="post">
 	<div class="body">
 		<div class="box">
 			<div class="wave -one"></div>
@@ -17,7 +18,7 @@
 		</div>
 		<div class = "between2">
 			<div>
-				ユーザID:
+				ユーザID
 			</div>
 			<div class = "space">
 				<input type="text" name="num" value="" size="24">
@@ -25,7 +26,7 @@
 		</div>
 		<div class = "between">
 			<div>
-				password:
+				password
 			</div>
 			<div class = "space">
 				<input type="password" name="pass" value="" size="24">
@@ -35,6 +36,7 @@
 			<input type="submit" value="ログイン" class="btn-flat-border">
 		</div>
 	</div>
+</form>
 </body>
 </html>
 

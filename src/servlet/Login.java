@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.Division_DAO;
 import model.LoginLogic;
 import model.User;
 
@@ -43,12 +44,24 @@ public class Login extends HttpServlet
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
 
+ 			Division_DAO dao = new Division_DAO();
+ 			int aaa = user.getNum();
+ 			boolean dao1 = dao.select(aaa);
+ 			if(dao1) {
+ 				//ログイン結果画面のフォワード
+			 	RequestDispatcher dispatcher =
+			 		request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+			 	dispatcher.forward(request, response);
+ 			}else {
+ 				//ログイン結果画面のフォワード
+ 				RequestDispatcher dispatcher =
+					request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+ 				dispatcher.forward(request, response);
+ 			}
+ 		}else {
+			//リダイレクト
+			response.sendRedirect("/Bteam");
  		}
-
-		//ログイン結果画面のフォワード
- 		RequestDispatcher dispatcher =
- 				request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
- 		dispatcher.forward(request, response);
 	}
 }
 //

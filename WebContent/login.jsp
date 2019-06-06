@@ -37,7 +37,7 @@
                 </td>
             </div>
         <div class = "center">
-            <input type="submit" class="btn-flat-border">BUTTON</a>
+            <input type="submit" value="ログイン" class="btn-flat-border"></a>
         </div>
     </div>
             </form>

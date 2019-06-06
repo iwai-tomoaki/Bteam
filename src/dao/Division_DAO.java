@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,7 @@ public class Division_DAO {
 	 //}
 
 
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 
 		Connection conn = null;
 
@@ -56,6 +55,7 @@ public class Division_DAO {
 			}
 		}
 	}
+	*/
 
 	public boolean select(int aaa) {
 
@@ -64,23 +64,24 @@ public class Division_DAO {
 
 
 		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
 			String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
-			String usre = "TeamB";		// データベースのユーザー情報
-			String pass = "teamb";		// SQL serverインストール時に設定したパスワード
-			System.out.println("111");
-			conn = DriverManager.getConnection(dbURL,usre,pass);
-			System.out.println("111222");
-			PreparedStatement pstmt = conn.prepareStatement("SELECT divi_id FROM Employee WHERE pass = \"1234\"");
+			String usree = "TeamB";		// データベースのユーザー情報
+			String pas = "teamb";		// SQL serverインストール時に設定したパスワード
+			conn = DriverManager.getConnection(dbURL,usree,pas);
+			PreparedStatement pstmt = conn.prepareStatement("SELECT auth_id FROM Employee WHERE pass = '1234'");
             ResultSet rs = pstmt.executeQuery();
 
-			if(conn != null) {
-				String tete = rs.getString("divi_id");
-				upid1 = Integer.parseInt(tete);
+    		while(rs.next()) {
+				upid1 = rs.getInt("auth_id");
 				Authority authority = new Authority(upid1);
 			}
 
 		}catch(SQLException ex) {
 			ex.printStackTrace();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
 		}finally {
 			try {
 				if(conn != null && !conn.isClosed()) {
@@ -90,11 +91,9 @@ public class Division_DAO {
 				ex.printStackTrace();
 			}
 		}
-		if(upid1 == 2 || upid1 == 1) {
+		if(upid1 == 2) {
 			return true;
 		}
 		return false;
 	}
-
-
 }

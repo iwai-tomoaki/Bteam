@@ -2,28 +2,59 @@ html, body {
     height: auto;
     overflow: auto;
   }
+    html {
+    background: #eee;
+  }
+
 
   /* ここはmainのCSS */
 .main{
+  /*縦幅40%指定*/
+  height: 40%;
+  /*横幅50%指定*/
+  width: 50%;
+  /* マージンTOPを100px他を30px */
+  margin: 100px 30px 30px 30px;
+  /* 後ろを白くする */
+  background-color:white;
+  /* 四角の角を30px分丸くする */
+  border-radius: 30px;
+  /* パディング(内側の余白)を上下1em左右1.5em広げる */
+  padding : 1em 1.5em ;
+  /* 行の高さを1に指定する */
+  line-height : 1.8 ;
+  /* 太さが2pxで色が#333の線を引く */
+  border : solid 2px #333 ;
+  /* 影を付ける */
+  box-shadow: 2px 2px 4px gray;
+  /* opacity: 0.5; */
+}
+
+.main2{
   height: 40%;
   width: 50%;
     margin: 100px 30px 30px 30px;
-    background-color:rgba(242, 238, 247, 0.856);
-    border-radius: 30px;
-    padding : 1em 1.5em ;
+    background-color:white;
+    /* border-radius: 30px; */
+    /* padding : 1em 1.5em ;
     line-height : 1.8 ;
-    border : solid 2px #333 ; 
-    box-shadow: 2px 2px 4px gray;
+    border : solid 2px #333 ;  */
+    /* box-shadow: 2px 2px 4px gray; */
     /* opacity: 0.5; */
 }
   .start{
+    /* flexを使用可能にする */
   display:flex;
+  /* めっちゃdivの一番左端っこに移動する */
   justify-content:flex-start;
+/* flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置 */
   justify-content:space-between;
+  /* 右側のマージンを150px取る */
   margin-right:150px;
 }
 
 .ml30{
+  /* 左側のマージン３０PXだけを取る宣言 */
   margin-left:30px;
 }
 
@@ -33,16 +64,12 @@ html, body {
   margin-right:40px;
 }
 
-  html {
-    background: #eee;
-  }
-  
   body {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
+
   .box {
     width: 300px;
     height: 300px;
@@ -54,7 +81,7 @@ html, body {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
   }
-  
+
   .wave {
     opacity: .4;
     position: absolute;
@@ -71,19 +98,19 @@ html, body {
     -webkit-animation: drift 3000ms infinite linear;
             animation: drift 3000ms infinite linear;
   }
-  
+
   .wave.-three {
     -webkit-animation: drift 5000ms infinite linear;
             animation: drift 5000ms infinite linear;
   }
-  
+
   .wave.-two {
     -webkit-animation: drift 7000ms infinite linear;
             animation: drift 7000ms infinite linear;
     opacity: .1;
     background: yellow;
   }
-  
+
   .box:after {
     content: '';
     display: block;
@@ -96,7 +123,7 @@ html, body {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
   }
-  
+
   .title {
     position: absolute;
     left: 0;
@@ -115,7 +142,7 @@ html, body {
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     text-indent: .3em;
   }
-  
+
   @-webkit-keyframes drift {
     from {
       -webkit-transform: rotate(0deg);
@@ -126,7 +153,7 @@ html, body {
               transform: rotate(360deg);
     }
   }
-  
+
   @keyframes drift {
     from {
       -webkit-transform: rotate(0deg);
@@ -147,7 +174,7 @@ html, body {
     border-radius: 3px;
     transition: .4s;
   }
-  
+
   .btn-flat-border:hover {
     background: #67c5ff;
     color: white;
@@ -156,11 +183,17 @@ html, body {
   .center{
     display: flex;
     justify-content: center;
+    align-items:center;
     width:auto;
     margin-top:10px;
   }
 
-  .between{
+  .between2{
+    display: flex;
+    justify-content: space-between;
+    margin-top:15px;
+  }
+    .between{
     display: flex;
     justify-content: space-between;
   }
@@ -179,7 +212,7 @@ html, body {
     font-size: 18px;    /* 文字サイズ指定 */
     color: red;     /* 文字色指定 */
   }
-  
+
 
 /* ここからヘッダーCSS */
   .head-container {
@@ -191,7 +224,7 @@ html, body {
     background-color: lightgreen;
     display: flex;
     justify-content: flex-end;
-    align-items: center;   
+    align-items: center;
 }
 
 .head-contents {
@@ -227,7 +260,7 @@ html, body {
     background-color: lightgreen;
     display: flex;
     justify-content: flex-end;
-    align-items: center;   
+    align-items: center;
 }
 
 .footer-contents {

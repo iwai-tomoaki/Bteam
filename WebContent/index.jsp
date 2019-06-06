@@ -4,14 +4,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン画面</title>
+<link rel="stylesheet" type="text/css" href="Stayle.css">
+<title>login</title>
 </head>
 <body>
-<h1>あなたの社員番号とパスワードを入力してください。</h1>
-<form action="/Bteam/Login" method="post">
-社員番号:<input type="text" name="user_id"><br>
-パスワード:<input type="password" name="pass"><br>
-<input type="submit" value="ログイン">
-</form>
+   <div class="body">
+       <div class="box">
+           <div class="wave -one"></div>
+           <div class="wave -two"></div>
+           <div class="wave -three"></div>
+           <div class = "title">ログイン画面</div>
+       </div>
+       <div class = "between2">
+           <div>
+               ユーザID
+           </div>
+           <div class = "space">
+               <input type="text" name="num" value="" size="24">
+           </div>
+       </div>
+       <div class = "between">
+           <div>
+               password
+           </div>
+           <div class = "space">
+               <input type="password" name="pass" value="" size="24">
+           </div>
+       </div>
+       <div class = "center">
+           <a href="#" class="btn-flat-border">ログイン</a>
+       </div>
+   </div>
 </body>
 </html>
+

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="model.User" %>
+<%@ page import="model.User"%>
 <% User loginUser = (User) session.getAttribute("loginUser"); %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>パスワード再設定</title>
 </head>
-<% if(loginUser = 1) {%>
+<% if(loginUser.equals(true)) {%>	<%--未確認エラー(equalsで代用してエラーを消している) --%>
 <body class="sett">
 <form action="/Bteam/Setting" method="post">
 社員番号:<input type="text" name="pass"><br>

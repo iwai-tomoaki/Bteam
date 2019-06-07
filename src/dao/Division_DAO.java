@@ -21,7 +21,7 @@ public class Division_DAO {
 		Connection conn = null;
 		int ch = user.getNum();
 		String kku = user.getPass();
-		int upid1 = 0;
+		//int upid1 = 0;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -33,7 +33,9 @@ public class Division_DAO {
     			int ggg = rs.getInt("emp_id");
     			String papa = rs.getString("pass");
     			if(ch==ggg && kku.equals(papa)) {
-    				upid1 = rs.getInt("auth_id");
+    				this.kai = true;
+    				return;
+    				//upid1 = rs.getInt("auth_id");
     				//Authority authority = new Authority(upid1);
     			}
 			}
@@ -50,10 +52,6 @@ public class Division_DAO {
 			}catch(SQLException ex) {
 				ex.printStackTrace();
 			}
-		}
-		if(upid1 == 2) {
-			this.kai = true;
-			return;
 		}
 	}
 

@@ -14,28 +14,26 @@ public class Division_DAO {
 	public String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
 	public String usre = "TeamB";		// データベースのユーザー情報
 	public String pass = "teamb";		// SQL serverインストール時に設定したパスワード
-	public boolean kai = false;
+	public boolean true_or_false = false;
 
-	public Division_DAO(User user) {		//権限2(管理者識別用)
+	public Division_DAO(User user) {		//登録ユーザーの権限を識別
 
 		Connection conn = null;
-		int num = user.getNum();
-		String password = user.getPass();
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
 			conn = DriverManager.getConnection(dbURL,usre,pass);
 			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_num,pass,auth_id FROM Employee");
-            ResultSet rs = pstmt.executeQuery();
+            ResultSet r_s = pstmt.executeQuery();
 
-    		while(rs.next()) {
-    			int emp_num = rs.getInt("emp_num");
-    			String pass = rs.getString("pass");
-    			if(num==emp_num && password.equals(pass)) {
-    				int auth_id = rs.getInt("auth_id");
-    				if(auth_id == 2) {
-    					this.kai = true;
-    					return;
+            int num = user.getEmp_num();		//入力した社員番号をUserクラスから取得
+			String pass = user.getPass();		//入力したパスワードをUserクラスから取得
+
+    		while(r_s.next()) {			//テーブルの行数分ループ実行
+    			if(r_s.getInt("emp_num") == num && pass.equals(r_s.getString("pass"))) {		//入力した社員番号とパスワードがテーブル内から取得した社員番号とパスワードに一致するか判定
+    				if(r_s.getInt("auth_id") == 2) {		//一致したユーザーの権限番号を判定
+    					this.true_or_false = true;		//権限が2(管理者)の場合はtrue_or_falseにtrueが入る
+    					return;		//returnでLoginサーブレットに戻る
     				}
     			}
 			}
@@ -55,25 +53,22 @@ public class Division_DAO {
 		}
 	}
 
-	public ArrayList<Integer> user_int = new ArrayList<Integer>();
-	public ArrayList<String> user_str = new ArrayList<String>();
+	public ArrayList<Integer> user_num = new ArrayList<Integer>();		//取得したテーブル内のemp_numを格納するList
+	public ArrayList<String> user_pass = new ArrayList<String>();		//取得したテーブル内のpassを格納するList
 	public Division_DAO() {		//登録ユーザー識別用
 
 		Connection conn = null;
-		int emp_num = 0;
-		String password = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
 			conn = DriverManager.getConnection(dbURL,usre,pass);
 			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_num,pass FROM Employee");
-            ResultSet rs = pstmt.executeQuery();
+            ResultSet r_s = pstmt.executeQuery();
 
-    		while(rs.next()) {
-    			emp_num = rs.getInt("emp_num");
-    			password = rs.getString("pass");
-    			user_int.add(emp_num);
-    			user_str.add(password);
+
+    		while(r_s.next()) {		//テーブルの数分ループ実行
+    			user_num.add(r_s.getInt("emp_num"));		//テーブル内のemp_numをListのuser_numに入れていく
+    			user_pass.add(r_s.getString("pass"));		//テーブル内のpassをListのuser_passに入れていく
 			}
 
 		}catch(SQLException ex) {

@@ -25,9 +25,10 @@ public class Login extends HttpServlet
 		request.setCharacterEncoding("UTF-8");
 		int num = 0;
 		String pass = null;
+		//入力内容の取得、および"num"をint型に変換
 		try{
-			String number = request.getParameter("num");
-			num = Integer.parseInt(number);
+			String change_num = request.getParameter("num");
+			num = Integer.parseInt(change_num);
 			pass = request.getParameter("pass");
 		}catch (Exception e) {
 			response.sendRedirect("/Bteam");
@@ -38,24 +39,23 @@ public class Login extends HttpServlet
 		User user = new User(num,pass);
 
 		//ログイン処理
-		LoginLogic loginLogic = new LoginLogic(user);
+		LoginLogic loginLogic = new LoginLogic(user);		//LoginLogicクラスの引数userを実行
 
- 		//ログイン成功時の処理
- 		if(loginLogic.kai)
+ 		//ログイン成功時の処理、loginLogiのtrue_or_falseを参照し真偽判定
+ 		if(loginLogic.true_or_false)
  		{
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
  			Division_DAO dao = new Division_DAO(user);
- 			if(dao.kai) {
- 				//ログイン結果画面のフォワード
-			 	RequestDispatcher dispatcher =
-			 		request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+ 			//登録ユーザーの権限判定処理
+ 			if(dao.true_or_false) {
+ 				//判定結果画面のフォワード
+			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
- 				//ログイン結果画面のフォワード
- 				RequestDispatcher dispatcher =
-					request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+ 				//判定結果画面のフォワード
+ 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
  				dispatcher.forward(request, response);
  			}
  		}else {

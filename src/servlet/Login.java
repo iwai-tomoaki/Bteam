@@ -23,19 +23,19 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		int num = 0;
-		String pass = null;
+		int input_num = 0;
+		String input_pass = null;
 		//入力内容の取得、および"num"をint型に変換
 		try{
-			num = Integer.parseInt(request.getParameter("num"));
-			pass = request.getParameter("pass");
+			input_num = Integer.parseInt(request.getParameter("input_num"));
+			input_pass = request.getParameter("input_pass");
 		}catch (Exception E) {
 			response.sendRedirect("/Bteam");
 			return;
 		}
 
 		//Userインスタンス(ユーザー情報)の生成
-		User user = new User(num,pass);
+		User user = new User(input_num,input_pass);
 
 		//ログイン処理
 		LoginLogic loginLogic = new LoginLogic(user);		//LoginLogicクラスの引数userを実行

@@ -1,0 +1,343 @@
+@charset "UTF-8";
+
+html, body {
+    height: auto;
+    overflow: auto;
+  }
+    html {
+    background: #eee;
+  }
+
+
+  /* ここはmainのCSS */
+.main{
+  /*縦幅40%指定*/
+  height: 40%;
+  /*横幅50%指定*/
+  width: 80%;
+  /* マージンTOPを60px他を30px */
+  margin: 60px 30px 30px 30px;
+  /* 後ろを白くする */
+  background-color:white;
+  /* 四角の角を30px分丸くする */
+  border-radius: 30px;
+  /* パディング(内側の余白)を上下1em左右1.5em広げる */
+  padding : 1em 1.5em ;
+  /* 行の高さを1に指定する */
+  line-height : 1.8 ;
+  /* 太さが2pxで色が#333の線を引く */
+  border : solid 2px #333 ;
+  /* 影を付ける */
+  box-shadow: 2px 2px 4px gray;
+  /* opacity: 0.5; */
+}
+
+.set{
+
+}
+
+.main2{
+  height: 40%;
+  width: 50%;
+    margin: 100px 30px 30px 30px;
+    background-color:white;
+    /* border-radius: 30px; */
+    /* padding : 1em 1.5em ;
+    line-height : 1.8 ;
+    border : solid 2px #333 ;  */
+    /* box-shadow: 2px 2px 4px gray; */
+    /* opacity: 0.5; */
+}
+  .start{
+    /* flexを使用可能にする */
+  display:flex;
+  /* めっちゃdivの一番左端っこに移動する */
+  justify-content:flex-start;
+/* flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置 */
+  justify-content:space-between;
+  /* 右側のマージンを150px取る */
+  margin-right:150px;
+}
+
+.ml30{
+  /* 左側のマージン３０PXだけを取る宣言 */
+  margin-left:30px;
+}
+
+.flex-end30px{
+  display:flex;
+  justify-content:flex-end;
+  margin-right:40px;
+}
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+    background: #fbfcee;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+
+  .wave {
+    opacity: .4;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    background: #0af;
+    width: 500px;
+    height: 500px;
+    margin-left: -250px;
+    margin-top: -250px;
+    -webkit-transform-origin: 50% 48%;
+            transform-origin: 50% 48%;
+    border-radius: 43%;
+    -webkit-animation: drift 3000ms infinite linear;
+            animation: drift 3000ms infinite linear;
+  }
+
+  .wave.-three {
+    -webkit-animation: drift 5000ms infinite linear;
+            animation: drift 5000ms infinite linear;
+  }
+
+  .wave.-two {
+    -webkit-animation: drift 7000ms infinite linear;
+            animation: drift 7000ms infinite linear;
+    opacity: .1;
+    background: yellow;
+  }
+
+  .box:after {
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
+    z-index: 11;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+
+  .title {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    line-height: 300px;
+    text-align: center;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: .4em;
+    font-size: 24px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    text-indent: .3em;
+  }
+
+  @-webkit-keyframes drift {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    from {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+
+  @keyframes drift {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    from {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+
+  .btn-flat-border {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+  }
+
+  .btn-flat-border:hover {
+    background: #67c5ff;
+    color: white;
+  }
+
+  .center{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width:auto;
+    margin-top:10px;
+  }
+
+  .between2{
+    display: flex;
+    justify-content: space-between;
+    margin-top:15px;
+  }
+    .between{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .registration{
+    display:flex;
+    justify-content: space-around;
+}
+
+  .space{
+    max-height: 80%;
+  }
+
+  /* 文字を赤色 */
+  .red_text{
+    font-size: 18px;    /* 文字サイズ指定 */
+    color: red;     /* 文字色指定 */
+  }
+
+/* background-image: linear-gradient(-225deg, #5271C4 0%, #B19FFF 48%, #ECA1FE 100%); */
+/* ここからヘッダーCSS */
+  .head-container {
+    width: 100%;
+    height: 42px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background:linear-gradient(-225deg, #5271C4 0%, #B19FFF 48%, #ECA1FE 100%);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.head-contents {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+.head-contents .items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    margin-right: 16px;
+}
+
+@media screen and (max-width: 764px) {
+    .head-container .head-contents .items {
+        display: none;
+    }
+}
+
+
+/* ここからフッターCSS */
+  .footer-conf {
+    width: 100%;
+    height: 42px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-contents {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.mypens {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  transition: 0.2s all ease-out;
+}
+.mypens:before {
+  content: "Menuへ";
+  position: absolute;
+  width: 200px;
+  left: -75px;
+  bottom: -40px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #000000;
+  opacity: 0;
+  transform: scale(0.2) translateY(100px);
+  transition: 0.2s all ease-out;
+}
+.mypens:hover {
+  background: #000000;
+  color: #000;
+  transform: scale(1.2);
+}
+.mypens:hover:before {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+/* ボタン設定 */
+
+.submit{
+  display: flex;
+  justify-content: flex-end;
+  margin-right:50px;
+}
+/* background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%); */
+.bg-add-submit {
+  width:250px;
+  background: linear-gradient(-225deg, #FFFEFF 0%, rgb(123, 248, 246) 100%) !important;
+  border-radius: 10px;
+  letter-spacing: 8px;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.bg-add-submit2 {
+    width:125px;
+    background: linear-gradient(-225deg, #FFFEFF 0%, rgb(123, 248, 246) 100%) !important;
+    border-radius: 10px;
+    letter-spacing: 8px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }

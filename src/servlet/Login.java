@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.Division_DAO;
-import model.LoginLogic;
 import model.User;
 
 @WebServlet("/Login")
@@ -41,19 +40,18 @@ public class Login extends HttpServlet
 		User user = new User(num,pass);
 
 		//ログイン処理
-		LoginLogic loginLogic = new LoginLogic(user);
-		String isLogin = loginLogic.singi;
+		Division_DAO loginLogic = new Division_DAO();
+		boolean isLogin = loginLogic.exext(user,1);
 
  		//ログイン成功時の処理
- 		if(isLogin == "true")
+ 		if(isLogin)
  		{
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
 
  			Division_DAO dao = new Division_DAO();
- 			int che = user.getNum();
- 			boolean dao1 = dao.select(che);
+ 			boolean dao1 = dao.select(user);
  			if(dao1) {
  				//ログイン結果画面のフォワード
 			 	RequestDispatcher dispatcher =

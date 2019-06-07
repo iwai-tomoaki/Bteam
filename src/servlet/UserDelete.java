@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;;
  * Servlet implementation class User_delete
  */
 @WebServlet("/User_delete")
-public class User_delete extends HttpServlet {
+public class UserDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public User_delete() {
+    public UserDelete() {
         super();
         // TODO Auto-generated constructor stub
     }

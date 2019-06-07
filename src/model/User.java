@@ -3,14 +3,14 @@ import java.io.Serializable;
 
 	public class User implements Serializable
 	{
-		private int emp_id; //社員ID
-		private String name;  //ユーザー名
-		private int num;  //社員番号
- 		private String pass;  //パスワード
- 		private int status; //在席状態
- 		private int divi_id; //部署ID
- 		private int place_id; //勤務地ID
- 		private int auth_id; //権限ID
+		private int emp_id; //社員ID EMP_ID
+		private String name;  //ユーザー名 EMP_NAME
+		private int num;  //社員番号 EMP_NUM
+ 		private String pass;  //パスワード PASS
+ 		private int status; //在席状態 PRES_STATUS
+ 		private int divi_id; //部署ID DIVI_ID
+ 		private int place_id; //勤務地ID WORKPLACE_ID
+ 		private int auth_id; //権限ID AUTH_ID
 
  		public User() {}
 

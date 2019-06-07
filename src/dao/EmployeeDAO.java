@@ -27,10 +27,10 @@ public class EmployeeDAO {
 		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 			//SELECT文(Employee表全件表示)
 			String sql = "SELECT * FROM Employee";
-			PreparedStatement pre_Stmt = conn.prepareStatement(sql);
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
 
 			//SQL文実行
-			ResultSet rs = pre_Stmt.executeQuery();
+			ResultSet rs = pre_stmt.executeQuery();
 
 			//SQL結果をArrayListに格納
 			while (rs.next()) {
@@ -62,19 +62,19 @@ public class EmployeeDAO {
 
 			// INSERT文
 			String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
 
 			//INSERT文中の?に使用する値を設定しSQLを完成
-			pStmt.setString(1, user.getEmp_name());
-			pStmt.setInt(2, user.getEmp_num());
-			pStmt.setString(3, user.getPass());
-			pStmt.setInt(4, user.getPres_status());
-			pStmt.setInt(5, user.getDivi_id());
-			pStmt.setInt(6, user.getPlace_id());
-			pStmt.setInt(7, user.getAuth_id());
+			pre_stmt.setString(1, user.getEmp_name());
+			pre_stmt.setInt(2, user.getEmp_num());
+			pre_stmt.setString(3, user.getPass());
+			pre_stmt.setInt(4, user.getPres_status());
+			pre_stmt.setInt(5, user.getDivi_id());
+			pre_stmt.setInt(6, user.getPlace_id());
+			pre_stmt.setInt(7, user.getAuth_id());
 
 			//INSERT文を実行
-			int result = pStmt.executeUpdate();
+			int result = pre_stmt.executeUpdate();
 			if (result != 1) {
 				return false;
 			}
@@ -93,14 +93,14 @@ public class EmployeeDAO {
 
 			// DELETE文
 			String sql = "DELETE FROM Employee WHERE emp_num = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
 
 			// DELETE文中の?に使用する値を設定しSQLを完成
 			// このままだと自分自身を削除する可能性があるため一応コメントアウトしています
-//			pStmt.setInt(1, user.getNum());
+//			pre_stmt.setInt(1, user.getNum());
 
 			// DELETE文を実行
-			int result = pStmt.executeUpdate();
+			int result = pre_stmt.executeUpdate();
 			if (result != 1) {
 				return false;
 			}
@@ -119,14 +119,14 @@ public class EmployeeDAO {
 
 			// UPDATE文
 			String sql = "UPDATE Employee SET pass = ? WHERE emp_num = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
 
 			// UPDATE文中の?に使用する値を設定しSQLを完成
-			pStmt.setString(1, user.getPass());
-			pStmt.setInt(2, user.getEmp_num());
+			pre_stmt.setString(1, user.getPass());
+			pre_stmt.setInt(2, user.getEmp_num());
 
 			// UPDATE文を実行
-			int result = pStmt.executeUpdate();
+			int result = pre_stmt.executeUpdate();
 			if (result != 1) {
 				return false;
 			}

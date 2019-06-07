@@ -19,6 +19,7 @@ public class EmployeeDAO {
 	// SQL serverインストール時に設定したパスワード
 	private final String dbPass = "teamb";
 
+	// 社員を全件表示
 	public List<User> findAll() {
 		List<User> userList = new ArrayList<>();
 

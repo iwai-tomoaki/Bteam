@@ -3,12 +3,19 @@ import dao.Division_DAO;
 
 public class LoginLogic extends Division_DAO{
 	public String singi;
-	public LoginLogic(User user,int a){
-		super(user,a);
-		for(int b = 0;)
-		if(numbar.equals("000001") && user.getPass().equals("R9DB3")){singi = "true";}
-		else {
-		singi ="false";
+	public boolean kai = false;
+	public int a = 0;
+	public LoginLogic(User user){
+		super();
+		int num =user.getNum();
+		String pass = user.getPass();
+		for(int b : user_int) {
+			int inum =user_int.get(b-1);
+			String spa=user_str.get(b-1);
+			if(inum==num && spa.equals(pass)){
+				this.kai=true;
+				return;
+			}
 		}
 	}
 }

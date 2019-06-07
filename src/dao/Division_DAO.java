@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.User;
 
@@ -13,8 +14,9 @@ public class Division_DAO {
 	public String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
 	public String usree = "TeamB";		// データベースのユーザー情報
 	public String pas = "teamb";		// SQL serverインストール時に設定したパスワード
+	public boolean kai = false;
 
-	public boolean select(User user) {
+	public Division_DAO(User user) {		//権限2(管理者識別用)
 
 		Connection conn = null;
 		int ch = user.getNum();
@@ -50,18 +52,18 @@ public class Division_DAO {
 			}
 		}
 		if(upid1 == 2) {
-			return true;
+			this.kai = true;
+			return;
 		}
-		return false;
 	}
 
-	//public ArrayList<Integer> user_int = new ArrayList<Integer>();
-	//public ArrayList<String> user_str = new ArrayList<String>();
-	public boolean exext(User user,int a) {
+	public ArrayList<Integer> user_int = new ArrayList<Integer>();
+	public ArrayList<String> user_str = new ArrayList<String>();
+	public Division_DAO() {		//登録ユーザー識別用
 
 		Connection conn = null;
-		int ch = user.getNum();
-		String kku = user.getPass();
+		int ggg = 0;
+		String papa = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -70,11 +72,10 @@ public class Division_DAO {
             ResultSet rs = pstmt.executeQuery();
 
     		while(rs.next()) {
-    			int ggg = rs.getInt("emp_id");
-    			String papa = rs.getString("pass");
-    			if(ch==ggg && kku.equals(papa)) {
-    				return true;
-    			}
+    			ggg = rs.getInt("emp_id");
+    			papa = rs.getString("pass");
+    			user_int.add(ggg);
+    			user_str.add(papa);
 			}
 
 		}catch(SQLException ex) {
@@ -90,6 +91,5 @@ public class Division_DAO {
 				ex.printStackTrace();
 			}
 		}
-		return false;
 	}
 }

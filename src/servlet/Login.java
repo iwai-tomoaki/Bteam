@@ -57,7 +57,7 @@ public class Login extends HttpServlet
  			if(dao1) {
  				//ログイン結果画面のフォワード
 			 	RequestDispatcher dispatcher =
-			 		request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+			 		request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
  				//ログイン結果画面のフォワード

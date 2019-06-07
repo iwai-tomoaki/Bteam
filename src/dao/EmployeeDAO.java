@@ -27,24 +27,24 @@ public class EmployeeDAO {
 		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 			//SELECT文(Employee表全件表示)
 			String sql = "SELECT * FROM Employee";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			PreparedStatement pre_Stmt = conn.prepareStatement(sql);
 
 			//SQL文実行
-			ResultSet rs = pStmt.executeQuery();
+			ResultSet rs = pre_Stmt.executeQuery();
 
 			//SQL結果をArrayListに格納
 			while (rs.next()) {
 				int emp_id = rs.getInt("EMP_ID");
-				String name = rs.getString("EMP_NAME");
-				int num = rs.getInt("EMP_NUM");
+				String emp_name = rs.getString("EMP_NAME");
+				int emp_num = rs.getInt("EMP_NUM");
 				String pass = rs.getString("PASS");
-				int status = rs.getInt("PRES_STATUS");
+				int pres_status = rs.getInt("PRES_STATUS");
 				int divi_id = rs.getInt("DIVI_ID");
 				int place_id = rs.getInt("WORKPLACE_ID");
 				int auth_id = rs.getInt("AUTH_ID");
 
 				User user = new User
-						(emp_id, name, num, pass, status, divi_id, place_id, auth_id);
+						(emp_id, emp_name, emp_num, pass, pres_status, divi_id, place_id, auth_id);
 				userList.add(user);
 			}
 
@@ -58,18 +58,17 @@ public class EmployeeDAO {
 
 	// 社員表に新しい社員を追加
 	public boolean create(User user) {
-		try (Connection conn = DriverManager.getConnection
-				(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 
 			// INSERT文
 			String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//INSERT文中の?に使用する値を設定しSQLを完成
-			pStmt.setString(1, user.getName());
-			pStmt.setInt(2, user.getNum());
+			pStmt.setString(1, user.getEmp_name());
+			pStmt.setInt(2, user.getEmp_num());
 			pStmt.setString(3, user.getPass());
-			pStmt.setInt(4, user.getStatus());
+			pStmt.setInt(4, user.getPres_status());
 			pStmt.setInt(5, user.getDivi_id());
 			pStmt.setInt(6, user.getPlace_id());
 			pStmt.setInt(7, user.getAuth_id());
@@ -90,8 +89,7 @@ public class EmployeeDAO {
 
 	// Employeeにある社員を社員番号で選択して削除
 	public boolean delete(User user) {
-		try (Connection conn = DriverManager.getConnection
-				(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 
 			// DELETE文
 			String sql = "DELETE FROM Employee WHERE emp_num = ?";
@@ -117,8 +115,7 @@ public class EmployeeDAO {
 
 	// Employeeにある社員のパスワードを社員番号で選択して更新
 	public boolean changePass(User user) {
-		try (Connection conn = DriverManager.getConnection
-				(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
 
 			// UPDATE文
 			String sql = "UPDATE Employee SET pass = ? WHERE emp_num = ?";
@@ -126,7 +123,7 @@ public class EmployeeDAO {
 
 			// UPDATE文中の?に使用する値を設定しSQLを完成
 			pStmt.setString(1, user.getPass());
-			pStmt.setInt(2, user.getNum());
+			pStmt.setInt(2, user.getEmp_num());
 
 			// UPDATE文を実行
 			int result = pStmt.executeUpdate();

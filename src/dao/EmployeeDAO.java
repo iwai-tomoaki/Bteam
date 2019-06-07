@@ -35,13 +35,13 @@ public class EmployeeDAO {
 			//SQL結果をArrayListに格納
 			while (rs.next()) {
 				int emp_id = rs.getInt("EMP_ID");
-				String name = rs.getString("NAME");
-				int num = rs.getInt("NUM");
+				String name = rs.getString("EMP_NAME");
+				int num = rs.getInt("EMP_NUM");
 				String pass = rs.getString("PASS");
-				int status = rs.getInt("STATUS");
+				int status = rs.getInt("PRES_STATUS");
 				int divi_id = rs.getInt("DIVI_ID");
 				int place_id = rs.getInt("PLACE_ID");
-				int auth_id = rs.getInt("Auth_ID");
+				int auth_id = rs.getInt("AUTH_ID");
 
 				User user = new User
 						(emp_id, name, num, pass, status, divi_id, place_id, auth_id);

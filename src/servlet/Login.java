@@ -27,10 +27,9 @@ public class Login extends HttpServlet
 		String pass = null;
 		//入力内容の取得、および"num"をint型に変換
 		try{
-			String change_num = request.getParameter("num");
-			num = Integer.parseInt(change_num);
+			num = Integer.parseInt(request.getParameter("num"));
 			pass = request.getParameter("pass");
-		}catch (Exception e) {
+		}catch (Exception E) {
 			response.sendRedirect("/Bteam");
 			return;
 		}
@@ -48,7 +47,7 @@ public class Login extends HttpServlet
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
  			Division_DAO dao = new Division_DAO(user);
- 			//登録ユーザーの権限判定処理
+ 			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
  				//判定結果画面のフォワード
 			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
@@ -64,4 +63,3 @@ public class Login extends HttpServlet
  		}
 	}
 }
-//

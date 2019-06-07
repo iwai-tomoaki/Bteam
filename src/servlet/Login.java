@@ -19,18 +19,15 @@ public class Login extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response)
-			throws ServletException, IOException
-	{
+	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 		int num = 0;
 		String pass = null;
 		try{
-			String numbar = request.getParameter("num");
-			num = Integer.parseInt(numbar);
+			String number = request.getParameter("num");
+			num = Integer.parseInt(number);
 			pass = request.getParameter("pass");
 		}catch (Exception e) {
 			response.sendRedirect("/Bteam");
@@ -49,12 +46,11 @@ public class Login extends HttpServlet
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUser",user);
-
  			Division_DAO dao = new Division_DAO(user);
  			if(dao.kai) {
  				//ログイン結果画面のフォワード
 			 	RequestDispatcher dispatcher =
-			 		request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+			 		request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
  				//ログイン結果画面のフォワード

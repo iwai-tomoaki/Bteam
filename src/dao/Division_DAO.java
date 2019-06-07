@@ -12,31 +12,31 @@ import model.User;
 
 public class Division_DAO {
 	public String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
-	public String usree = "TeamB";		// データベースのユーザー情報
-	public String pas = "teamb";		// SQL serverインストール時に設定したパスワード
+	public String usre = "TeamB";		// データベースのユーザー情報
+	public String pass = "teamb";		// SQL serverインストール時に設定したパスワード
 	public boolean kai = false;
 
 	public Division_DAO(User user) {		//権限2(管理者識別用)
 
 		Connection conn = null;
-		int ch = user.getNum();
-		String kku = user.getPass();
-		//int upid1 = 0;
+		int num = user.getNum();
+		String password = user.getPass();
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			conn = DriverManager.getConnection(dbURL,usree,pas);
-			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_id,pass,auth_id FROM Employee");
+			conn = DriverManager.getConnection(dbURL,usre,pass);
+			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_num,pass,auth_id FROM Employee");
             ResultSet rs = pstmt.executeQuery();
 
     		while(rs.next()) {
-    			int ggg = rs.getInt("emp_id");
-    			String papa = rs.getString("pass");
-    			if(ch==ggg && kku.equals(papa)) {
-    				this.kai = true;
-    				return;
-    				//upid1 = rs.getInt("auth_id");
-    				//Authority authority = new Authority(upid1);
+    			int emp_num = rs.getInt("emp_num");
+    			String pass = rs.getString("pass");
+    			if(num==emp_num && password.equals(pass)) {
+    				int auth_id = rs.getInt("auth_id");
+    				if(auth_id == 2) {
+    					this.kai = true;
+    					return;
+    				}
     			}
 			}
 
@@ -60,20 +60,20 @@ public class Division_DAO {
 	public Division_DAO() {		//登録ユーザー識別用
 
 		Connection conn = null;
-		int ggg = 0;
-		String papa = null;
+		int emp_num = 0;
+		String password = null;
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			conn = DriverManager.getConnection(dbURL,usree,pas);
-			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_id,pass FROM Employee");
+			conn = DriverManager.getConnection(dbURL,usre,pass);
+			PreparedStatement pstmt = conn.prepareStatement("SELECT emp_num,pass FROM Employee");
             ResultSet rs = pstmt.executeQuery();
 
     		while(rs.next()) {
-    			ggg = rs.getInt("emp_id");
-    			papa = rs.getString("pass");
-    			user_int.add(ggg);
-    			user_str.add(papa);
+    			emp_num = rs.getInt("emp_num");
+    			password = rs.getString("pass");
+    			user_int.add(emp_num);
+    			user_str.add(password);
 			}
 
 		}catch(SQLException ex) {

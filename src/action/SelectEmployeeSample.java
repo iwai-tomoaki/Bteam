@@ -13,7 +13,7 @@ public class SelectEmployeeSample{
 
 		// 取得したレコードの内容を出力
 		for(User user : empList) {
-			System.out.println("ID:" + user.getId());
+			System.out.println("ID:" + user.getEmp_id());
 			System.out.println("名前:" + user.getName());
 			System.out.println("社員番号:" + user.getNum());
 			System.out.println("パスワード:" + user.getPass());

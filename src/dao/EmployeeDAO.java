@@ -19,6 +19,7 @@ public class EmployeeDAO {
 	// SQL serverインストール時に設定したパスワード
 	private final String dbPass = "teamb";
 
+	// 社員を全件表示
 	public List<User> findAll() {
 		List<User> userList = new ArrayList<>();
 
@@ -33,17 +34,17 @@ public class EmployeeDAO {
 
 			//SQL結果をArrayListに格納
 			while (rs.next()) {
-				int id = rs.getInt("INT");
-				String name = rs.getString("NAME");
-				int num = rs.getInt("NUM");
+				int emp_id = rs.getInt("EMP_ID");
+				String name = rs.getString("EMP_NAME");
+				int num = rs.getInt("EMP_NUM");
 				String pass = rs.getString("PASS");
-				int status = rs.getInt("STATUS");
+				int status = rs.getInt("PRES_STATUS");
 				int divi_id = rs.getInt("DIVI_ID");
-				int place_id = rs.getInt("PLACE_ID");
-				int auth_id = rs.getInt("Auth_ID");
+				int place_id = rs.getInt("WORKPLACE_ID");
+				int auth_id = rs.getInt("AUTH_ID");
 
 				User user = new User
-						(id, name, num, pass, status, divi_id, place_id, auth_id);
+						(emp_id, name, num, pass, status, divi_id, place_id, auth_id);
 				userList.add(user);
 			}
 

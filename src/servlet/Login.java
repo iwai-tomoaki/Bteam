@@ -1,4 +1,4 @@
-package servlet;
+ package servlet;
 
 import java.io.IOException;
 
@@ -58,6 +58,7 @@ public class Login extends HttpServlet
  				dispatcher.forward(request, response);
  			}
  		}else {
+ 			System.out.print("ログインに失敗しました");
 			//リダイレクト
 			response.sendRedirect("/Bteam");
  		}

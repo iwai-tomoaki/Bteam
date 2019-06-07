@@ -40,7 +40,7 @@ public class EmployeeDAO {
 				String pass = rs.getString("PASS");
 				int status = rs.getInt("PRES_STATUS");
 				int divi_id = rs.getInt("DIVI_ID");
-				int place_id = rs.getInt("PLACE_ID");
+				int place_id = rs.getInt("WORKPLACE_ID");
 				int auth_id = rs.getInt("AUTH_ID");
 
 				User user = new User

@@ -11,7 +11,7 @@ import model.User;
 
 
 public class DivisionDAO {
-	public String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
+	public String db_URL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";		// データベースのURL情報
 	public String db_usre = "TeamB";		// データベースのユーザー情報
 	public String db_pass = "teamb";		// SQL serverインストール時に設定したパスワード
 	public boolean true_or_false = false;
@@ -22,7 +22,7 @@ public class DivisionDAO {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			conn = DriverManager.getConnection(dbURL,db_usre,db_pass);
+			conn = DriverManager.getConnection(db_URL,db_usre,db_pass);
 			PreparedStatement pre_stmt = conn.prepareStatement("SELECT emp_num,pass,auth_id FROM Employee");		//実行するSQl文を入力
             ResultSet result_set = pre_stmt.executeQuery();		//入力したSQL文を実行
 
@@ -61,7 +61,7 @@ public class DivisionDAO {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			conn = DriverManager.getConnection(dbURL,db_usre,db_pass);
+			conn = DriverManager.getConnection(db_URL,db_usre,db_pass);
 			PreparedStatement pre_stmt = conn.prepareStatement("SELECT emp_num,pass FROM Employee");		//実行するSQL文を入力
             ResultSet result_set = pre_stmt.executeQuery();		//入力したSQL文を実行
 

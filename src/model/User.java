@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 	public class User implements Serializable
 	{
-		private int id; //社員ID
+		private int emp_id; //社員ID
 		private String name;  //ユーザー名
 		private int num;  //社員番号
  		private String pass;  //パスワード
@@ -14,9 +14,9 @@ import java.io.Serializable;
 
  		public User() {}
 
-		public User(int id, String name, int num, String pass, int status, int divi_id, int place_id, int auth_id) {
+		public User(int emp_id, String name, int num, String pass, int status, int divi_id, int place_id, int auth_id) {
 			super();
-			this.id = id;
+			this.emp_id = emp_id;
 			this.name = name;
 			this.num = num;
 			this.pass = pass;
@@ -35,8 +35,8 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
-		public int getId() {
-			return id;
+		public int getEmp_id() {
+			return emp_id;
 		}
 
 		public int getNum() {

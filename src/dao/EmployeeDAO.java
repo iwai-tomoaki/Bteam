@@ -159,9 +159,9 @@ public class EmployeeDAO {
 			ResultSet rs = pre_stmt.executeQuery();
 
 			//SQL結果をArrayListに格納
-					int a=0;
+			int num = 0;
 			while (rs.next()) {		//データベースの中身を取得
-				int select_place= rs.getInt("workplace_id");
+				int select_place = rs.getInt("workplace_id");
 				if(place == select_place || place == 5) {
 					String emp_name = rs.getString("EMP_NAME");
 					int emp_num = rs.getInt("EMP_NUM");
@@ -171,8 +171,8 @@ public class EmployeeDAO {
 
 					User user = new User(emp_name, emp_num, pres_status, divi_id, place_id);
 					userList.add(user);
-					System.out.println(userList.get(a));		//表示テスト
-					a++;
+					System.out.println(userList.get(num));		//表示テスト
+					num++;
 				}
 			}
 
@@ -189,17 +189,16 @@ public class EmployeeDAO {
 		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 
 			// INSERT文
-			String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Employee VALUES(?, ?, ?, 0, ?, ?, ?)";
 			PreparedStatement pre_stmt = conn.prepareStatement(sql);
 
 			//INSERT文中の?に使用する値を設定しSQLを完成
 			pre_stmt.setString(1, user.getEmp_name());
 			pre_stmt.setInt(2, user.getEmp_num());
 			pre_stmt.setString(3, user.getPass());
-			pre_stmt.setInt(4, user.getPres_status());
-			pre_stmt.setInt(5, user.getDivi_id());
-			pre_stmt.setInt(6, user.getPlace_id());
-			pre_stmt.setInt(7, user.getAuth_id());
+			pre_stmt.setInt(4, user.getDivi_id());
+			pre_stmt.setInt(5, user.getPlace_id());
+			pre_stmt.setInt(6, user.getAuth_id());
 
 			//INSERT文を実行
 			int result = pre_stmt.executeUpdate();
@@ -215,8 +214,34 @@ public class EmployeeDAO {
 		return true;
 	}
 
+//	// Employeeにある社員を社員番号で選択して削除
+//	public boolean delete(User user) {
+//		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
+//
+//			// DELETE文
+//			String sql = "DELETE FROM Employee WHERE emp_num = ?";
+//			PreparedStatement pre_stmt = conn.prepareStatement(sql);
+//
+//			// DELETE文中の?に使用する値を設定しSQLを完成
+//			// このままだと自分自身を削除する可能性があるため一応コメントアウトしています
+//			pre_stmt.setInt(1, user.getEmp_num());
+//
+//			// DELETE文を実行
+//			int result = pre_stmt.executeUpdate();
+//			if (result != 1) {
+//				return false;
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			System.out.println("削除に失敗しました");
+//			return false;
+//		}
+//		return true;
+//	}
+
 	// Employeeにある社員を社員番号で選択して削除
-	public boolean delete(User user) {
+	public boolean delete(int emp_num) {
 		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 
 			// DELETE文
@@ -225,7 +250,7 @@ public class EmployeeDAO {
 
 			// DELETE文中の?に使用する値を設定しSQLを完成
 			// このままだと自分自身を削除する可能性があるため一応コメントアウトしています
-			pre_stmt.setInt(1, user.getEmp_num());
+			pre_stmt.setInt(1, emp_num);
 
 			// DELETE文を実行
 			int result = pre_stmt.executeUpdate();

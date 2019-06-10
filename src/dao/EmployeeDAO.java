@@ -227,4 +227,22 @@ public class EmployeeDAO {
 		}
 		return true;
 	}
+
+	public void DivisionSelect(User user){		//途中
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
+			//SELECT文(Employee表全件表示)
+			String sql = "SELECT * FROM Employee";
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
+
+			//SQL文実行
+			ResultSet rs = pre_stmt.executeQuery();
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("選択に失敗しました");
+		}
+
+	}		//ここまで
+
 }

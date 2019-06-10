@@ -34,6 +34,10 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
+		public User(int divi_id) {		//途中
+			this.divi_id = divi_id;
+		}		//ここまで
+
 		public int getEmp_id() {
 			return emp_id;
 		}

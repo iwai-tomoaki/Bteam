@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.EmployeeDAO;
+import model.User;
+
 /**
  * Servlet implementation class Menu
  */
@@ -42,28 +45,31 @@ public class Menu extends HttpServlet {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
 		System.out.println(select_button);		//文字列の確認用
+		int button = 0;		//途中
 
 
 		switch(select_button) {
 		case "all":
-
 			break;
 		case "tokyo":
-
+			button = 1;
 			break;
 		case "tokyo_make":
-
+			button = 2;
 			break;
 		case "sapporo":
-
+			button = 3;
 			break;
 		case "miyazaki":
-
+			button = 4;
 			break;
 		case "new_pass":
 
 			break;
 		}
+		User select_user = new User(button);
+		EmployeeDAO dao = new EmployeeDAO(select_user);		//ここまで
+		
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

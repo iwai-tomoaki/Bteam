@@ -7,9 +7,52 @@
 <title>ユーザー削除</title>
 </head>
 <body>
-<form action="/Bteam/User_delete" method="post">
-社員番号:<input type="text" name="name"><br>
-<input type="submit" value="削除">
+<header class="head">
+        <div class="head-container">
+            <div class="head-contents">
+                <div class="items">
+                        <i class="fas fa-address-book"></i>
+                        <span>smaple</span>
+                        <form name="Logout" method="post">
+                            <a href="Login.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </header>
+<form action="/Bteam/DeleteUser method="post">
+	<div class = "main">
+	        <div class = "top">
+	            <h2>ユーザー削除</h2>
+	        </div>
+
+	        <div class = "start">
+	            <div class = "ml30">
+	                削除するユーザの社員番号
+	                </div>
+	            <div>
+	                <input type="text" name="emp_num" value="" size="24">
+	            </div>
+	        </div>
+
+
+	        <div class="submit">
+	            <button type="submit" name="pass_cust" value="値">設定</button>
+	        </div>
+
+	        <div class = "red_text">
+	            ※これは強制的にユーザーを削除します。<br>
+	              削除しても問題のないユーザーか再度一度確認してください。
+	        </div>
+	    </div>
+		<input type="submit" value="削除">
 </form>
+<footer>
+        <div class = "footer-conf">
+            <div class = "footer-contents">
+                <a class="mypens" href="menu.jsp">戻る</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

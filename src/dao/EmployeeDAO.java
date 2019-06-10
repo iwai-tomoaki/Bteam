@@ -13,18 +13,107 @@ import model.User;
 public class EmployeeDAO {
 
 	// データベースのURL情報
-	private final String dbURL = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";
+	private final String db_url = "jdbc:sqlserver://MGT2019\\SQLEXPRESS;databaseName=TeamB";
 	// データベースのユーザー情報
-	private final String dbUser = "TeamB";
+	private final String db_user = "TeamB";
 	// SQL serverインストール時に設定したパスワード
-	private final String dbPass = "teamb";
+	private final String db_pass = "teamb";
+	// 真偽値判定用
+	public boolean true_or_false = false;
+
+	//登録ユーザーの権限を識別
+	public EmployeeDAO(User user) {
+
+		Connection conn = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+			conn = DriverManager.getConnection(db_url,db_user,db_pass);
+			//実行するSQl文を入力
+			PreparedStatement pre_stmt = conn.prepareStatement("SELECT emp_num,pass,auth_id FROM Employee");
+			//入力したSQL文を実行
+			ResultSet result_set = pre_stmt.executeQuery();
+
+			//入力した社員番号をUserクラスから取得
+			int input_num = user.getEmp_num();
+			//入力したパスワードをUserクラスから取得
+			String input_pass = user.getPass();
+
+			//テーブルの行数分ループ実行
+			while(result_set.next()) {
+				//入力した社員番号とパスワードがテーブル内から取得した社員番号とパスワードに一致するか判定
+				if(result_set.getInt("emp_num") == input_num && input_pass.equals(result_set.getString("pass"))) {
+					//一致したユーザーの権限番号を判定
+					if(result_set.getInt("auth_id") == 2) {
+						//権限が2(管理者)の場合はtrue_or_falseにtrueが入る
+						this.true_or_false = true;
+						//returnでLoginサーブレットに戻る
+						return;
+					}
+				}
+			}
+
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+
+	//取得したテーブル内のemp_numを格納するList
+	public ArrayList<Integer> emp_num = new ArrayList<Integer>();
+	//取得したテーブル内のpassを格納するList
+	public ArrayList<String> pass = new ArrayList<String>();
+
+	//登録ユーザー識別用
+	public EmployeeDAO() {
+		Connection conn = null;
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+			conn = DriverManager.getConnection(db_url,db_user,db_pass);
+			//実行するSQL文を入力
+			PreparedStatement pre_stmt = conn.prepareStatement("SELECT emp_num,pass FROM Employee");
+			//入力したSQL文を実行
+			ResultSet result_set = pre_stmt.executeQuery();
+
+			//テーブルの数分ループ実行
+			while(result_set.next()) {
+				//テーブル内のemp_numをListのall_user_numに入れていく
+				emp_num.add(result_set.getInt("emp_num"));
+				//テーブル内のpassをListのall_user_passに入れていく
+				pass.add(result_set.getString("pass"));
+			}
+
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null && !conn.isClosed()) {
+					conn.close();
+				}
+			}catch(SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
 
 	// 社員を全件表示
 	public List<User> findAll() {
 		List<User> userList = new ArrayList<>();
 
 		// データベースへ接続
-		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 			//SELECT文(Employee表全件表示)
 			String sql = "SELECT * FROM Employee";
 			PreparedStatement pre_stmt = conn.prepareStatement(sql);
@@ -58,7 +147,7 @@ public class EmployeeDAO {
 
 	// 社員表に新しい社員を追加
 	public boolean create(User user) {
-		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 
 			// INSERT文
 			String sql = "INSERT INTO Employee VALUES(?, ?, ?, ?, ?, ?, ?)";
@@ -89,7 +178,7 @@ public class EmployeeDAO {
 
 	// Employeeにある社員を社員番号で選択して削除
 	public boolean delete(User user) {
-		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 
 			// DELETE文
 			String sql = "DELETE FROM Employee WHERE emp_num = ?";
@@ -115,7 +204,7 @@ public class EmployeeDAO {
 
 	// Employeeにある社員のパスワードを社員番号で選択して更新
 	public boolean changePass(User user) {
-		try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPass)) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
 
 			// UPDATE文
 			String sql = "UPDATE Employee SET pass = ? WHERE emp_num = ?";

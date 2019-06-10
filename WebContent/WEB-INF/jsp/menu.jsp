@@ -18,6 +18,7 @@ User loginUser = (User) session.getAttribute("loginUser");
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
+<form action="/Btam/Menu" method="post">
     <!-- 以下はヘッダー -->
     <header class="head">
         <!-- 色、高さ、位置指定 -->
@@ -48,30 +49,30 @@ User loginUser = (User) session.getAttribute("loginUser");
 
             <div class="registration">
                 <div class = "center2">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './Del_User.html'">全件表示</button>
+                    <button  name='action' value='all' class = "bg-add-submit"
+                    onclick="/Btam/Menu">全件表示</button>
                 </div>
             </div>
             <!-- 上のボタン配置２つ -->
             <div class="registration">
                 <div class = "center2">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './Del_User.html'">東京</button>
+                    <button name='action' value='tokyo' class = "bg-add-submit"
+                    onclick="/Btam/Menu">東京</button>
                 </div>
                 <div class = "center2">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './Del_User.html'">東京（開発）</button>
+                    <button name='action' value='tokyo_make' class = "bg-add-submit"
+                    onclick="/Btam/Menu">東京（開発）</button>
                 </div>
             </div>
 
             <div class="registration">
                 <div class = "center2">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './Del_User.html'">札幌</button>
+                    <button name='action' value='sapporo' class = "bg-add-submit"
+                    onclick="/Btam/Menu">札幌</button>
                 </div>
                 <div class = "center2">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './Del_User.html'">宮崎</button>
+                    <button name='action' value='miyazaki' class = "bg-add-submit"
+                    onclick="/Btam/Menu">宮崎</button>
                 </div>
             </div>
         </div>
@@ -84,6 +85,6 @@ User loginUser = (User) session.getAttribute("loginUser");
             </div>
         </div>
     </div>
-
+</form>
 </body>
 </html>

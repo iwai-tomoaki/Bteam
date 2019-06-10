@@ -6,7 +6,7 @@
 <%
     //セッションスコープからユーザー情報を取得
     //エラーかも？
-    User loginUser = (User)session.getAttribute("Division_DAO");
+    User loginUser = (User)session.getAttribute("DivisionDAO");
 %>
 <!DOCTYPE html>
 <html>

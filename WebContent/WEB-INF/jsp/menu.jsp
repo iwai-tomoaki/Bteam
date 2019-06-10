@@ -18,7 +18,6 @@ User loginUser = (User) session.getAttribute("loginUser");
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
-<form action="/Btam/Menu" method="post">
     <!-- 以下はヘッダー -->
     <header class="head">
         <!-- 色、高さ、位置指定 -->
@@ -40,6 +39,7 @@ User loginUser = (User) session.getAttribute("loginUser");
         </div>
     </header>
 
+<form action="/Bteam/Menu" method="post">
     <!-- 基本的なメイン画面 -->
     <div calss ="set">
         <div class = "main">
@@ -49,30 +49,25 @@ User loginUser = (User) session.getAttribute("loginUser");
 
             <div class="registration">
                 <div class = "center2">
-                    <button  name='action' value='all' class = "bg-add-submit"
-                    onclick="/Btam/Menu">全件表示</button>
+                    <button  name='action' value='all' class = "bg-add-submit">全件表示</button>
                 </div>
             </div>
             <!-- 上のボタン配置２つ -->
             <div class="registration">
                 <div class = "center2">
-                    <button name='action' value='tokyo' class = "bg-add-submit"
-                    onclick="/Btam/Menu">東京</button>
+                    <button name='action' value='tokyo' class = "bg-add-submit">東京</button>
                 </div>
                 <div class = "center2">
-                    <button name='action' value='tokyo_make' class = "bg-add-submit"
-                    onclick="/Btam/Menu">東京（開発）</button>
+                    <button name='action' value='tokyo_make' class = "bg-add-submit">東京（開発）</button>
                 </div>
             </div>
 
             <div class="registration">
                 <div class = "center2">
-                    <button name='action' value='sapporo' class = "bg-add-submit"
-                    onclick="/Btam/Menu">札幌</button>
+                    <button name='action' value='sapporo' class = "bg-add-submit">札幌</button>
                 </div>
                 <div class = "center2">
-                    <button name='action' value='miyazaki' class = "bg-add-submit"
-                    onclick="/Btam/Menu">宮崎</button>
+                    <button name='action' value='miyazaki' class = "bg-add-submit">宮崎</button>
                 </div>
             </div>
         </div>

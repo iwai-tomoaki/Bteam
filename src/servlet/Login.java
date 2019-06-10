@@ -27,11 +27,11 @@ public class Login extends HttpServlet
 		String input_pass = null;
 		//入力内容の取得、および"num"をint型に変換
 		try{
-			input_num = Integer.parseInt(request.getParameter("input_num"));
-			input_pass = request.getParameter("input_pass");
-		}catch (Exception E) {
-			response.sendRedirect("/Bteam");
-			return;
+			input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
+			input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
+		}catch (Exception E) {			//入力内容でエラーが発生した時に実行
+			response.sendRedirect("/Bteam");		//エラーが発生した時にリダイレクトを実行
+			return;			//returnを使わないとコンパイルエラー
 		}
 
 		//Userインスタンス(ユーザー情報)の生成
@@ -49,11 +49,11 @@ public class Login extends HttpServlet
  			DivisionDAO dao = new DivisionDAO(user);
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
- 				//判定結果画面のフォワード
+ 				//判定結果画面のフォワード(管理者画面へ)
 			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
- 				//判定結果画面のフォワード
+ 				//判定結果画面のフォワード(一般画面へ)
  				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
  				dispatcher.forward(request, response);
  			}

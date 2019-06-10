@@ -14,7 +14,7 @@
                         <i class="fas fa-address-book"></i>
                         <span>smaple</span>
                         <form name="Logout" method="post">
-                            <a href="Login.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>
+                            <a href="Login.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
                         </form>
                 </div>
             </div>

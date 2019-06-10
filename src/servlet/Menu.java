@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;		// 追加したインポート文
 import javax.servlet.ServletException;
@@ -68,8 +69,10 @@ public class Menu extends HttpServlet {
 			break;
 		}
 		User select_user = new User(button);
-		EmployeeDAO dao = new EmployeeDAO(select_user);		//ここまで
-		
+		EmployeeDAO dao = new EmployeeDAO();		//ここまで
+		List<User> user = dao.DivisionSelect(select_user);
+		System.out.println(user);
+
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

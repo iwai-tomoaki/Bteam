@@ -145,6 +145,45 @@ public class EmployeeDAO {
 		return userList;
 
 	}
+	//途中
+	//メニューに表示する用
+	public List<User> DivisionSelect(User select_user){
+		List<User> userList = new ArrayList<>();
+		int place = select_user.getPlace_id();
+		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
+			//SELECT文(Employee表全件表示)
+			String sql = "SELECT EMP_NAME,EMP_NUM,PRES_STATUS,DIVI_ID,WORKPLACE_ID FROM Employee";
+			PreparedStatement pre_stmt = conn.prepareStatement(sql);
+
+			//SQL文実行
+			ResultSet rs = pre_stmt.executeQuery();
+
+			//SQL結果をArrayListに格納
+					int a=0;
+			while (rs.next()) {		//データベースの中身を取得
+				int select_place= rs.getInt("workplace_id");
+				if(place == select_place) {
+					String emp_name = rs.getString("EMP_NAME");
+					int emp_num = rs.getInt("EMP_NUM");
+					int pres_status = rs.getInt("PRES_STATUS");
+					int divi_id = rs.getInt("DIVI_ID");
+					int place_id = select_place;
+
+					User user = new User(emp_name, emp_num, pres_status, divi_id, place_id);
+					userList.add(user);
+					System.out.println(emp_name +" "+ emp_num +" "+ pres_status +" "+ divi_id +" "+ place_id);
+					System.out.println(userList.get(a));		//表示テスト←、↑
+					a++;
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("選択に失敗しました");
+		}
+		return userList;
+
+	}		//ここまで
 
 	// 社員表に新しい社員を追加
 	public boolean create(User user) {
@@ -228,22 +267,4 @@ public class EmployeeDAO {
 		}
 		return true;
 	}
-
-	public void DivisionSelect(User user){		//途中
-		try (Connection conn = DriverManager.getConnection(db_url, db_user, db_pass)) {
-			//SELECT文(Employee表全件表示)
-			String sql = "SELECT * FROM Employee";
-			PreparedStatement pre_stmt = conn.prepareStatement(sql);
-
-			//SQL文実行
-			ResultSet rs = pre_stmt.executeQuery();
-
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("選択に失敗しました");
-		}
-
-	}		//ここまで
-
 }

@@ -25,6 +25,14 @@ import java.io.Serializable;
 			this.auth_id = auth_id;
 		}
 
+		public User(String emp_name, int emp_num,int pres_status, int divi_id, int place_id) {
+			this.emp_name = emp_name;
+			this.emp_num = emp_num;
+			this.pres_status = pres_status;
+			this.divi_id = divi_id;
+			this.place_id = place_id;
+		}
+
 		public User(int emp_num, String pass) {
 			this.emp_num = emp_num;
 			this.pass = pass;
@@ -34,8 +42,8 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
-		public User(int divi_id) {		//途中
-			this.divi_id = divi_id;
+		public User(int place_id) {		//途中
+			this.place_id = place_id;
 		}		//ここまで
 
 		public int getEmp_id() {

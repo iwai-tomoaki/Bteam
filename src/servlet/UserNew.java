@@ -59,7 +59,7 @@ public class UserNew extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ログインしているか確認するため
+		//ログインしているか確認するため
 		//セッションスコープからユーザー情報を取得
 		HttpSession session = request.getSession();
 		User 		loginUser = (User) session.getAttribute("loginUser");

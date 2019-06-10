@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class User_management
  */
 @WebServlet("/User_management")
-public class User_management extends HttpServlet {
+public class UserManagement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public User_management() {
+    public UserManagement() {
         super();
         // TODO Auto-generated constructor stub
     }

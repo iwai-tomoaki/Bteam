@@ -78,5 +78,11 @@ import java.io.Serializable;
 			return auth_id;
 		}
 
+
+		@Override
+		public String toString() {
+			return this.getEmp_name() +" "+ this.getEmp_num() +" "+ this.getPres_status() +" "+ this.getDivi_id() +" "+ this.getPlace_id();
+
+		}
 	}
 //完了

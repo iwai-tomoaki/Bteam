@@ -171,8 +171,7 @@ public class EmployeeDAO {
 
 					User user = new User(emp_name, emp_num, pres_status, divi_id, place_id);
 					userList.add(user);
-					System.out.println(emp_name +" "+ emp_num +" "+ pres_status +" "+ divi_id +" "+ place_id);
-					System.out.println(userList.get(a));		//表示テスト←、↑
+					System.out.println(userList.get(a));		//表示テスト
 					a++;
 				}
 			}

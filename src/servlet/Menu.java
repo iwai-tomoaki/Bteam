@@ -70,8 +70,8 @@ public class Menu extends HttpServlet {
 		}
 		User select_user = new User(button);
 		EmployeeDAO dao = new EmployeeDAO();		//ここまで
-		List<User> user = dao.DivisionSelect(select_user);
-		System.out.println(user);
+		List<User> userList = dao.DivisionSelect(select_user);
+		System.out.println(userList);
 
 
 

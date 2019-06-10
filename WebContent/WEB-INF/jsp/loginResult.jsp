@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import="dao.Division_DAO"%>
+<%@ page import="dao.DivisionDAO"%>
 <%@ page import="model.User"%>
 <%
     //セッションスコープからユーザー情報を取得
     //エラーかも？
-    User loginUser = (User)session.getAttribute("Division_DAO");
+    User loginUser = (User)session.getAttribute("DivisionDAO");
 %>
 <!DOCTYPE html>
 <html>

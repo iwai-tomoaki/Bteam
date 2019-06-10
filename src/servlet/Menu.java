@@ -46,7 +46,7 @@ public class Menu extends HttpServlet {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
 		System.out.println(select_button);		//文字列の確認用
-		int button = 0;		//途中
+		int button = 5;		//途中
 
 
 		switch(select_button) {

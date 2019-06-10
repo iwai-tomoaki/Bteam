@@ -162,7 +162,7 @@ public class EmployeeDAO {
 					int a=0;
 			while (rs.next()) {		//データベースの中身を取得
 				int select_place= rs.getInt("workplace_id");
-				if(place == select_place) {
+				if(place == select_place || place == 5) {
 					String emp_name = rs.getString("EMP_NAME");
 					int emp_num = rs.getInt("EMP_NUM");
 					int pres_status = rs.getInt("PRES_STATUS");

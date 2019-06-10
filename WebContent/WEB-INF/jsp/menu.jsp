@@ -13,7 +13,7 @@ User loginUser = (User) session.getAttribute("loginUser");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<link rel="stylesheet" href="Menu.css">
+<link rel="stylesheet" href="StyleMenu.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
@@ -49,25 +49,25 @@ User loginUser = (User) session.getAttribute("loginUser");
 
             <div class="registration">
                 <div class = "center2">
-                    <button  name='action' value='all' class = "bg-add-submit">全件表示</button>
+                    <button  value='all' class = "bg-add-submit">全件表示</button>
                 </div>
             </div>
             <!-- 上のボタン配置２つ -->
             <div class="registration">
                 <div class = "center2">
-                    <button name='action' value='tokyo' class = "bg-add-submit">東京</button>
+                    <button value='tokyo' class = "bg-add-submit">東京</button>
                 </div>
                 <div class = "center2">
-                    <button name='action' value='tokyo_make' class = "bg-add-submit">東京（開発）</button>
+                    <button value='tokyo_make' class = "bg-add-submit">東京（開発）</button>
                 </div>
             </div>
 
             <div class="registration">
                 <div class = "center2">
-                    <button name='action' value='sapporo' class = "bg-add-submit">札幌</button>
+                    <button value='sapporo' class = "bg-add-submit">札幌</button>
                 </div>
                 <div class = "center2">
-                    <button name='action' value='miyazaki' class = "bg-add-submit">宮崎</button>
+                    <button value='miyazaki' class = "bg-add-submit">宮崎</button>
                 </div>
             </div>
         </div>
@@ -75,8 +75,7 @@ User loginUser = (User) session.getAttribute("loginUser");
 
         <div class="main">
             <div class="registration">
-                <button class = "bg-add-submit" onclick="location.href=
-                './Setting.html'">パスワード再設定</button>
+                <button value='new_pass' class = "bg-add-submit">パスワード再設定</button>
             </div>
         </div>
     </div>

@@ -159,10 +159,10 @@ public class EmployeeDAO {
 			ResultSet rs = pre_stmt.executeQuery();
 
 			//SQL結果をArrayListに格納
-					int a=0;
+			int num=0;
 			while (rs.next()) {		//データベースの中身を取得
 				int select_place= rs.getInt("workplace_id");
-				if(place == select_place || place == 5) {
+				if(place == select_place || place == 0) {
 					String emp_name = rs.getString("EMP_NAME");
 					int emp_num = rs.getInt("EMP_NUM");
 					int pres_status = rs.getInt("PRES_STATUS");
@@ -171,8 +171,8 @@ public class EmployeeDAO {
 
 					User user = new User(emp_name, emp_num, pres_status, divi_id, place_id);
 					userList.add(user);
-					System.out.println(userList.get(a));		//表示テスト
-					a++;
+					System.out.println(userList.get(num));		//表示テスト
+					num++;
 				}
 			}
 

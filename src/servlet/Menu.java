@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.EmployeeDAO;
 import model.User;
@@ -45,11 +46,10 @@ public class Menu extends HttpServlet {
 			throws ServletException, IOException {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
-		System.out.println(select_button);		//文字列の確認用
-		int button = 5;		//途中
+		int button = 0;
 
 
-		switch(select_button) {
+		switch(select_button) {		//押したボタンごとに変数定義
 		case "all":
 			break;
 		case "tokyo":
@@ -64,15 +64,16 @@ public class Menu extends HttpServlet {
 		case "miyazaki":
 			button = 4;
 			break;
-		case "new_pass":
+		case "new_pass":		//いったん放置
 
 			break;
 		}
-		User select_user = new User(button);
+		User select_user = new User(button);		//
 		EmployeeDAO dao = new EmployeeDAO();		//ここまで
 		List<User> userList = dao.DivisionSelect(select_user);
 		System.out.println(userList);
-
+		HttpSession session = request.getSession();
+		session.setAttribute("userList",userList);
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.User;
 
+// git ignore test
 public class EmployeeDAO {
 
 	// データベースのURL情報

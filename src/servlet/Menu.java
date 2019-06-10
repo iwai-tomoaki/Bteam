@@ -42,8 +42,31 @@ public class Menu extends HttpServlet {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
 		System.out.println(select_button);		//文字列の確認用
-		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WebContent/WEB-INF/jsp/menu.jsp");
+
+
+		switch(select_button) {
+		case "all":
+
+			break;
+		case "tokyo":
+
+			break;
+		case "tokyo_make":
+
+			break;
+		case "sapporo":
+
+			break;
+		case "miyazaki":
+
+			break;
+		case "new_pass":
+
+			break;
+		}
+
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 
 		//doGet(request, response);

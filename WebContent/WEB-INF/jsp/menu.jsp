@@ -49,25 +49,25 @@ User loginUser = (User) session.getAttribute("loginUser");
 
             <div class="registration">
                 <div class = "center2">
-                    <button  value='all' class = "bg-add-submit">全件表示</button>
+                    <button type="submit" name="select" value='all' class = "bg-add-submit">全件表示</button>
                 </div>
             </div>
             <!-- 上のボタン配置２つ -->
             <div class="registration">
                 <div class = "center2">
-                    <button value='tokyo' class = "bg-add-submit">東京</button>
+                    <button type="submit" name="select" value='tokyo' class = "bg-add-submit">東京</button>
                 </div>
                 <div class = "center2">
-                    <button value='tokyo_make' class = "bg-add-submit">東京（開発）</button>
+                    <button type="submit" name="select" value='tokyo_make' class = "bg-add-submit">東京（開発）</button>
                 </div>
             </div>
 
             <div class="registration">
                 <div class = "center2">
-                    <button value='sapporo' class = "bg-add-submit">札幌</button>
+                    <button type="submit" name="select" value='sapporo' class = "bg-add-submit">札幌</button>
                 </div>
                 <div class = "center2">
-                    <button value='miyazaki' class = "bg-add-submit">宮崎</button>
+                    <button type="submit" name="select" value='miyazaki' class = "bg-add-submit">宮崎</button>
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@ User loginUser = (User) session.getAttribute("loginUser");
 
         <div class="main">
             <div class="registration">
-                <button value='new_pass' class = "bg-add-submit">パスワード再設定</button>
+                <button type="submit" name="select" value='new_pass' class = "bg-add-submit">パスワード再設定</button>
             </div>
         </div>
     </div>

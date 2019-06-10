@@ -40,6 +40,8 @@ public class Menu extends HttpServlet {
 			HttpServletResponse response)
 			throws ServletException, IOException {
 		// リクエスト先の指定
+		String select_button = request.getParameter("select");
+		System.out.println(select_button);		//文字列の確認用
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
 				"/WebContent/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);

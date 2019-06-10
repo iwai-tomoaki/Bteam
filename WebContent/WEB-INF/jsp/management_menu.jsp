@@ -72,12 +72,9 @@
 
         <div class = "main">
             <div class = "registration">
-                <button class = "bg-add-submit2" onclick="location.href=
-                './New_User.html'">新規ユーザー登録</button>
-                <button class = "bg-add-submit2" onclick="location.href=
-                './User_Del.html'">既存ユーザー削除</button>
-                <button class = "bg-add-submit2" onclick="location.href=
-                './User_Del.html'">ユーザー情報変更</button>
+                <button class = "bg-add-submit2" onClick="location.href='./New_User.html'">新規ユーザー登録</button>
+                <button class = "bg-add-submit2" onClick="location.href='./WebContent/WEB-INF/jsp/delete_user.jsp'">既存ユーザー削除</button>
+                <button class = "bg-add-submit2" onClick="location.href='./delete_user.jsp'">ユーザー情報変更</button>
             </div>
         </div>
     </div>

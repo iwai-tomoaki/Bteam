@@ -186,7 +186,7 @@ public class EmployeeDAO {
 
 			// DELETE文中の?に使用する値を設定しSQLを完成
 			// このままだと自分自身を削除する可能性があるため一応コメントアウトしています
-//			pre_stmt.setInt(1, user.getNum());
+			pre_stmt.setInt(1, user.getEmp_num());
 
 			// DELETE文を実行
 			int result = pre_stmt.executeUpdate();

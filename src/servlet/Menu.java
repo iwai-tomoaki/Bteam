@@ -47,18 +47,21 @@ public class Menu extends HttpServlet {
 
 		int button = 0;
 		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
+		Integer login_user_num = loginUser.getEmp_num();
+		String login_user = login_user_num.toString();
 		String already = (String) session.getAttribute("select_button");
 			if(already != null && select_button == null) {
 				select_button = (String) session.getAttribute("select_button");
 			}
 
 			String changeup = request.getParameter("changeup");
-			if(changeup != null) {
+			if(changeup != null && login_user.equals(changeup)) {
 				EmployeeDAO adddao = new EmployeeDAO();
 				adddao.DivisionChangeup(changeup);
 			}
 			String changedown = request.getParameter("changedown");
-			if(changedown != null) {
+			if(changedown != null && login_user.equals(changedown)) {
 				EmployeeDAO divdao = new EmployeeDAO();
 				divdao.DivisionChangedown(changedown);
 			}

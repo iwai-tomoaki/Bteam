@@ -82,14 +82,16 @@ User loginUser = (User) session.getAttribute("loginUser");
     </div>
 </form>
 <c:if test="${not empty userList}">
-<%=request.getAttribute("userList") %>
-<c:forEach var="user_List" items="${userList}">
-	<p><c:out value="${user_List.emp_name}" />
-		<c:out value="${user_List.emp_num}" />
-		<c:out value="${user_List.pres_status}" />
-		<c:out value="${user_List.divi_id}" />
-		<c:out value="${user_List.place_id}" /></p>
+<table>
+	<tr><th>名前</th><th>社員番号</th><th>在籍</th><th>部署ID</th><th>勤務地ID</th></tr>
+	<c:forEach var="user_List" items="${userList}">
+	<tr><th><c:out value="${user_List.emp_name}" /></th>
+		<th><c:out value="${user_List.emp_num}" /></th>
+		<th><c:out value="${user_List.pres_status}" /></th>
+		<th><c:out value="${user_List.divi_id}" /></th>
+		<th><c:out value="${user_List.place_id}" /></th></tr>
 </c:forEach>
+</table>
 </c:if>
 </body>
 </html>

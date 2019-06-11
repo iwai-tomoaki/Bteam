@@ -26,7 +26,7 @@
                     <span>smaple</span>
                     <!-- POSTにLogoutをリクエストする -->
                     <form name="Logout" method="post">
-                        <a href="index.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>
+                        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
                     </form>
                 </div>
             </div>

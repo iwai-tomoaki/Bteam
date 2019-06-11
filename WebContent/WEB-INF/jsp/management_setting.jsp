@@ -43,7 +43,7 @@
 
         <div class = "start">
             <div class = "ml30">
-                登録名
+                ユーザー名
                 </div>
             <div>
                 <input type="text" name="emp_name" value="" size="24">

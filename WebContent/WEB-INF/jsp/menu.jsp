@@ -76,15 +76,17 @@ User loginUser = (User) session.getAttribute("loginUser");
 
 <c:if test="${not empty userList}">
 <table>
-	<tr><th>名前</th><th>社員番号</th><th>在籍</th><th>部署ID</th><th>勤務地ID</th></tr>
+	<tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
 	<c:forEach var="user_List" items="${userList}">
 	<tr><th><c:out value="${user_List.emp_name}" /></th>
 		<th><c:out value="${user_List.emp_num}" /></th>
-		<th><c:out value="${user_List.pres_status}" /></th>
-		<th><c:out value="${user_List.divi_id}" /></th>
-		<th><c:out value="${user_List.place_id}" /></th></tr>
-</c:forEach>
+		<c:choose>
+		<c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="select" value='changeup'>不在</button></th></c:when>
+		<c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="select" value='changedown'>在席</button></th></c:when>
+		</c:choose>
+	</c:forEach>
 </table>
+
 </c:if>
 
         <div class="main">

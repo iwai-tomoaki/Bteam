@@ -45,7 +45,6 @@
 	              削除しても問題のないユーザーか再度一度確認してください。
 	        </div>
 	    </div>
-		<input type="submit" value="削除">
 </form>
 <footer>
         <div class = "footer-conf">

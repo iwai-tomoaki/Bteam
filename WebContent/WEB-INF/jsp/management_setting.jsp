@@ -26,11 +26,11 @@
     </header>
 
     <!-- 基本的なメイン画面 -->
+    <form action="/Bteam/ManagementSetting" method="POST" >
     <div class = "main">
         <div class = "top">
             <h2>ユーザー情報変更</h2>
         </div>
-
         <div class = "start">
             <div class = "ml30">
                 社員番号
@@ -101,7 +101,9 @@
                 <input type="radio" name="auth_id" value="1" checked>通常
             </div>
         </div>
+        <button class = "bg-add-submit2" value = "">変更</button>
 	</div>
+	</form>
 
     <!-- 以下はフッター -->
     <footer>

@@ -27,7 +27,7 @@
     </header>
 
     <!-- 基本的なメイン画面 -->
-    <form action="/Bteam/ManagementSetting" method="POST" >
+    <form action="/Bteam/ManagementSetting" method="post" >
     <div class = "main">
         <div class = "top">
             <h2>ユーザー情報変更</h2>
@@ -98,7 +98,7 @@
                 権限付与
                 </div>
             <div>
-                <input type="radio" name="auth_id" value="0"> 管理者
+                <input type="radio" name="auth_id" value="2"> 管理者
                 <input type="radio" name="auth_id" value="1" checked>通常
             </div>
         </div>

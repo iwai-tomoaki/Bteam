@@ -44,14 +44,14 @@ public class Menu extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
-		
+
 		int button = 0;
 		HttpSession session = request.getSession();
 		String already = (String) session.getAttribute("select_button");
 			if(already != null && select_button == null) {
 				select_button = (String) session.getAttribute("select_button");
 			}
-		
+
 			String changeup = request.getParameter("changeup");
 			if(changeup != null) {
 				EmployeeDAO adddao = new EmployeeDAO();
@@ -60,7 +60,7 @@ public class Menu extends HttpServlet {
 			String changedown = request.getParameter("changedown");
 			if(changedown != null) {
 				EmployeeDAO divdao = new EmployeeDAO();
-				divdao.DivisionChangedown(changeup);
+				divdao.DivisionChangedown(changedown);
 			}
 
 		switch(select_button) {		//押したボタンごとに変数定義

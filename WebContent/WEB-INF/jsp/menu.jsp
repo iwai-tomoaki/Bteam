@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
@@ -80,5 +82,15 @@ User loginUser = (User) session.getAttribute("loginUser");
         </div>
     </div>
 </form>
+<c:if test="${not empty userList}">
+<%=request.getAttribute("userList") %>
+<c:forEach var="user_List" items="${userList}">
+	<p><c:out value="${user_List.emp_name}" />
+		<c:out value="${user_List.emp_num}" />
+		<c:out value="${user_List.pres_status}" />
+		<c:out value="${user_List.divi_id}" />
+		<c:out value="${user_List.place_id}" /></p>
+</c:forEach>
+</c:if>
 </body>
 </html>

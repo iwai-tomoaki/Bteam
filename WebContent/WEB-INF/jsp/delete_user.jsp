@@ -14,7 +14,7 @@
                         <i class="fas fa-address-book"></i>
                         <span>smaple</span>
                         <form name="Logout" method="post">
-                            <a href="Login.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
+                            <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
                         </form>
                 </div>
             </div>
@@ -37,7 +37,7 @@
 
 
 	        <div class="submit">
-	            <button type="submit" name="pass_cust" value="値">設定</button>
+	            <button type="submit" name="pass_cust" value="値">削除</button>
 	        </div>
 
 	        <div class = "red_text">
@@ -45,12 +45,13 @@
 	              削除しても問題のないユーザーか再度一度確認してください。
 	        </div>
 	    </div>
-		<input type="submit" value="削除">
 </form>
 <footer>
         <div class = "footer-conf">
             <div class = "footer-contents">
-                <a class="mypens" href="menu.jsp">戻る</a>
+                <FORM>
+					<INPUT type="button" value="戻る" onClick="history.back()">
+				</FORM>
             </div>
         </div>
     </footer>

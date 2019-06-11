@@ -33,7 +33,10 @@ public class Login extends HttpServlet
 			response.sendRedirect("/Bteam");		//エラーが発生した時にリダイレクトを実行
 			return;			//returnを使わないとコンパイルエラー
 		}
-
+		if(true) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		}
 		//Userインスタンス(ユーザー情報)の生成
 		User user = new User(input_num,input_pass);
 

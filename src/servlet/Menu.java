@@ -80,8 +80,9 @@ public class Menu extends HttpServlet {
 			button = 4;
 			break;
 		case "new_pass":		//いったん放置
-
-			break;
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 		User select_user = new User(button);
 		EmployeeDAO dao = new EmployeeDAO();

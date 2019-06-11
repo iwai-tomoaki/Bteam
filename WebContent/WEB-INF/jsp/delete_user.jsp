@@ -37,7 +37,7 @@
 
 
 	        <div class="submit">
-	            <button type="submit" name="pass_cust" value="値">設定</button>
+	            <button type="submit" name="pass_cust" value="値">削除</button>
 	        </div>
 
 	        <div class = "red_text">

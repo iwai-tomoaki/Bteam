@@ -81,8 +81,8 @@ User loginUser = (User) session.getAttribute("loginUser");
 	<tr><th><c:out value="${user_List.emp_name}" /></th>
 		<th><c:out value="${user_List.emp_num}" /></th>
 		<c:choose>
-		<c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="select" value='changeup'>不在</button></th></c:when>
-		<c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="select" value='changedown'>在席</button></th></c:when>
+		<c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="change" value='changeup'>不在</button></th></c:when>
+		<c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="change" value='changedown'>在席</button></th></c:when>
 		</c:choose>
 	</c:forEach>
 </table>

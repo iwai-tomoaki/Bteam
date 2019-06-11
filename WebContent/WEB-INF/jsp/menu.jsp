@@ -82,7 +82,6 @@ User loginUser = (User) session.getAttribute("loginUser");
     </div>
 </form>
 <c:if test="${not empty userList}">
-<%=request.getAttribute("userList") %>
 <c:forEach var="user_List" items="${userList}">
 	<p><c:out value="${user_List.emp_name}" />
 		<c:out value="${user_List.emp_num}" />

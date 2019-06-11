@@ -20,7 +20,7 @@
             </div>
         </div>
     </header>
-<form action="/Bteam/DeleteUser method="post">
+<form action="/Bteam/DeleteUser" method="post">
 	<div class = "main">
 	        <div class = "top">
 	            <h2>ユーザー削除</h2>

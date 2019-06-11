@@ -26,7 +26,7 @@
                     <span>smaple</span>
                     <!-- POSTにLogoutをリクエストする -->
                     <form name="Logout" method="post">
-                        <a href="index.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>
+                        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
                     </form>
                 </div>
             </div>
@@ -75,6 +75,9 @@
             <div class = "registration">
             	<form action="/Bteam/DeleteUser" method="get" >
                 	<button class = "bg-add-submit2" value = "">既存ユーザー削除</button>
+                </form>
+                <form action="/Bteam/ManagementSetting" method="get" >
+                	<button class = "bg-add-submit2" value = "">ユーザー管理</button>
                 </form>
             </div>
         </div>

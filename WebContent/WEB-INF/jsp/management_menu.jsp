@@ -76,6 +76,9 @@
             	<form action="/Bteam/DeleteUser" method="get" >
                 	<button class = "bg-add-submit2" value = "">既存ユーザー削除</button>
                 </form>
+                <form action="/Bteam/ManagementSetting" method="get" >
+                	<button class = "bg-add-submit2" value = "">ユーザー管理</button>
+                </form>
             </div>
         </div>
     </div>

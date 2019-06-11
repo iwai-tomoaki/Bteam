@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.EmployeeDAO;
 import model.User;
 @WebServlet("/ManagementSetting")
 public class ManagementSetting extends HttpServlet {
@@ -32,5 +33,26 @@ public class ManagementSetting extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		EmployeeDAO empDao = new EmployeeDAO();
+		String emp_name = request.getParameter("emp_name");
+		String num = request.getParameter("emp_num");
+		String pass = request.getParameter("pass");
+		String divi = request.getParameter("divi_id");
+		String workPlace = request.getParameter("workPlace_id");
+		String auth = request.getParameter("auth_id");
+
+		int emp_num = Integer.parseInt(num);
+		int divi_id = Integer.parseInt(divi);
+		int workPlace_id = Integer.parseInt(workPlace);
+		int auth_id = Integer.parseInt(auth);
+
+		System.out.print(empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id));
+
+		doGet(request, response);
+	}
+
 
 }

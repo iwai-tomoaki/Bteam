@@ -12,7 +12,7 @@ html, body {
   /* ここはmainのCSS */
 .main{
   /*縦幅40%指定*/
-  height: 40%;
+  height: auto;
   /*横幅50%指定*/
   width: 80%;
   /* マージンTOPを60px他を30px */

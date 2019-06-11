@@ -19,8 +19,9 @@
                     <i class="fas fa-address-book"></i>
                     <span>smaple</span>
                     <form name="Logout" method="post">
-                        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
+                        <a href="index.jsp" onclick="return confirm('ログアウトします')" >ログアウト</a>
                     </form>
+               </div>
             </div>
         </div>
     </header>
@@ -65,7 +66,7 @@
             <div>
 		        <div class="cp_ipselect cp_sl04">
 		             <select required name="divi_id">
-		             <option value="" hidden>選択してください</option>
+		             <option value="" >選択してください</option>
 		             <option value="1">東京</option>
 		             <option value="2">東京（開発）</option>
 		             <option value="3">宮崎</option>
@@ -82,7 +83,7 @@
             <div>
 		        <div class="cp_ipselect cp_sl04">
 		             <select required name ="workPlace_id">
-		             <option value="" hidden>選択してください</option>
+		             <option value="" >選択してください</option>
 		             <option value="1">東京</option>
 		             <option value="2">宮崎</option>
 		             <option value="3">札幌</option>

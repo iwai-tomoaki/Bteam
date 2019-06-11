@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +24,10 @@
                     <!-- 人アイコンを作る -->
                     <i class="fas fa-address-book"></i>
                     <!-- サンプルを表示 -->
-                    <span>smaple</span>
+                    <span><c:out value="${emp_name}"/></span>
                     <!-- POSTにLogoutをリクエストする -->
                     <form name="Logout" method="post">
-                        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">ログアウト</a>
+                        <a href="index.jsp" onclick="return confirm('ログアウトします')">ログアウト</a>
                     </form>
                 </div>
             </div>
@@ -49,23 +50,19 @@
             <!-- 上のボタン配置２つ -->
             <div class="registration">
                 <div class = "registration">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './User_Del.html'">東京</button>
+                    <button class = "bg-add-submit" >東京</button>
                 </div>
                 <div class = "registration">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './User_Del.html'">東京（開発）</button>
+                    <button class = "bg-add-submit" >東京<br>（開発）</button>
                 </div>
             </div>
 
             <div class="registration">
                 <div class = "registration">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './User_Del.html'">札幌</button>
+                    <button class = "bg-add-submit" >札幌</button>
                 </div>
                 <div class = "registration">
-                    <button class = "bg-add-submit" onclick="location.href=
-                    './User_Del.html'">宮崎</button>
+                    <button class = "bg-add-submit" >宮崎</button>
                 </div>
             </div>
         </div>
@@ -73,12 +70,17 @@
 
         <div class = "main">
             <div class = "registration">
+
+            	<form action="/Bteam/NewUser" method="get" >
+                	<button class = "bg-add-submit2" value = "">新規ユーザー登録</button>
+                </form>
             	<form action="/Bteam/DeleteUser" method="get" >
                 	<button class = "bg-add-submit2" value = "">既存ユーザー削除</button>
                 </form>
                 <form action="/Bteam/ManagementSetting" method="get" >
                 	<button class = "bg-add-submit2" value = "">ユーザー管理</button>
                 </form>
+
             </div>
         </div>
     </div>

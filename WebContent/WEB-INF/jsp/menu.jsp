@@ -6,7 +6,8 @@
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
 %>
-
+<?$changeup = $_POST['changeup'] + 1;?>
+<?$changedown = $_POST['changedown'] + 1;?>
 <%--aaaaaaaaa --%>
 <!DOCTYPE html>
 <html>
@@ -74,20 +75,20 @@ User loginUser = (User) session.getAttribute("loginUser");
         </div>
 
 
-<c:if test="${not empty userList}">
-<table>
-	<tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
-	<c:forEach var="user_List" items="${userList}">
-	<tr><th><c:out value="${user_List.emp_name}" /></th>
-		<th><c:out value="${user_List.emp_num}" /></th>
-		<c:choose>
-		<c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="change" value='changeup'>不在</button></th></c:when>
-		<c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="change" value='changedown'>在席</button></th></c:when>
-		</c:choose>
-	</c:forEach>
-</table>
+		<c:if test="${not empty userList}">
+		<table>
+			<tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
+			<c:forEach var="user_List" items="${userList}">
+			<tr><th><c:out value="${user_List.emp_name}" /></th>
+				<th><c:out value="${user_List.emp_num}" /></th>
+				<c:choose>
+				<c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="changeup" value="${user_List.emp_num}">不在</button></th></c:when>
+				<c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="changedown" value="${user_List.emp_num}">在席</button></th></c:when>
+				</c:choose>
+			</c:forEach>
+		</table>
 
-</c:if>
+		</c:if>
 
         <div class="main">
             <div class="registration">

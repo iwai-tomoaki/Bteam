@@ -74,13 +74,6 @@ User loginUser = (User) session.getAttribute("loginUser");
         </div>
 
 
-        <div class="main">
-            <div class="registration">
-                <button type="submit" name="select" value='new_pass' class = "bg-add-submit">パスワード再設定</button>
-            </div>
-        </div>
-    </div>
-</form>
 <c:if test="${not empty userList}">
 <table>
 	<tr><th>名前</th><th>社員番号</th><th>在籍</th><th>部署ID</th><th>勤務地ID</th></tr>
@@ -93,5 +86,13 @@ User loginUser = (User) session.getAttribute("loginUser");
 </c:forEach>
 </table>
 </c:if>
+
+        <div class="main">
+            <div class="registration">
+                <button type="submit" name="select" value='new_pass' class = "bg-add-submit">パスワード再設定</button>
+            </div>
+        </div>
+    </div>
+</form>
 </body>
 </html>

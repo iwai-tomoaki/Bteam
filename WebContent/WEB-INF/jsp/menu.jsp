@@ -44,7 +44,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 
 <form action="/Bteam/Menu" method="post">
     <!-- 基本的なメイン画面 -->
-    <div calss ="set">
+    <div class ="set">
         <div class = "main">
             <div class = "center2">
                 <h2>Menu</h2>
@@ -75,7 +75,6 @@ User loginUserName = (User) session.getAttribute("loginUserName");
             </div>
         </div>
 
-
 		<c:if test="${not empty userList}">
 		<table>
 			<tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
@@ -88,15 +87,12 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 				</c:choose>
 			</c:forEach>
 		</table>
-
-		</c:if>
-
-        <div class="main">
-            <div class="registration">
-                <button type="submit" name="select" value='new_pass' class = "bg-add-submit">パスワード再設定</button>
-            </div>
-        </div>
-    </div>
+	</c:if>
 </form>
+   <div class="main">
+       <form action="/Bteam/SettingUesr" method="get" >
+           <button class = "bg-add-submit2" value = "">パスワード再設定</button>
+      </form>
+   </div>
 </body>
 </html>

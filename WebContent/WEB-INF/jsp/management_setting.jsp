@@ -104,8 +104,31 @@
         </div>
         <button class = "bg-add-submit2" value = "">変更</button>
 	</div>
-	</form>
+</form>
 
+<form action="/Bteam/ManagementSetting" method="post" >
+    <div class = "main">
+        <div class = "top">
+            <h2>パスワードのみの変更</h2>
+        </div>
+        <div class = "start">
+            <div class = "ml30">
+                社員番号
+                </div>
+            <div>
+                <input type="text" name="emp_num" value="" size="24">
+            </div>
+        </div>
+        <div class = "start">
+            <div class = "ml30">
+                パスワード
+                </div>
+            <div>
+                <input type="password" name="pass" value="" size="24">
+            </div>
+        </div>
+    </div>
+</form>
     <!-- 以下はフッター -->
     <footer>
     <div class = "footer-conf">

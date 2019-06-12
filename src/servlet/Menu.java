@@ -45,20 +45,27 @@ public class Menu extends HttpServlet {
 		// リクエスト先の指定
 		String select_button = request.getParameter("select");
 
+		//switch分岐用の変数の初期化
 		int button = 0;
+		//ログイン情報、前回選択したボタンを判別できるように
 		HttpSession session = request.getSession();
-		String already = (String) session.getAttribute("select_button");
-			if(already != null && select_button == null) {
+		User loginUser = (User) session.getAttribute("loginUser");		//ログイン情報をスコープより取得
+		Integer login_user_num = loginUser.getEmp_num();
+		String login_user = login_user_num.toString();
+		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
+			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 				select_button = (String) session.getAttribute("select_button");
 			}
 
 			String changeup = request.getParameter("changeup");
-			if(changeup != null) {
+			//不在の社員か判定+押した社員と操作した社員が一致するか判定
+			if(changeup != null && login_user.equals(changeup)) {
 				EmployeeDAO adddao = new EmployeeDAO();
 				adddao.DivisionChangeup(changeup);
 			}
+			//在席の社員か判定+押した社員と操作した社員が一致するか判定
 			String changedown = request.getParameter("changedown");
-			if(changedown != null) {
+			if(changedown != null && login_user.equals(changedown)) {
 				EmployeeDAO divdao = new EmployeeDAO();
 				divdao.DivisionChangedown(changedown);
 			}
@@ -79,7 +86,7 @@ public class Menu extends HttpServlet {
 		case "miyazaki":
 			button = 4;
 			break;
-		case "new_pass":		//いったん放置
+		case "new_pass":		//setting.jspに移動
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
 			dispatcher.forward(request, response);
 			return;

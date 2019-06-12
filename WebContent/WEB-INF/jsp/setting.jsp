@@ -13,11 +13,6 @@
 </head>
 <body>
 <form action="/Bteam/SettingUser" method="post">
-社員番号:<input type="text" name="num"><br>
-再設定のパスワード:<input type="password" name="newpass"><br>
-<input type="submit" value="再設定">
-</form>
-<form action="/Bteam/SettingUser" method="post">
 前のパスワード:<input type="text" name="pass"><br>
 新しいパスワード:<input type="password" name="newpass"><br>
 <input type="submit" value="再設定">

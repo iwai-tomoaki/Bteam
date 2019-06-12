@@ -56,10 +56,11 @@ public class Menu extends HttpServlet {
 			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 				select_button = (String) session.getAttribute("select_button");
 			}
-
+			User user_auth_id = (User)session.getAttribute("user_auth_id");
+			Integer user_auth = user_auth_id.getAuth_id();
 			String changeup = request.getParameter("changeup");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
-			if(changeup != null && login_user.equals(changeup)) {
+			if(changeup != null && login_user.equals(changeup)){
 				EmployeeDAO adddao = new EmployeeDAO();
 				adddao.DivisionChangeup(changeup);
 			}
@@ -99,9 +100,13 @@ public class Menu extends HttpServlet {
 		session.setAttribute("userList",userList);
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-		dispatcher.forward(request, response);
-
+		if(user_auth == 2) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+			dispatcher.forward(request, response);
+		}
 		//doGet(request, response);
 	}
 

@@ -11,7 +11,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <?$changedown = $_POST['changedown'] + 1;?>
 <%--aaaaaaaaa --%>
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1" />

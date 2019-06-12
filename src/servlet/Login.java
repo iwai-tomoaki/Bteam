@@ -46,8 +46,10 @@ public class Login extends HttpServlet
  		//ログイン成功時の処理、loginLogiのtrue_or_falseを参照し真偽判定
  		if(loginLogic.true_or_false)
  		{
+ 			User user_name = new User(loginLogic.user_name);
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
+ 			session.setAttribute("loginUserName",user_name);
  			session.setAttribute("loginUser",user);
  			EmployeeDAO dao = new EmployeeDAO(user);
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定

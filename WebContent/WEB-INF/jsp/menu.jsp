@@ -5,6 +5,7 @@
 <%
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
+User loginUserName = (User) session.getAttribute("loginUserName");
 %>
 <?$changeup = $_POST['changeup'] + 1;?>
 <?$changedown = $_POST['changedown'] + 1;?>
@@ -31,7 +32,7 @@ User loginUser = (User) session.getAttribute("loginUser");
                     <!-- 人アイコンを作る -->
                     <i class="fas fa-address-book"></i>
                     <!-- サンプルを表示 -->
-                    <span>smaple</span>
+                    <%= loginUserName.getEmp_name() %>
                     <!-- POSTにLogoutをリクエストする -->
                     <form name="Logout" method="post">
                         <a href="index.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>

@@ -42,9 +42,13 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
-		public User(int place_id) {		//途中
+		public User(int place_id) {
 			this.place_id = place_id;
-		}		//ここまで
+		}
+
+		public User(String emp_name) {
+			this.emp_name = emp_name;
+		}
 
 		public int getEmp_id() {
 			return emp_id;

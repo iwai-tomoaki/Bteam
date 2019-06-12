@@ -12,7 +12,7 @@
 <title>パスワード再設定</title>
 </head>
 <body>
-<form action="/Bteam/SettingUser" method="post">
+<form action="/Bteam/SettingUesr" method="post">
 新しいパスワード:<input type="password" name="pass"><br>
 <input type="submit" value="再設定">
 </form>

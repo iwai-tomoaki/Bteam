@@ -13,8 +13,7 @@
 </head>
 <body>
 <form action="/Bteam/SettingUser" method="post">
-前のパスワード:<input type="text" name="pass"><br>
-新しいパスワード:<input type="password" name="newpass"><br>
+新しいパスワード:<input type="password" name="pass"><br>
 <input type="submit" value="再設定">
 </form>
 </body>

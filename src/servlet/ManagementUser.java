@@ -36,7 +36,7 @@ public class ManagementUser extends HttpServlet {
 			response.sendRedirect("/Bteam/");
 		} else { //ログイン済みの場合
 			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/manegement_setting.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

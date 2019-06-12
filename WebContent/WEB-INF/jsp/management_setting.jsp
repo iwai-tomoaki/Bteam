@@ -106,7 +106,7 @@
 	</div>
 </form>
 
-<form action="/Bteam/ManagementSetting" method="post" >
+<form action="/Bteam/ManagementUser" method="post" >
     <div class = "main">
         <div class = "top">
             <h2>パスワードのみの変更</h2>

@@ -21,7 +21,7 @@
 				ユーザID
 			</div>
 			<div class = "space">
-				<input type="text" name="input_num" value="" size="24">
+				<input type="text" name="input_num" value="" size="24" style="width:170px;">
 			</div>
 		</div>
 		<div class = "between">
@@ -29,7 +29,7 @@
 				password
 			</div>
 			<div class = "space">
-				<input type="password" name="input_pass" value="" size="24">
+				<input type="password" name="input_pass" value="" size="24" style="width:170px;">
 			</div>
 		</div>
 		<div class = "center">

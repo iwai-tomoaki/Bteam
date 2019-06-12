@@ -46,6 +46,10 @@ import java.io.Serializable;
 			this.place_id = place_id;
 		}
 
+		public User(int auth_id,int auth) {
+			this.auth_id = auth_id;
+		}
+
 		public User(String emp_name) {
 			this.emp_name = emp_name;
 		}

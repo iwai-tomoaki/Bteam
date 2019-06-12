@@ -81,10 +81,10 @@ public class Menu extends HttpServlet {
 		case "tokyo_make":
 			button = 2;
 			break;
-		case "sapporo":
+		case "miyazaki":
 			button = 3;
 			break;
-		case "miyazaki":
+		case "sapporo":
 			button = 4;
 			break;
 		case "new_pass":		//setting.jspに移動

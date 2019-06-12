@@ -40,11 +40,16 @@ public class SettingUser extends HttpServlet {
 		// リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 
+//		HttpSession session = request.getSession();
+//		session.getAttribute("emp_num");
+
 		EmployeeDAO empDao = new EmployeeDAO();
 		String pass = request.getParameter("pass");
-		String emp_name = (String)request.getSession().getAttribute("user_name");
+		User user = (User)request.getSession().getAttribute("loginUser");
 
-		System.out.print(empDao.changePass(pass, emp_name));
+//		int emp_num = Integer.parseInt(num);
+
+		System.out.print(empDao.changePass(pass, user.getEmp_num()));
 
 		doGet(request, response);
 	}

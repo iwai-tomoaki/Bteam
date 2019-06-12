@@ -33,7 +33,7 @@
 			</div>
 		</div>
 		<div class = "center">
-			<input type="submit" value="ログイン" class="btn-flat-border">
+			<input type="submit" value="ログイン" class="btn-flat-border" >
 		</div>
 	</div>
 </form>

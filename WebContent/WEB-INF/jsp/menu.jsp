@@ -28,7 +28,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                 <div class="icon">
                 	<ul>
                         <li><a href="/Bteam/Menu"><i class="fa fa-home "></i></a></li>
-                        <li><a href="/Bteam/NewUser"><i class="fa fa-cog "></i></a></li>
+                        <li><a href="/Bteam/SettingUser"><i class="fa fa-cog "></i></a></li>
                     </ul>
                 </div>
                     <div class="text">

@@ -34,7 +34,7 @@ public class Menu extends HttpServlet {
 
 		// リクエスト先の指定
 		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"/WebContent/WEB-INF/jsp/menu.jsp");
+				"WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 
 		//response.getWriter().append("Served at: ").append(request.getContextPath());

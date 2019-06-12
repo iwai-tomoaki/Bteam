@@ -124,7 +124,7 @@
                 パスワード
                 </div>
             <div>
-                <input type="password" name="pass" value="" size="24">
+                <input type="password" name="new_pass" value="" size="24">
             </div>
         </div>
     </div>

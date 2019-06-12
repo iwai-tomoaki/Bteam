@@ -32,7 +32,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                     <!-- 人アイコンを作る -->
                     <i class="fas fa-address-book"></i>
                     <!-- サンプルを表示 -->
-                    <%= loginUserName.getEmp_name() %>
+                    <c:out value="${loginUserName.emp_name}" />
                     <!-- POSTにLogoutをリクエストする -->
                     <form name="Logout" method="post">
                         <a href="index.jsp" onclick="return confirm('覚悟の準備をしてください！ 今からログアウトします！ いいですね！！！')" value="Logout">ログアウト</a>

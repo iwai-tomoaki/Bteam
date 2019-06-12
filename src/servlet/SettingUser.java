@@ -30,7 +30,7 @@ public class SettingUser extends HttpServlet {
 			response.sendRedirect("/Bteam/");
 		} else { //ログイン済みの場合
 			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting_user.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

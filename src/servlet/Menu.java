@@ -60,13 +60,13 @@ public class Menu extends HttpServlet {
 			Integer user_auth = user_auth_id.getAuth_id();
 			String changeup = request.getParameter("changeup");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
-			if(changeup != null && login_user.equals(changeup)){
+			if((changeup != null && user_auth ==2) || (changeup != null && login_user.equals(changeup))){
 				EmployeeDAO adddao = new EmployeeDAO();
 				adddao.DivisionChangeup(changeup);
 			}
 			//在席の社員か判定+押した社員と操作した社員が一致するか判定
 			String changedown = request.getParameter("changedown");
-			if(changedown != null && login_user.equals(changedown)) {
+			if((changedown != null && user_auth ==2) || (changedown != null && login_user.equals(changedown))) {
 				EmployeeDAO divdao = new EmployeeDAO();
 				divdao.DivisionChangedown(changedown);
 			}

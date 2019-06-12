@@ -87,7 +87,6 @@
 
         <div class = "main">
             <div class = "registration">
-
             	<form action="/Bteam/NewUser" method="get" >
                 	<button class = "bg-add-submit2" value = "">新規ユーザー登録</button>
                 </form>

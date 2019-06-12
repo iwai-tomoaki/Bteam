@@ -106,7 +106,7 @@
 	</div>
 </form>
 
-<form action="/Bteam/ManagementSetting" method="post" >
+<form action="/Bteam/ManagementUser" method="post" >
     <div class = "main">
         <div class = "top">
             <h2>パスワードのみの変更</h2>
@@ -127,6 +127,7 @@
                 <input type="password" name="new_pass" value="" size="24">
             </div>
         </div>
+        <button class = "bg-add-submit2" value = "">変更</button>
     </div>
 </form>
     <!-- 以下はフッター -->

@@ -41,7 +41,7 @@ public class SettingUser extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		EmployeeDAO empDao = new EmployeeDAO();
-		String pass = request.getParameter("pass");
+		String pass = request.getParameter("new_pass");
 		User user = (User)request.getSession().getAttribute("loginUser");
 
 		Boolean result = empDao.changePass(pass, user.getEmp_num());

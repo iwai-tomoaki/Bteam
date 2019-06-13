@@ -78,7 +78,10 @@ public class Login extends HttpServlet
 
  			System.out.println("ログインに失敗しました");
 			//リダイレクト
-			response.sendRedirect("/Bteam");
+//			response.sendRedirect("/Bteam");
+ 			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
  		}
 	}
 }

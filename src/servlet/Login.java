@@ -35,8 +35,8 @@ public class Login extends HttpServlet
 			return;			//returnを使わないとコンパイルエラー
 		}
 		if(true) {
-		HttpSession session = request.getSession();
-		session.invalidate();
+			HttpSession session = request.getSession();
+			session.invalidate();
 		}
 		//Userインスタンス(ユーザー情報)の生成
 		User user = new User(input_num,input_pass);
@@ -70,9 +70,18 @@ public class Login extends HttpServlet
  				dispatcher.forward(request, response);
  			}
  		}else {
+ 			Boolean result = false;
+
+			System.out.print(result);
+
+			request.setAttribute("loginResult", result);
+
  			System.out.println("ログインに失敗しました");
 			//リダイレクト
-			response.sendRedirect("/Bteam");
+//			response.sendRedirect("/Bteam");
+ 			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
  		}
 	}
 }

@@ -54,7 +54,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 新しいパスワード
                 </div>
             <div>

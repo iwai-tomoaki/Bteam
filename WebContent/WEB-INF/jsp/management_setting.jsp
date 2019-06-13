@@ -64,14 +64,14 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 </head>
 <body>
 <h1>ユーザー管理</h1>
-    <form action="/Bteam/ManagementUser" method="post" onSubmit="return managementStart()">
+    <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">
             <h2>ユーザー情報変更</h2>
         </div>
 	<div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 社員番号
                 </div>
             <div>
@@ -80,7 +80,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 ユーザー名
                 </div>
             <div>
@@ -89,7 +89,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 パスワード
                 </div>
             <div>
@@ -98,7 +98,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 部署
             </div>
             <div>
@@ -115,7 +115,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 	     </div>
 
 	     <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 勤務地
                 </div>
             <div>
@@ -132,7 +132,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 
 
 	     <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 権限付与
                 </div>
             <div>
@@ -153,7 +153,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
             <h2>パスワードのみの変更</h2>
         </div>
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 社員番号
                 </div>
             <div>
@@ -161,7 +161,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
             </div>
         </div>
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 パスワード
                 </div>
             <div>
@@ -181,7 +181,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 新しいパスワード
                 </div>
             <div>

@@ -43,21 +43,47 @@ public class ManagementUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		EmployeeDAO empDao = new EmployeeDAO();
-		String pass = request.getParameter("new_pass");
-		String num = request.getParameter("emp_num");
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
 
-		int emp_num = Integer.parseInt(num);
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		} else { //ログイン済みの場合
 
-		Boolean result = empDao.changeUserPass(pass, emp_num);
+			EmployeeDAO empDao = new EmployeeDAO();
+			String pass = request.getParameter("new_pass");
+			String num = request.getParameter("emp_num");
 
-		System.out.println(result);
+			if(num.equals("")) {
+				Boolean result = false;
 
-		request.setAttribute("changeUserResult", result);
+				System.out.println(result);
 
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
-		dispatcher.forward(request, response);
+				request.setAttribute("changeUserResult", result);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
+				dispatcher.forward(request, response);
+			}
+
+			if (pass.equals("")) {
+				pass = "1234";
+			}
+
+			int emp_num = Integer.parseInt(num);
+
+			Boolean result = empDao.changeUserPass(pass, emp_num);
+
+			System.out.println(result);
+
+			request.setAttribute("changeUserResult", result);
+
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
-
 }

@@ -37,22 +37,32 @@ public class SettingUser extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// リクエストパラメータの取得
-		request.setCharacterEncoding("UTF-8");
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
 
-		EmployeeDAO empDao = new EmployeeDAO();
-		String pass = request.getParameter("new_pass");
-		User user = (User)request.getSession().getAttribute("loginUser");
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		} else { //ログイン済みの場合
+			// リクエストパラメータの取得
+			request.setCharacterEncoding("UTF-8");
 
-		Boolean result = empDao.changePass(pass, user.getEmp_num());
+			EmployeeDAO empDao = new EmployeeDAO();
+			String pass = request.getParameter("new_pass");
+			User user = (User)request.getSession().getAttribute("loginUser");
 
-		System.out.println(result);
+			Boolean result = empDao.changePass(pass, user.getEmp_num());
 
-		request.setAttribute("changeResult", result);
+			System.out.println(result);
 
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
-		dispatcher.forward(request, response);
+			request.setAttribute("changeResult", result);
+
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
-
 }

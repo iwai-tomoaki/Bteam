@@ -32,9 +32,9 @@ public class DeleteUser extends HttpServlet {
 			User user_auth_id = (User) session.getAttribute("user_auth_id");
 			int user_auth = user_auth_id.getAuth_id();
 			if (user_auth == 2) {
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-			dispatcher.forward(request, response);
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+				dispatcher.forward(request, response);
 			}else {
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/");

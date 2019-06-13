@@ -54,7 +54,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
             <h2>新規ユーザー登録</h2>
         </div>
 	<div class = "start">
-        <div class = "ml30">
+        <div class = "marginL30">
             ユーザー名
             </div>
         <div>
@@ -63,7 +63,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
     </div>
 
 	<div class = "start">
-		<div class = "ml30">
+		<div class = "marginL30">
 			追加ユーザの社員番号
         </div>
         <div>
@@ -72,7 +72,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
    </div>
 
    <div class = "start">
-        <div class = "ml30">
+        <div class = "marginL30">
             パスワード
             </div>
         <div>
@@ -81,7 +81,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
     </div>
 
 	<div class = "start">
-        <div class = "ml30">
+        <div class = "marginL30">
             部署
         </div>
 		<div>
@@ -98,7 +98,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 	</div>
 
    <div class = "start">
-   		<div class = "ml30">
+   		<div class = "marginL30">
    			勤務地
         </div>
 	    <div>
@@ -113,7 +113,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
         </div>
     </div>
     <div class = "start">
-        <div class = "ml30">
+        <div class = "marginL30">
             権限付与
             </div>
         <div>

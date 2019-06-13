@@ -380,7 +380,7 @@ footer {
   margin: 0 auto;
 }
 .center{
-  margin-top: 200px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center
@@ -416,4 +416,12 @@ footer {
 
 .marginL30{
   margin-left:30px;
+}
+
+.fontsize{
+	font-size:30px;
+	top:20px;
+}
+.testsize25{
+	font-size:25px;
 }

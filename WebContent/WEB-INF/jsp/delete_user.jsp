@@ -89,20 +89,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
         <nav role="navigation">
         <ul class="menu__list">
         <li class="menu__item">
-        <button type="submit" name="select" value='all' class="menu__link">All</button>
-        </li>
-        <li class="menu__item">
-        <button type="submit" name="select" value='tokyo' class="menu__link">Tokyo</button>
-        </li>
-        <li class="menu__item">
-        <button type="submit" name="select" value='tokyo_make' class="menu__link">Tokyo_make</button>
-        </li>
-        <li class="menu__item">
-        <button type="submit" name="select" value='sapporo' class="menu__link">sapporo</button>
-        </li>
-        <li class="menu__item">
-        <button type="submit" name="select" value='miyazaki' class="menu__link">miyazaki</button>
-        </li>
+        <button type="submit" name="select" value='all' class="menu__link">2019:Bteam</button>
         </ul>
         </nav>
         </section>

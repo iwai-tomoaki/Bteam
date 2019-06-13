@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="fontsize">
-    	<h1>座席管理システム</h1>
+    	<h1>セキワカル</h1>
     </div>
     <form action="/Bteam/Menu" method="post">
     <div>

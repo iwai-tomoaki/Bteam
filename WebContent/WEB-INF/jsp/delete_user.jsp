@@ -46,7 +46,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 
 </head>
 <body>
-<h1>座席管理システム</h1>
+<h1>セキワカル</h1>
 <form action="/Bteam/DeleteUser" method="post" onSubmit="return deleteStart()">
 <div class = "center_change">
 	<div class="main">

@@ -83,7 +83,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
 </head>
 <body>
-<h1>座席管理システム</h1>
+<h1>セキワカル</h1>
     <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">

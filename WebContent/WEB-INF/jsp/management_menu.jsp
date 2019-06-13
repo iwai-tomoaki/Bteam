@@ -66,7 +66,7 @@
             </div>
             <div class="testsize25">
             	<table class = "center">		<!-- tableを設定して縦に綺麗に並ぶようにする -->
-                    <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
+                    <tr><th>名前</th><th>社員番号</th><th>在席</th></tr>
                     <c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
                     <tr><th><c:out value="${myUser.emp_name}" /></th>		<!-- userListに保存したUserの名前情報を一行ずつ出力 -->
                         <th><c:out value="${myUser.emp_num}" /></th>
@@ -80,7 +80,7 @@
             </div>
             <c:if test="${not empty userList}">
                 <table class = "center">
-                    <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
+                    <tr><th>名前</th><th>社員番号</th><th>在席</th></tr>
                     <c:forEach var="user_List" items="${userList}">
                     <tr><th><c:out value="${user_List.emp_name}" /></th>
                         <th><c:out value="${user_List.emp_num}" /></th>

@@ -23,8 +23,9 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <body>
     <h1>座席管理システム</h1>
 <form action="/Bteam/NewUser" method="post">
-<div class = "main">
-        <div class = "top">
+<div class = "next_main">
+	<div class="main">
+		<div class = "top">
             <h2>新規ユーザー登録</h2>
         </div>
 	<div class = "start">
@@ -37,22 +38,22 @@ User loginUserName = (User) session.getAttribute("loginUserName");
     </div>
 
 	<div class = "start">
-           <div class = "ml30">
-               追加ユーザの社員番号
-           </div>
-           <div>
-               <input type="text" name="emp_num" value="" size="24">
-           </div>
-       </div>
-
-       <div class = "start">
-            <div class = "ml30">
-                パスワード
-                </div>
-            <div>
-                <input type="password" name="pass" value="" size="24">
-            </div>
+		<div class = "ml30">
+			追加ユーザの社員番号
         </div>
+        <div>
+        	<input type="text" name="emp_num" value="" size="24">
+       </div>
+   </div>
+
+   <div class = "start">
+        <div class = "ml30">
+            パスワード
+            </div>
+        <div>
+            <input type="password" name="pass" value="" size="24">
+        </div>
+    </div>
 
 	<div class = "start">
         <div class = "ml30">
@@ -72,16 +73,16 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 	</div>
 
    <div class = "start">
-         <div class = "ml30">
-             勤務地
-            </div>
-	         <div>
+   		<div class = "ml30">
+   			勤務地
+        </div>
+	    <div>
 	       <div class="cp_ipselect cp_sl04">
-	            <select required name ="workPlace_id">
-		            <option value="" >選択してください</option>
-		            <option value="1">東京</option>
-		            <option value="2">宮崎</option>
-		            <option value="3">札幌</option>
+	          <select required name ="workPlace_id">
+	            <option value="" >選択してください</option>
+	            <option value="1">東京</option>
+	            <option value="2">宮崎</option>
+	            <option value="3">札幌</option>
 	            </select>
             </div>
         </div>
@@ -95,7 +96,10 @@ User loginUserName = (User) session.getAttribute("loginUserName");
             <input type="radio" name="auth_id" value="1" checked>通常
         </div>
     </div>
-	<input type="submit" value="新規登録">
+    <div class="botton_end">
+    	<input type="submit" value="新規登録">
+    </div>
+    </div>
 </div>
 </form>
     <div>
@@ -143,5 +147,6 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                      </div>
                  </div>
             </div>
+
 </body>
 </html>

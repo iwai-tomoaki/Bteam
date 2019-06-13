@@ -28,6 +28,23 @@ body h1 {
   margin-right:150px;
 }
 
+/* 文字を赤色 */
+.red_text{
+  font-size: 18px;    /* 文字サイズ指定 */
+  color: red;     /* 文字色指定 */
+}
+
+.submit{
+	display:flex;
+	margin-left:505px;
+}
+
+.botton_end{
+	display:flex;
+	justify-content:flex-end;
+	margin-right:50px;
+}
+
 .main{
     height: 40%;
     width: 50%;
@@ -37,6 +54,11 @@ body h1 {
     line-height : 1.8 ;
     border : solid 1px #333 ;
     box-shadow: 2px 2px 4px gray;
+}
+
+.next_main{
+	display:flex;
+	justify-content:center;
 }
 
 .nav {

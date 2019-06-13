@@ -114,7 +114,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24">
+                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$">
             </div>
         </div>
         <div class = "start">
@@ -122,7 +122,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
             </div>
         </div>
         <button class = "submit" value = "">変更</button>

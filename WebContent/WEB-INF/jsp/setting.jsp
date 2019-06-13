@@ -35,7 +35,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
                 新しいパスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
             </div>
         </div>
         <button class = "submit" value = "">変更</button>

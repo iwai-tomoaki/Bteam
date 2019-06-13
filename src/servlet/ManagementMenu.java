@@ -2,7 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+import javax.servlet.RequestDispatcher;		// 追加したインポート文
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.EmployeeDAO;
 import model.User;
 
-@WebServlet("/DeleteUser")
-public class DeleteUser extends HttpServlet {
+@WebServlet("/ManagementMenu")
+public class ManagementMenu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,31 +29,8 @@ public class DeleteUser extends HttpServlet {
 			response.sendRedirect("/Bteam/");
 		} else { //ログイン済みの場合
 			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			dispatcher.forward(request, response);
 		}
-	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		EmployeeDAO empDao = new EmployeeDAO();
-		String str = request.getParameter("emp_num");
-
-		if (str.equals("")) {
-			str = "0";
-		}
-
-		int emp_num = Integer.parseInt(str);
-
-		Boolean result = empDao.delete(emp_num);
-
-		System.out.print(result);
-
-		request.setAttribute("deleteResult", result);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-		dispatcher.forward(request, response);
 	}
 }

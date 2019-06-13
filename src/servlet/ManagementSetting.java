@@ -44,14 +44,36 @@ public class ManagementSetting extends HttpServlet {
 		String workPlace = request.getParameter("workPlace_id");
 		String auth = request.getParameter("auth_id");
 
+		if(emp_name.equals("") || num.equals("")) {
+			Boolean result = false;
+
+			System.out.print(result);
+
+			request.setAttribute("managementResult", result);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+			dispatcher.forward(request, response);
+		}
+
+		if (pass.equals("")) {
+			pass = "1234";
+		}
+
+
 		int emp_num = Integer.parseInt(num);
 		int divi_id = Integer.parseInt(divi);
 		int workPlace_id = Integer.parseInt(workPlace);
 		int auth_id = Integer.parseInt(auth);
 
-		System.out.print(empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id));
+		Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
-		doGet(request, response);
+		System.out.print(result);
+
+		request.setAttribute("managementResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+		dispatcher.forward(request, response);
 	}
 
 

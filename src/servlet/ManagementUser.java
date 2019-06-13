@@ -47,11 +47,32 @@ public class ManagementUser extends HttpServlet {
 		String pass = request.getParameter("new_pass");
 		String num = request.getParameter("emp_num");
 
+		if(num.equals("")) {
+			Boolean result = false;
+
+			System.out.println(result);
+
+			request.setAttribute("changeUserResult", result);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+			dispatcher.forward(request, response);
+		}
+
+		if (pass.equals("")) {
+			pass = "1234";
+		}
+
 		int emp_num = Integer.parseInt(num);
 
-		System.out.print(empDao.changeUserPass(pass, emp_num));
+		Boolean result = empDao.changeUserPass(pass, emp_num);
 
-		doGet(request, response);
+		System.out.println(result);
+
+		request.setAttribute("changeUserResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

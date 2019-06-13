@@ -55,7 +55,7 @@ public class Menu extends HttpServlet {
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 				select_button = (String) session.getAttribute("select_button");
-			}else if(already == null){
+			}else if(select_button == null){
 				select_button = "no";
 			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");

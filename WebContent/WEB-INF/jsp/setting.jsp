@@ -6,10 +6,8 @@
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
+Boolean result = (Boolean)request.getAttribute("changeResult");
 %>
-<?$changeup = $_POST['changeup'] + 1;?>
-<?$changedown = $_POST['changedown'] + 1;?>
-<%--aaaaaaaaa --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +18,35 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 <title>パスワード再設定</title>
+
+<script type="text/javascript">
+	function changeStart() {
+		var message = "パスワードを変更します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	// 変更の成否判定結果
+	window.onload = function() {
+		// nullチェック
+		if (<%= result %> != null) {
+			// 変更に成功
+			if (<%= result %> == true) {
+				alert("変更に成功しました");
+			} else {
+				alert("変更に失敗しました");
+			}
+		}
+	}
+</script>
+
 </head>
 <body>
 <h1>座席管理システム</h1>
-<form action="/Bteam/SettingUesr" method="post" >
+<form action="/Bteam/SettingUesr" method="post" onSubmit="return changeStart()">
 <div class="center_change">
     <div class = "main">
         <div class = "top">

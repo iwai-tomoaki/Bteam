@@ -64,7 +64,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 </head>
 <body>
 <h1>ユーザー管理</h1>
-    <form action="/Bteam/ManagementUser" method="post" onSubmit="return managementStart()">
+    <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">

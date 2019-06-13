@@ -7,7 +7,8 @@
 User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
 Boolean management_result = (Boolean)request.getAttribute("managementResult");
-Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
+Boolean changeUser_result = (Boolean)request.getAttribute("changeUserResult");
+Boolean change_result = (Boolean)request.getAttribute("changeResult");
 %>
 <!DOCTYPE html>
 <html>
@@ -39,12 +40,23 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 			return false;
 		}
 	}
+
+	function changeStart() {
+		var message = "自身のパスワードを変更します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	// 成否判定結果
 	window.onload = function() {
 		// nullチェック
-		if (<%= change_result %> != null) {
+		if (<%= changeUser_result %> != null) {
 			// 変更に成功
-			if (<%= change_result %> == true) {
+			if (<%= changeUser_result %> == true) {
 				alert("パスワード変更に成功しました");
 			} else {
 				alert("パスワード変更に失敗しました");
@@ -58,12 +70,20 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 				alert("情報変更に失敗しました");
 			}
 		}
+		if (<%= change_result %> != null) {
+			// 変更に成功
+			if (<%= change_result %> == true) {
+				alert("パスワード変更に成功しました");
+			} else {
+				alert("パスワード変更に失敗しました");
+			}
+		}
 	}
 </script>
 
 </head>
 <body>
-<h1>ユーザー管理</h1>
+<h1>座席管理システム</h1>
     <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">
@@ -208,26 +228,13 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
                  <div class="text">
                      <ul>
                          <section>
-                             <nav role="navigation">
-                                 <ul class="menu__list">
-                                     <li class="menu__item">
-                                     <button type="submit" name="select" value='all' class="menu__link">All</button>
-                                     </li>
-                                     <li class="menu__item">
-                                     <button type="submit" name="select" value='tokyo' class="menu__link">Tokyo</button>
-                                     </li>
-                                     <li class="menu__item">
-                                     <button type="submit" name="select" value='tokyo_make' class="menu__link">Tokyo_make</button>
-                                     </li>
-                                     <li class="menu__item">
-                                     <button type="submit" name="select" value='sapporo' class="menu__link">sapporo</button>
-                                     </li>
-                                     <li class="menu__item">
-                                     <button type="submit" name="select" value='miyazaki' class="menu__link">miyazaki</button>
-                                     </li>
-                                 </ul>
-                             </nav>
-                         </section>
+				        <nav role="navigation">
+				        <ul class="menu__list">
+				        <li class="menu__item">
+				        <button type="submit" name="select" value='all' class="menu__link">2019:Bteam</button>
+				        </ul>
+				        </nav>
+				        </section>
                      </ul>
                  </div>
              <div class="info">

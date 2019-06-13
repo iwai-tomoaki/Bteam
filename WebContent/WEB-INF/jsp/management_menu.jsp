@@ -14,7 +14,9 @@
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>座席管理システム</h1>
+    <div class="fontsize">
+    	<h1>座席管理システム</h1>
+    </div>
     <form action="/Bteam/Menu" method="post">
     <div>
         <div id="nav" class="nav">
@@ -62,6 +64,7 @@
 
                 </div>
             </div>
+            <div class="testsize25">
             	<table class = "center">		<!-- tableを設定して縦に綺麗に並ぶようにする -->
                     <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
                     <c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
@@ -69,11 +72,12 @@
                         <th><c:out value="${myUser.emp_num}" /></th>
                         <!-- データベース内の在席情報の値を参照、不在なら==0、在席なら==1の処理が実行される、ボタンに表示しているので押すと在席が切り替わる -->
                         <c:choose>
-                        <c:when test="${myUser.pres_status == 0}"><th><button type="submit" name="changeup" value="${myUser.emp_num}">不在</button></th></c:when>
-                        <c:when test="${myUser.pres_status == 1}"><th><button type="submit" name="changedown" value="${myUser.emp_num}">在席</button></th></c:when>
+                        <c:when test="${myUser.pres_status == 0}"><th><button class="leaving" type="submit" name="change" value="${myUser.emp_num}">不在</button></th></c:when>
+                        <c:when test="${myUser.pres_status == 1}"><th><button class="enrollment" type="submit" name="change" value="${myUser.emp_num}">在席</button></th></c:when>
                         </c:choose>
                     </c:forEach>
                 </table>
+            </div>
             <c:if test="${not empty userList}">
                 <table class = "center">
                     <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
@@ -81,8 +85,8 @@
                     <tr><th><c:out value="${user_List.emp_name}" /></th>
                         <th><c:out value="${user_List.emp_num}" /></th>
                         <c:choose>
-                        <c:when test="${user_List.pres_status == 0}"><th><button type="submit" name="changeup" value="${user_List.emp_num}">不在</button></th></c:when>
-                        <c:when test="${user_List.pres_status == 1}"><th><button type="submit" name="changedown" value="${user_List.emp_num}">在席</button></th></c:when>
+                        <c:when test="${user_List.pres_status == 0}"><th><button class="leaving" type="submit" name="change" value="${user_List.emp_num}">不在</button></th></c:when>
+                        <c:when test="${user_List.pres_status == 1}"><th><button class="enrollment" type="submit" name="change" value="${user_List.emp_num}">在席</button></th></c:when>
                         </c:choose>
                     </c:forEach>
                 </table>

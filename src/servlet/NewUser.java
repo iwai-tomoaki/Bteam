@@ -32,14 +32,19 @@ public class NewUser extends HttpServlet {
 			//リダイレクト
 			response.sendRedirect("/Bteam/");
 		} else { //ログイン済みの場合
-
+			User user_auth_id = (User) session.getAttribute("user_auth_id");
+			int user_auth = user_auth_id.getAuth_id();
+			if (user_auth == 2) {
 			//フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");
 			dispatcher.forward(request, response);
+			}else {
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
-
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -65,7 +70,13 @@ public class NewUser extends HttpServlet {
 			String auth = request.getParameter("auth_id");
 
 			if(emp_name.equals("") || num.equals("")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+				Boolean result = false;
+
+				System.out.print(result);
+
+				request.setAttribute("managementResult", result);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
 				dispatcher.forward(request, response);
 			}
 
@@ -81,10 +92,6 @@ public class NewUser extends HttpServlet {
 			Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
 			System.out.println(result);
-
-			// 社員リストの取得
-	//		List<User> userList = empDao.findAll();
-	//		request.setAttribute("userList", userList);
 
 			request.setAttribute("newResult", result);
 

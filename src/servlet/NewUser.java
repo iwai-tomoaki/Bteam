@@ -43,43 +43,55 @@ public class NewUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		EmployeeDAO empDao = new EmployeeDAO();
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
 
-		// 社員情報を追加
-		String emp_name = request.getParameter("emp_name");
-		String num = request.getParameter("emp_num");
-		String pass = request.getParameter("pass");
-		String divi = request.getParameter("divi_id");
-		String workPlace = request.getParameter("workPlace_id");
-		String auth = request.getParameter("auth_id");
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		} else { //ログイン済みの場合
 
-		if(emp_name.equals("") || num.equals("")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+			EmployeeDAO empDao = new EmployeeDAO();
+
+			// 社員情報を追加
+			String emp_name = request.getParameter("emp_name");
+			String num = request.getParameter("emp_num");
+			String pass = request.getParameter("pass");
+			String divi = request.getParameter("divi_id");
+			String workPlace = request.getParameter("workPlace_id");
+			String auth = request.getParameter("auth_id");
+
+			if(emp_name.equals("") || num.equals("")) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+				dispatcher.forward(request, response);
+			}
+
+			if (pass.equals("")) {
+				pass = "1234";
+			}
+
+			int emp_num = Integer.parseInt(num);
+			int divi_id = Integer.parseInt(divi);
+			int workPlace_id = Integer.parseInt(workPlace);
+			int auth_id = Integer.parseInt(auth);
+
+			Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
+
+			System.out.println(result);
+
+			// 社員リストの取得
+	//		List<User> userList = empDao.findAll();
+	//		request.setAttribute("userList", userList);
+
+			request.setAttribute("newResult", result);
+
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");
 			dispatcher.forward(request, response);
+
 		}
-
-		if (pass.equals("")) {
-			pass = "1234";
-		}
-
-		int emp_num = Integer.parseInt(num);
-		int divi_id = Integer.parseInt(divi);
-		int workPlace_id = Integer.parseInt(workPlace);
-		int auth_id = Integer.parseInt(auth);
-
-		Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
-
-		System.out.println(result);
-
-		// 社員リストの取得
-//		List<User> userList = empDao.findAll();
-//		request.setAttribute("userList", userList);
-
-		request.setAttribute("newResult", result);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");
-		dispatcher.forward(request, response);
-
 	}
 }

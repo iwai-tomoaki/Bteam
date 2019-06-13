@@ -36,45 +36,55 @@ public class ManagementSetting extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		EmployeeDAO empDao = new EmployeeDAO();
-		String emp_name = request.getParameter("emp_name");
-		String num = request.getParameter("emp_num");
-		String pass = request.getParameter("pass");
-		String divi = request.getParameter("divi_id");
-		String workPlace = request.getParameter("workPlace_id");
-		String auth = request.getParameter("auth_id");
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
 
-		if(emp_name.equals("") || num.equals("")) {
-			Boolean result = false;
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		} else { //ログイン済みの場合
+
+			EmployeeDAO empDao = new EmployeeDAO();
+			String emp_name = request.getParameter("emp_name");
+			String num = request.getParameter("emp_num");
+			String pass = request.getParameter("pass");
+			String divi = request.getParameter("divi_id");
+			String workPlace = request.getParameter("workPlace_id");
+			String auth = request.getParameter("auth_id");
+
+			if(emp_name.equals("") || num.equals("")) {
+				Boolean result = false;
+
+				System.out.print(result);
+
+				request.setAttribute("managementResult", result);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
+				dispatcher.forward(request, response);
+			}
+
+			if (pass.equals("")) {
+				pass = "1234";
+			}
+
+
+			int emp_num = Integer.parseInt(num);
+			int divi_id = Integer.parseInt(divi);
+			int workPlace_id = Integer.parseInt(workPlace);
+			int auth_id = Integer.parseInt(auth);
+
+			Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
 			System.out.print(result);
 
 			request.setAttribute("managementResult", result);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
 			dispatcher.forward(request, response);
 		}
-
-		if (pass.equals("")) {
-			pass = "1234";
-		}
-
-
-		int emp_num = Integer.parseInt(num);
-		int divi_id = Integer.parseInt(divi);
-		int workPlace_id = Integer.parseInt(workPlace);
-		int auth_id = Integer.parseInt(auth);
-
-		Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
-
-		System.out.print(result);
-
-		request.setAttribute("managementResult", result);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
-		dispatcher.forward(request, response);
 	}
-
-
 }

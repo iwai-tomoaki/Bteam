@@ -43,8 +43,14 @@ public class DeleteUser extends HttpServlet {
 
 		int emp_num = Integer.parseInt(str);
 
-		System.out.print(empDao.delete(emp_num));
+		Boolean result = empDao.delete(emp_num);
 
-		doGet(request, response);
+		System.out.print(result);
+
+		request.setAttribute("deleteResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+		dispatcher.forward(request, response);
 	}
 }

@@ -1,11 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+// セッションスコープからユーザー情報を取得
+Boolean result = (Boolean)request.getAttribute("loginResult");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="Login.css">
 <title>login</title>
+
+<script type="text/javascript">
+	// ログインの成否判定結果
+	window.onload = function() {
+		// nullチェック
+		if (<%= result %> != null) {
+			// ログイン失敗
+			if (<%= result %> == false) {
+				alert("ログインに失敗しました");
+			}
+		}
+	}
+</script>
+
+
 </head>
 <body>
 <form action="/Bteam/Login" method="post">

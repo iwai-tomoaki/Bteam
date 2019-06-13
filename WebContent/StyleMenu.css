@@ -385,3 +385,35 @@ footer {
   justify-content: center;
   align-items: center
 }
+
+.center_change{
+	display:flex;
+	justify-content:center;
+}
+
+.main{
+    height: 40%;
+    width: 50%;
+    margin: 100px 30px 30px 30px;
+    border-radius: 30px;
+    padding : 1em 1.5em ;
+    line-height : 1.8 ;
+    border : solid 1px #333 ;
+    box-shadow: 2px 2px 4px gray;
+}
+
+.submit{
+	display:flex;
+	margin-left:505px;
+}
+
+
+.start{
+  display:flex;
+  justify-content:space-between;
+  margin-right:150px;
+}
+
+.ml30{
+  margin-left:30px;
+}

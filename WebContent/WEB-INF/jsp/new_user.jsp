@@ -23,7 +23,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <body>
     <h1>座席管理システム</h1>
 <form action="/Bteam/NewUser" method="post">
-<div class = "next_main">
+<div class = "center_change">
 	<div class="main">
 		<div class = "top">
             <h2>新規ユーザー登録</h2>

@@ -56,7 +56,7 @@ body h1 {
     box-shadow: 2px 2px 4px gray;
 }
 
-.next_main{
+.center_change{
 	display:flex;
 	justify-content:center;
 }

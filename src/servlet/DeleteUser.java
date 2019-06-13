@@ -41,6 +41,10 @@ public class DeleteUser extends HttpServlet {
 		EmployeeDAO empDao = new EmployeeDAO();
 		String str = request.getParameter("emp_num");
 
+		if (str.equals("")) {
+			str = "0";
+		}
+
 		int emp_num = Integer.parseInt(str);
 
 		Boolean result = empDao.delete(emp_num);

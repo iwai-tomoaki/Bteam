@@ -7,7 +7,8 @@
 User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
 Boolean management_result = (Boolean)request.getAttribute("managementResult");
-Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
+Boolean changeUser_result = (Boolean)request.getAttribute("changeUserResult");
+Boolean change_result = (Boolean)request.getAttribute("changeResult");
 %>
 <!DOCTYPE html>
 <html>
@@ -39,12 +40,23 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 			return false;
 		}
 	}
+
+	function changeStart() {
+		var message = "自身のパスワードを変更します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	// 成否判定結果
 	window.onload = function() {
 		// nullチェック
-		if (<%= change_result %> != null) {
+		if (<%= changeUser_result %> != null) {
 			// 変更に成功
-			if (<%= change_result %> == true) {
+			if (<%= changeUser_result %> == true) {
 				alert("パスワード変更に成功しました");
 			} else {
 				alert("パスワード変更に失敗しました");
@@ -56,6 +68,14 @@ Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 				alert("情報変更に成功しました");
 			} else {
 				alert("情報変更に失敗しました");
+			}
+		}
+		if (<%= change_result %> != null) {
+			// 変更に成功
+			if (<%= change_result %> == true) {
+				alert("パスワード変更に成功しました");
+			} else {
+				alert("パスワード変更に失敗しました");
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 html, body {
     height: auto;
     overflow: auto;
@@ -28,19 +30,6 @@ html, body {
   /* 影を付ける */
   box-shadow: 2px 2px 4px gray;
   /* opacity: 0.5; */
-}
-
-.main2{
-  height: 40%;
-  width: 50%;
-    margin: 100px 30px 30px 30px;
-    background-color:white;
-    /* border-radius: 30px; */
-    /* padding : 1em 1.5em ;
-    line-height : 1.8 ;
-    border : solid 2px #333 ;  */
-    /* box-shadow: 2px 2px 4px gray; */
-    /* opacity: 0.5; */
 }
   .start{
     /* flexを使用可能にする */

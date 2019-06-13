@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="Stayle.css">
+<link rel="stylesheet" type="text/css" href="Login.css">
 <title>login</title>
 </head>
 <body>

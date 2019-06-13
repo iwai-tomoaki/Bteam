@@ -8,9 +8,6 @@ User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
 Boolean result = (Boolean)request.getAttribute("deleteResult");
 %>
-<?$changeup = $_POST['changeup'] + 1;?>
-<?$changedown = $_POST['changedown'] + 1;?>
-<%--aaaaaaaaa --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +25,6 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 		var message = "削除を実行します、よろしいですか？";
 		// OKボタンを押したとき
 		if (confirm(message)) {
-			alert("削除を実行します");
 			return true;
 		} else {
 			return false;

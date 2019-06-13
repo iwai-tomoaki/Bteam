@@ -67,13 +67,19 @@ public class NewUser extends HttpServlet {
 		int workPlace_id = Integer.parseInt(workPlace);
 		int auth_id = Integer.parseInt(auth);
 
-		System.out.print(empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id));
+		Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
+
+		System.out.println(result);
 
 		// 社員リストの取得
 //		List<User> userList = empDao.findAll();
 //		request.setAttribute("userList", userList);
 
-		doGet(request, response);
+		request.setAttribute("newResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");
+		dispatcher.forward(request, response);
 
 	}
 }

@@ -40,18 +40,19 @@ public class SettingUser extends HttpServlet {
 		// リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
 
-//		HttpSession session = request.getSession();
-//		session.getAttribute("emp_num");
-
 		EmployeeDAO empDao = new EmployeeDAO();
 		String pass = request.getParameter("pass");
 		User user = (User)request.getSession().getAttribute("loginUser");
 
-//		int emp_num = Integer.parseInt(num);
+		Boolean result = empDao.changePass(pass, user.getEmp_num());
 
-		System.out.print(empDao.changePass(pass, user.getEmp_num()));
+		System.out.println(result);
 
-		doGet(request, response);
+		request.setAttribute("changeResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -54,7 +54,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
         </div>
 
         <div class = "start">
-            <div class = "ml30">
+            <div class = "marginL30">
                 新しいパスワード
                 </div>
             <div>
@@ -70,7 +70,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
         <div id="nav" class="nav">
              <div class="icon">
              	<ul>
-                   <li><a title="TOPへ" title="TOPへ"  href="javascript:history.back()" ><i class="fa fa-home "></i></a></li>
+                   <li><a title="TOPへ"  href="javascript:history.back()" ><i class="fa fa-home "></i></a></li>
                    <li><a title="パスワード再設定" href="/Bteam/ManagementSetting"><i class="fa fa-cog "></i></a></li>
                  </ul>
              </div>

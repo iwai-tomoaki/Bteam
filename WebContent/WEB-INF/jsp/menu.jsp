@@ -20,7 +20,7 @@
         <div id="nav" class="nav">
                 <div class="icon">
                 	<ul>
-                        <li><a title="TOPへ" href="/Bteam/Menu"><i class="fa fa-home "></i></a></li>
+                        <li><a title="TOPへ" href="#"><i class="fa fa-home "></i></a></li>
                         <li><a title="パスワード再設定" href="/Bteam/SettingUser"><i class="fa fa-cog "></i></a></li>
                     </ul>
                 </div>

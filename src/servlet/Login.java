@@ -34,7 +34,7 @@ public class Login extends HttpServlet
 			response.sendRedirect("/Bteam");		//エラーが発生した時にリダイレクトを実行
 			return;			//returnを使わないとコンパイルエラー
 		}
-		if(true) {
+		if(true) {		//前回ログインした時の部署選択情報が残っているので実行するたびにスコープを破棄
 			HttpSession session = request.getSession();
 			session.invalidate();
 		}
@@ -50,21 +50,21 @@ public class Login extends HttpServlet
  			User user_name = new User(loginLogic.user_name);
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
- 			session.setAttribute("loginUserName",user_name);
- 			session.setAttribute("loginUser",user);
+ 			session.setAttribute("loginUserName",user_name);		//ユーザーの名前を取得スコープに保存
+ 			session.setAttribute("loginUser",user);			//ユーザーの社員番号とパスワードをスコープに保存
  			EmployeeDAO dao = new EmployeeDAO(user);
  			List<User> my_user = dao.MyUser(user);
  			session.setAttribute("my_user",my_user);
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
  	 			User user_auth_id = new User(2,2);
- 	 			session.setAttribute("user_auth_id",user_auth_id);
+ 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限を2(管理者)に設定
  				//判定結果画面のフォワード(管理者画面へ)
 			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
  	 			User user_auth_id = new User(1,1);
- 	 			session.setAttribute("user_auth_id",user_auth_id);
+ 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限を1(一般)に設定
  				//判定結果画面のフォワード(一般画面へ)
  				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
  				dispatcher.forward(request, response);

@@ -65,16 +65,16 @@
             <div class="wrap">
 				<table class = "center">	<!-- tableを設定して縦に綺麗に並ぶようにする -->
                     <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
-	                    <c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
+						<c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
 	                    <tr><th><c:out value="${myUser.emp_name}" /></th>		<!-- userListに保存したUserの名前情報を一行ずつ出力 -->
 	                        <th><c:out value="${myUser.emp_num}" /></th>
 	                        <!-- データベース内の在席情報の値を参照、不在なら==0、在席なら==1の処理が実行される、ボタンに表示しているので押すと在席が切り替わる -->
 	                        <c:choose>
-	                        <c:when test="${myUser.pres_status == 0}"><th><button class="leaving" type="submit" name="changeup" value="${myUser.emp_num}">不在</button></th></c:when>
-	                        <c:when test="${myUser.pres_status == 1}"><th><button class="enrollment" type="submit" name="changedown" value="${myUser.emp_num}">在席</button></th></c:when>
+	                        <c:when test="${myUser.pres_status == 0}"><th><button class="leaving" type="submit" name="change" value="${myUser.emp_num}">不在</button></th></c:when>
+	                        <c:when test="${myUser.pres_status == 1}"><th><button class="enrollment" type="submit" name="change" value="${myUser.emp_num}">在席</button></th></c:when>
 	                        </c:choose>
 	                    </c:forEach>
-                </table>
+					</table>
                 </div>
             </div>
             <c:if test="${not empty userList}">		<!-- ログインした直後はuserListが空なので付けないとエラーが発生する、部署を選択すればuserListに値が入るのでif文内が実行される、userListはMenu.javaのセッションスコープから取得 -->
@@ -84,8 +84,8 @@
                         <th><c:out value="${user_List.emp_num}" /></th>
                         <!-- データベース内の在席情報の値を参照、不在なら==0、在席なら==1の処理が実行される、ボタンに表示しているので押すと在席が切り替わる -->
                         <c:choose>
-                        <c:when test="${user_List.pres_status == 0}"><th><button class="leaving" type="submit" name="changeup" value="${user_List.emp_num}">不在</button></th></c:when>
-                        <c:when test="${user_List.pres_status == 1}"><th><button class="enrollment" type="submit" name="changedown" value="${user_List.emp_num}">在席</button></th></c:when>
+                        <c:when test="${user_List.pres_status == 0}"><th><button class="leaving" type="submit" name="change" value="${user_List.emp_num}">不在</button></th></c:when>
+                        <c:when test="${user_List.pres_status == 1}"><th><button class="enrollment" type="submit" name="change" value="${user_List.emp_num}">在席</button></th></c:when>
                         </c:choose>
                     </c:forEach>
                 </table>

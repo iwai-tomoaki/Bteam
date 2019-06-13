@@ -46,7 +46,7 @@ public class Menu extends HttpServlet {
 		String select_button = request.getParameter("select");
 
 		//switch分岐用の変数の初期化
-		int button = 0;
+		int button = -1;
 		//ログイン情報、前回選択したボタンを判別できるように
 		HttpSession session = request.getSession();
 		User loginUser = (User) session.getAttribute("loginUser");		//ログイン情報をスコープより取得
@@ -55,6 +55,8 @@ public class Menu extends HttpServlet {
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 				select_button = (String) session.getAttribute("select_button");
+			}else if(already == null){
+				select_button = "no";
 			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");
 			Integer user_auth = user_auth_id.getAuth_id();
@@ -94,7 +96,9 @@ public class Menu extends HttpServlet {
 		}
 		User select_user = new User(button);
 		EmployeeDAO dao = new EmployeeDAO();
-		List<User> userList = dao.DivisionSelect(select_user);
+		List<User> userList = dao.DivisionSelect(select_user,loginUser);
+		List<User> my_user = dao.MyUser(loginUser);
+		session.setAttribute("my_user",my_user);
 		System.out.println(userList);
 		session.setAttribute("select_button",select_button);
 		session.setAttribute("userList",userList);

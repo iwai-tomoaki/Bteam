@@ -1,6 +1,7 @@
  package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,6 +53,8 @@ public class Login extends HttpServlet
  			session.setAttribute("loginUserName",user_name);
  			session.setAttribute("loginUser",user);
  			EmployeeDAO dao = new EmployeeDAO(user);
+ 			List<User> my_user = dao.MyUser(user);
+ 			session.setAttribute("my_user",my_user);
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
  	 			User user_auth_id = new User(2,2);

@@ -45,13 +45,18 @@ public class NewUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 社員情報を追加
-		EmployeeDAO empDao = new EmployeeDAO();
 		String emp_name = request.getParameter("emp_name");
 		String num = request.getParameter("emp_num");
 		String pass = request.getParameter("pass");
 		String divi = request.getParameter("divi_id");
 		String workPlace = request.getParameter("workPlace_id");
 		String auth = request.getParameter("auth_id");
+
+		if(emp_name.equals("") || num.equals("") || pass.equals("")) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/new_user.jsp");		//エラーが発生した時にリダイレクトを実行
+			dispatcher.forward(request, response);
+		}
+		EmployeeDAO empDao = new EmployeeDAO();
 
 		int emp_num = Integer.parseInt(num);
 		int divi_id = Integer.parseInt(divi);

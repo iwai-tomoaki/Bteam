@@ -42,8 +42,8 @@ import java.io.Serializable;
 			this.pass = pass;
 		}
 
-		public User(int place_id) {
-			this.place_id = place_id;
+		public User(int divi_id) {
+			this.divi_id = divi_id;
 		}
 
 		public User(int auth_id,int auth) {

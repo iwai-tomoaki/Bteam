@@ -14,7 +14,9 @@
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>座席管理システム</h1>
+	<div class="fontsize">
+    	<h1>座席管理システム</h1>
+    </div>
     <form action="/Bteam/Menu" method="post">
     <div>
         <div id="nav" class="nav">
@@ -59,6 +61,7 @@
 
                 </div>
             </div>
+            <div class="testsize25">
 				<table class = "center">		<!-- tableを設定して縦に綺麗に並ぶようにする -->
                     <tr><th>名前</th><th>社員番号</th><th>在籍</th></tr>
                     <c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
@@ -71,6 +74,7 @@
                         </c:choose>
                     </c:forEach>
                 </table>
+            </div>
             <c:if test="${not empty userList}">		<!-- ログインした直後はuserListが空なので付けないとエラーが発生する、部署を選択すればuserListに値が入るのでif文内が実行される、userListはMenu.javaのセッションスコープから取得 -->
                 <table class = "center">		<!-- tableを設定して縦に綺麗に並ぶようにする -->
                     <c:forEach var="user_List" items="${userList}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->

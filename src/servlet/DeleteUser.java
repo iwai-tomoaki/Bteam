@@ -38,23 +38,35 @@ public class DeleteUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		EmployeeDAO empDao = new EmployeeDAO();
-		String str = request.getParameter("emp_num");
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
 
-		if (str.equals("")) {
-			str = "0";
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		} else { //ログイン済みの場合
+
+			EmployeeDAO empDao = new EmployeeDAO();
+			String str = request.getParameter("emp_num");
+
+			if (str.equals("")) {
+				str = "0";
+			}
+
+			int emp_num = Integer.parseInt(str);
+
+			Boolean result = empDao.delete(emp_num);
+
+			System.out.print(result);
+
+			request.setAttribute("deleteResult", result);
+
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+			dispatcher.forward(request, response);
 		}
-
-		int emp_num = Integer.parseInt(str);
-
-		Boolean result = empDao.delete(emp_num);
-
-		System.out.print(result);
-
-		request.setAttribute("deleteResult", result);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-		dispatcher.forward(request, response);
 	}
 }

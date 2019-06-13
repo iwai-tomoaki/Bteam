@@ -60,9 +60,17 @@ public class SettingUser extends HttpServlet {
 
 			request.setAttribute("changeResult", result);
 
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
-			dispatcher.forward(request, response);
+			User user_auth_id = (User) session.getAttribute("user_auth_id");
+			int user_auth = user_auth_id.getAuth_id();
+			if (user_auth == 2) {
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+				dispatcher.forward(request, response);
+			}else {
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 }

@@ -36,7 +36,6 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 	}
 	// 削除の成否判定結果
 	window.onload = function() {
-		alert("<%= result %>");
 		// nullチェック
 		if (<%= result %> != null) {
 			// 削除に成功

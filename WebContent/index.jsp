@@ -14,7 +14,7 @@
 			<div class="wave -one"></div>
 			<div class="wave -two"></div>
 			<div class="wave -three"></div>
-			<div class = "title">ログイン画面</div>
+			<div class = "title">ログイン</div>
 		</div>
 		<div class = "between2">
 			<div>

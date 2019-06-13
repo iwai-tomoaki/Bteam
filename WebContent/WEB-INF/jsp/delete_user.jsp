@@ -51,7 +51,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 </head>
 <body>
 <form action="/Bteam/DeleteUser" method="post" onSubmit="return deleteStart()">
-<div class = "next_main">
+<div class = "center_change">
 	<div class="main">
 		<div class = "top">
             <h2>ユーザー削除</h2>
@@ -61,7 +61,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
              削除するユーザの社員番号
             </div>
 	            <div>
-	                <input type="text" name="emp_num" value="" size="24">
+	                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$">
 	            </div>
 	        </div>
 

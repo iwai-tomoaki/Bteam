@@ -53,7 +53,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
             <h2>ユーザー削除</h2>
         </div>
 	<div class = "start">
-        <div class = "ml30">
+        <div class = "MarginL30">
              削除するユーザの社員番号
             </div>
 	            <div>

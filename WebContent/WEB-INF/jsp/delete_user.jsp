@@ -6,6 +6,7 @@
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
+Boolean result = (Boolean)request.getAttribute("deleteResult");
 %>
 <?$changeup = $_POST['changeup'] + 1;?>
 <?$changedown = $_POST['changedown'] + 1;?>
@@ -19,10 +20,38 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <link rel="stylesheet" href="StyleManage.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
 <title>ユーザー削除</title>
+
+<script type="text/javascript">
+	function deleteStart() {
+		var message = "削除を実行します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			alert("削除を実行します");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	// 削除の成否判定結果
+	window.onload = function() {
+		alert("<%= result %>");
+		// nullチェック
+		if (<%= result %> != null) {
+			// 削除に成功
+			if (<%= result %> == true) {
+				alert("削除に成功しました");
+			} else {
+				alert("削除に失敗しました");
+			}
+		}
+	}
+</script>
+
 </head>
 <body>
-<form action="/Bteam/DeleteUser" method="post">
+<form action="/Bteam/DeleteUser" method="post" onSubmit="return deleteStart()">
 <div class = "next_main">
 	<div class="main">
 		<div class = "top">
@@ -46,8 +75,8 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 	            ※これは強制的にユーザーを削除します。<br>
 	              削除しても問題のないユーザーか再度一度確認してください。
 	        </div>
-	    </div>
-    </div>
+		</div>
+	</div>
 </form>
 <div>
     <div id="nav" class="nav">

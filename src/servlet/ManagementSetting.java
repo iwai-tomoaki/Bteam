@@ -49,9 +49,15 @@ public class ManagementSetting extends HttpServlet {
 		int workPlace_id = Integer.parseInt(workPlace);
 		int auth_id = Integer.parseInt(auth);
 
-		System.out.print(empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id));
+		Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
-		doGet(request, response);
+		System.out.print(result);
+
+		request.setAttribute("managementResult", result);
+
+		//フォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+		dispatcher.forward(request, response);
 	}
 
 

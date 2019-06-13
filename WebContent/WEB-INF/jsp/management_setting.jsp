@@ -6,10 +6,9 @@
 // セッションスコープからユーザー情報を取得
 User loginUser = (User) session.getAttribute("loginUser");
 User loginUserName = (User) session.getAttribute("loginUserName");
+Boolean management_result = (Boolean)request.getAttribute("managementResult");
+Boolean change_result = (Boolean)request.getAttribute("changeUserResult");
 %>
-<?$changeup = $_POST['changeup'] + 1;?>
-<?$changedown = $_POST['changedown'] + 1;?>
-<%--aaaaaaaaa --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +18,53 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 <link rel="stylesheet" type="text/css" href="StyleManage.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+
+<script type="text/javascript">
+	function managementStart() {
+		var message = "指定したユーザーの情報を変更します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	function changeUserStart() {
+		var message = "指定したユーザーのパスワードを変更します、よろしいですか？";
+		// OKボタンを押したとき
+		if (confirm(message)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	// 成否判定結果
+	window.onload = function() {
+		// nullチェック
+		if (<%= change_result %> != null) {
+			// 変更に成功
+			if (<%= change_result %> == true) {
+				alert("パスワード変更に成功しました");
+			} else {
+				alert("パスワード変更に失敗しました");
+			}
+		}
+		if (<%= management_result %> != null) {
+			// 変更に成功
+			if (<%= management_result %> == true) {
+				alert("情報変更に成功しました");
+			} else {
+				alert("情報変更に失敗しました");
+			}
+		}
+	}
+</script>
+
 </head>
 <body>
 <h1>ユーザー管理</h1>
-    <form action="/Bteam/NewUser" method="post">
+    <form action="/Bteam/ManagementUser" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">
@@ -104,7 +146,7 @@ User loginUserName = (User) session.getAttribute("loginUserName");
 </form>
 
 
-<form action="/Bteam/ManagementUser" method="post" >
+<form action="/Bteam/ManagementUser" method="post" onSubmit="return changeUserStart()">
 <div class="center_change">
     <div class = "main">
         <div class = "top">
@@ -130,6 +172,27 @@ User loginUserName = (User) session.getAttribute("loginUserName");
     </div>
 </div>
 </form>
+
+<form action="/Bteam/SettingUesr" method="post" onSubmit="return changeStart()">
+<div class="center_change">
+    <div class = "main">
+        <div class = "top">
+            <h2>自身のパスワード変更</h2>
+        </div>
+
+        <div class = "start">
+            <div class = "ml30">
+                新しいパスワード
+                </div>
+            <div>
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
+            </div>
+        </div>
+        <button class = "submit" value = "">変更</button>
+    </div>
+</div>
+</form>
+
 
     <div>
         <div id="nav" class="nav">

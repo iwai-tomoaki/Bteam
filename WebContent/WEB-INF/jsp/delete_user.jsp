@@ -77,7 +77,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
     <div id="nav" class="nav">
     	<div class="icon">
     	<ul>
-            <li><a title="TOPへ" ><i class="fa fa-home "></i></a></li>
+            <li><a title="TOPへ" href="/Bteam/ManagementMenu" ><i class="fa fa-home "></i></a></li>
             <li><a title="新規ユーザー登録" href="/Bteam/NewUser"><i class="fa far fa-address-card "></i></a></li>
             <li><a title="ユーザー削除へ" href="/Bteam/DeleteUser"><i class="fas fa-eraser "></i></a></li>
             <li><a title="ユーザー管理へ" href="/Bteam/ManagementSetting"><i class="fa fa-cog "></i></a></li>

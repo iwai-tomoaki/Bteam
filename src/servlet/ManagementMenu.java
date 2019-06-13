@@ -12,9 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import model.User;
 
-/**
- * Servlet implementation class Menu
- */
 @WebServlet("/ManagementMenu")
 public class ManagementMenu extends HttpServlet {
 	private static final long serialVersionUID = 1L;

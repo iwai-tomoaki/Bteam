@@ -94,7 +94,7 @@ public class Menu extends HttpServlet {
 		}
 		User select_user = new User(button);
 		EmployeeDAO dao = new EmployeeDAO();
-		List<User> userList = dao.DivisionSelect(select_user);
+		List<User> userList = dao.DivisionSelect(select_user,loginUser);
 		System.out.println(userList);
 		session.setAttribute("select_button",select_button);
 		session.setAttribute("userList",userList);

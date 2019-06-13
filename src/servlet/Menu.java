@@ -60,17 +60,11 @@ public class Menu extends HttpServlet {
 			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");
 			Integer user_auth = user_auth_id.getAuth_id();
-			String changeup = request.getParameter("changeup");
+			String change = request.getParameter("change");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
-			if((changeup != null && user_auth ==2) || (changeup != null && login_user.equals(changeup))){
-				EmployeeDAO adddao = new EmployeeDAO();
-				adddao.DivisionChangeup(changeup);
-			}
-			//在席の社員か判定+押した社員と操作した社員が一致するか判定
-			String changedown = request.getParameter("changedown");
-			if((changedown != null && user_auth ==2) || (changedown != null && login_user.equals(changedown))) {
-				EmployeeDAO divdao = new EmployeeDAO();
-				divdao.DivisionChangedown(changedown);
+			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
+				EmployeeDAO dao = new EmployeeDAO();
+				dao.DivisionChange(change);
 			}
 
 		switch(select_button) {		//押したボタンごとに変数定義

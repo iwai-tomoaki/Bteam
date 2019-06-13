@@ -50,13 +50,13 @@ public class Menu extends HttpServlet {
 		//ログイン情報、前回選択したボタンを判別できるように
 		HttpSession session = request.getSession();
 		User loginUser = (User) session.getAttribute("loginUser");		//ログイン情報をスコープより取得
-		Integer login_user_num = loginUser.getEmp_num();
-		String login_user = login_user_num.toString();
+		Integer login_user_num = loginUser.getEmp_num();		//ログインしているユーザーの社員番号を取得
+		String login_user = login_user_num.toString();		//判定のためにいったんString型に変換
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
-				select_button = (String) session.getAttribute("select_button");
-			}else if(select_button == null){
-				select_button = "no";
+				select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
+			}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
+				select_button = "no";		//nullのままの場合下のswitch分岐で例外発生するので適当な文字列を代入
 			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");
 			Integer user_auth = user_auth_id.getAuth_id();
@@ -67,7 +67,7 @@ public class Menu extends HttpServlet {
 				dao.DivisionChange(change);
 			}
 
-		switch(select_button) {		//押したボタンごとに変数定義
+		switch(select_button) {		//押したボタンごとに変数定義(部署の番号を代入)
 		case "all":
 			button = 0;
 			break;
@@ -88,20 +88,19 @@ public class Menu extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
-		User select_user = new User(button);
+		User select_user = new User(button);		//選択した部署をUserに保存
 		EmployeeDAO dao = new EmployeeDAO();
-		List<User> userList = dao.DivisionSelect(select_user,loginUser);
-		List<User> my_user = dao.MyUser(loginUser);
-		session.setAttribute("my_user",my_user);
-		System.out.println(userList);
-		session.setAttribute("select_button",select_button);
-		session.setAttribute("userList",userList);
+		List<User> userList = dao.DivisionSelect(select_user,loginUser);		//選択した部署のユーザーを取得
+		List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
+		session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
+		session.setAttribute("select_button",select_button);		//選択した部署をスコープに保存
+		session.setAttribute("userList",userList);		//部署のユーザー情報をスコープに保存
 
 
-		if(user_auth == 2) {
+		if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			dispatcher.forward(request, response);
-		}else {
+		}else {			//管理者以外のユーザーの場合に分岐
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			dispatcher.forward(request, response);
 		}

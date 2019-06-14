@@ -63,7 +63,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 	        </div>
 
 
-	        <div class="submit">
+	        <div class="botton_end">
 	            <button type="submit" name="pass_cust" value="値">削除</button>
 	        </div>
 

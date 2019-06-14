@@ -382,8 +382,9 @@ footer {
 .center{
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center
+  justify-content: space-around;
+  align-items: center;
+  max-width:auto;
 }
 
 .center_change{
@@ -466,4 +467,16 @@ footer {
 	 transition: all 0.3s ease 0s;
 	 cursor: pointer;
 	 outline: none;
+}
+
+.emp_name{
+	margin-right:25px;
+}
+
+.emp_num{
+
+}
+
+.status{
+
 }

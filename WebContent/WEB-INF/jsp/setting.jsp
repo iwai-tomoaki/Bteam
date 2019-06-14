@@ -61,7 +61,9 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;" required>
             </div>
         </div>
+        <div class="botton_end">
         <button class = "submit" value = "">変更</button>
+        </div>
     </div>
 </div>
 </form>

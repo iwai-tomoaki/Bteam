@@ -33,6 +33,7 @@ public class ManagementMenu extends HttpServlet {
 			if (user_auth == 2) {
 			//フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+			//RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
 			dispatcher.forward(request, response);
 			}else {
 				//フォワード

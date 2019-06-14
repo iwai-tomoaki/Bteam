@@ -24,8 +24,8 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		int input_num = 0;
-		String input_pass = null;
+		int input_num = 0;			//tryの中で定義する数字をtry外でも使えるようにするために外で初期化
+		String input_pass = null;		//tryの中で定義する数字をtry外でも使えるようにするために外で初期化
 		//入力内容の取得、および"num"をint型に変換
 		try{
 			input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
@@ -52,33 +52,31 @@ public class Login extends HttpServlet
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUserName",user_name);		//ユーザーの名前をスコープに保存
  			session.setAttribute("loginUser",user);			//ユーザーの社員番号とパスワードをスコープに保存
- 			EmployeeDAO dao = new EmployeeDAO(user);
- 			List<User> my_user = dao.MyUser(user);
- 			session.setAttribute("my_user",my_user);
+ 			EmployeeDAO dao = new EmployeeDAO(user);		//ログインしたユーザーの権限を識別
+ 			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
+ 			session.setAttribute("my_user",my_user);		//老インしたユーザーの情報をスコープに保存
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
- 	 			User user_auth_id = new User(2,2);
- 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限を2(管理者)に設定
+ 	 			User user_auth_id = new User(2,2);			//ログインしたユーザーの権限を2(管理者)に設定
+ 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
  				//判定結果画面のフォワード(管理者画面へ)
 			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 			 	dispatcher.forward(request, response);
  			}else {
- 	 			User user_auth_id = new User(1,1);
- 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限を1(一般)に設定
+ 	 			User user_auth_id = new User(1,1);			//ログインしたユーザーの権限を1(一般)に設定
+ 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
  				//判定結果画面のフォワード(一般画面へ)
  				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
  				dispatcher.forward(request, response);
  			}
  		}else {
- 			Boolean result = false;
+ 			Boolean result = false;		//ログインに失敗した場合に知らせる用の変数
 
 			System.out.print(result);
 
-			request.setAttribute("loginResult", result);
+			request.setAttribute("loginResult", result);		//リクエストスコープに保存
 
  			System.out.println("ログインに失敗しました");
-			//リダイレクト
-//			response.sendRedirect("/Bteam");
  			//フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);

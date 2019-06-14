@@ -65,12 +65,22 @@ public class DeleteUser extends HttpServlet {
 			}
 
 			int emp_num = Integer.parseInt(str);
+			User user = (User)request.getSession().getAttribute("loginUser");
 
-			Boolean result = empDao.delete(emp_num);
+			// 自身を消そうとしていないか判定
+			if (emp_num != user.getEmp_num()) {
+				Boolean result = empDao.delete(emp_num);
 
-			System.out.print(result);
+				System.out.print(result);
 
-			request.setAttribute("deleteResult", result);
+				request.setAttribute("deleteResult", result);
+			} else {
+				Boolean result = false;
+
+				System.out.print(result);
+
+				request.setAttribute("deleteResult", result);
+			}
 
 			//フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");

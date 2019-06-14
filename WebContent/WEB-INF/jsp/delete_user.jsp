@@ -100,10 +100,11 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
     <div class="logo"><img src="Test_icon.png" alt="写真" width="100px" height="100px"></div><div class="name"><c:out value="${loginUserName.emp_name}" /></div>
     <div class="quote"></div>
     <div class="social"></div>
-
-        <a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+	<div class="icon_center">
+         	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
          </div>
-     </div>
+       </div>
+   </div>
 </div>
 </body>
 </html>

@@ -155,7 +155,9 @@ Boolean result = (Boolean)request.getAttribute("newResult");
                  <div class="social">
                  </div>
 
-                     <a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+                     <div class="icon_center">
+                    	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+                    </div>
                      </div>
                  </div>
             </div>

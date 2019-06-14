@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300);
 @import url(https://fonts.googleapis.com/css?family=Raleway:500);
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,700,500,400italic,500italic,700italic,300italic);
 html, body {
   width: 100%;
   min-height: 100%;
@@ -478,4 +479,27 @@ footer {
 	 transition: all 0.3s ease 0s;
 	 cursor: pointer;
 	 outline: none;
+}
+
+.icon_center {
+  height: 100%;
+}
+.icon_center li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  list-style-type: none;
+}
+.icon_center a {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 1.6em;
+  color: #999999;
+  text-shadow: 0 1px 0 black;
+  transition: all .5s ease-out;
+}
+.icon_center a:hover {
+  color: white;
+  -webkit-transform: translateX(10px) scale(1.2);
+          transform: translateX(10px) scale(1.2);
 }

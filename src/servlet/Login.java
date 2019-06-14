@@ -50,7 +50,7 @@ public class Login extends HttpServlet
  			User user_name = new User(loginLogic.user_name);
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();
- 			session.setAttribute("loginUserName",user_name);		//ユーザーの名前を取得スコープに保存
+ 			session.setAttribute("loginUserName",user_name);		//ユーザーの名前をスコープに保存
  			session.setAttribute("loginUser",user);			//ユーザーの社員番号とパスワードをスコープに保存
  			EmployeeDAO dao = new EmployeeDAO(user);
  			List<User> my_user = dao.MyUser(user);

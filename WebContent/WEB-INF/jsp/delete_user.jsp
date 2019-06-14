@@ -57,7 +57,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
              削除するユーザの社員番号
             </div>
 	            <div>
-	                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$">
+	                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7'>
 	            </div>
 	        </div>
 

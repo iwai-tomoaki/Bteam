@@ -68,7 +68,7 @@ public class DeleteUser extends HttpServlet {
 			User user = (User)request.getSession().getAttribute("loginUser");
 
 			// 自身を消そうとしていないか判定
-			if (emp_num != user.getEmp_num()) {
+			if (emp_num != user.getEmp_num()) {		//消そうとしていない(ログインしているユーザーの社員番号と消そうとしている社員番号が一致しない場合実行)
 				Boolean result = empDao.delete(emp_num);
 
 				System.out.print(result);

@@ -63,31 +63,31 @@ public class ManagementUser extends HttpServlet {
 		} else { //ログイン済みの場合
 
 			EmployeeDAO empDao = new EmployeeDAO();
-			String pass = request.getParameter("new_pass");
-			String num = request.getParameter("emp_num");
+			String pass = request.getParameter("new_pass");		//入力した新しいパスワードを取得
+			String num = request.getParameter("emp_num");		//入力した識別用の社員番号を取得
 
-			if(num.equals("")) {
-				Boolean result = false;
+			if(num.equals("")) {		//社員番号が未入力の時実行
+				Boolean result = false;		//失敗通知用の条件変数
 
 				System.out.println(result);
 
-				request.setAttribute("changeUserResult", result);
-
+				request.setAttribute("changeUserResult", result);		//リクエストスコープに保存
+				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
 				dispatcher.forward(request, response);
 			}
 
-			if (pass.equals("")) {
-				pass = "1234";
+			if (pass.equals("")) {		//パスワードが未入力のとき実行
+				pass = "1234";		//デフォルトで1234を入れる
 			}
 
-			int emp_num = Integer.parseInt(num);
+			int emp_num = Integer.parseInt(num);		//String型で取得したemp_numをint型に変換
 
-			Boolean result = empDao.changeUserPass(pass, emp_num);
+			Boolean result = empDao.changeUserPass(pass, emp_num);		//ユーザーのパスワードを再設定するメソッドを実行、成功をjspで通知できるように戻り値をbooean型にする
 
 			System.out.println(result);
 
-			request.setAttribute("changeUserResult", result);
+			request.setAttribute("changeUserResult", result);		//リクエストスコープに保存
 
 			//フォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");

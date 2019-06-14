@@ -56,6 +56,7 @@ public class ManagementSetting extends HttpServlet {
 		} else { //ログイン済みの場合
 
 			EmployeeDAO empDao = new EmployeeDAO();
+			//再設定用に入力した内容をString型で取得
 			String emp_name = request.getParameter("emp_name");
 			String num = request.getParameter("emp_num");
 			String pass = request.getParameter("pass");
@@ -63,7 +64,7 @@ public class ManagementSetting extends HttpServlet {
 			String workPlace = request.getParameter("workPlace_id");
 			String auth = request.getParameter("auth_id");
 
-			if(emp_name.equals("") || num.equals("")) {
+			if(emp_name.equals("") || num.equals("")) {		//ユーザー名か社員番号が未入力のとき分岐する
 				Boolean result = false;
 
 				System.out.print(result);
@@ -74,16 +75,16 @@ public class ManagementSetting extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 
-			if (pass.equals("")) {
+			if (pass.equals("")) {		//パスワードが入力されていない場合分岐
 				pass = "1234";
 			}
 
-
+			//String型で取得していた内容の一部をデータベースに合わせてint型に変換
 			int emp_num = Integer.parseInt(num);
 			int divi_id = Integer.parseInt(divi);
 			int workPlace_id = Integer.parseInt(workPlace);
 			int auth_id = Integer.parseInt(auth);
-
+			//データベースにに使う値をchangeDataメソッドに送りデータベースを更新
 			Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
 			System.out.print(result);

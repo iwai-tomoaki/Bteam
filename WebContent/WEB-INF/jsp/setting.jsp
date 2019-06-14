@@ -72,20 +72,20 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
         <div id="nav" class="nav">
              <div class="icon">
              	<ul>
-					<li><a title="TOPへ"href="javascript:history.back()" ><i class="fa fa-home "></i></a></li>
+                   <li><a title="TOPへ"href="javascript:history.back()" ><i class="fa fa-home "></i></a></li>
                     <li><a title="パスワード再設定" href="/Bteam/SettingUesr"><i class="fa fa-cog "></i></a></li>
-				</ul>
+                 </ul>
              </div>
                  <div class="text">
                      <ul>
                          <section>
-				        <nav role="navigation">
-				        <ul class="menu__list">
-				        <li class="menu__item">
-				        <button type="submit" name="select" value='all' class="menu__link">2019:Bteam</button>
-				        </ul>
-				        </nav>
-				        </section>
+                             <nav role="navigation">
+                                 <ul class="menu__list">
+                                     <li class="menu__item">
+                                      <button type="submit" name="select" value='all' class="menu__link">2019:Bteam</button>
+                                 </ul>
+                             </nav>
+                         </section>
                      </ul>
                  </div>
              <div class="info">

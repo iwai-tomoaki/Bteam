@@ -90,7 +90,20 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
         <nav role="navigation">
         <ul class="menu__list">
         <li class="menu__item">
-        <button type="submit" name="select" value='all' class="menu__link">2019:Bteam</button>
+        <button type="submit" name="select" value='all' class="menu__link">All</button>
+        </li>
+        <li class="menu__item">
+        <button type="submit" name="select" value='tokyo' class="menu__link">Tokyo</button>
+        </li>
+        <li class="menu__item">
+        <button type="submit" name="select" value='tokyo_make' class="menu__link">Tokyo_make</button>
+        </li>
+        <li class="menu__item">
+        <button type="submit" name="select" value='sapporo' class="menu__link">sapporo</button>
+        </li>
+        <li class="menu__item">
+        <button type="submit" name="select" value='miyazaki' class="menu__link">miyazaki</button>
+        </li>
         </ul>
         </nav>
         </section>
@@ -100,11 +113,10 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
     <div class="logo"><img src="Test_icon.png" alt="写真" width="100px" height="100px"></div><div class="name"><c:out value="${loginUserName.emp_name}" /></div>
     <div class="quote"></div>
     <div class="social"></div>
-	<div class="icon_center">
-         	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+
+        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">Logout</a>
          </div>
-       </div>
-   </div>
+     </div>
 </div>
 </body>
 </html>

@@ -95,7 +95,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24" maxlength='7'>
+                <input type="text" name="emp_num" value="" size="24" maxlength='7' style="width:170px;" required>
             </div>
         </div>
 
@@ -104,7 +104,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 ユーザー名
                 </div>
             <div>
-                <input type="text" name="emp_name" value="" size="24" maxlength='15'>
+                <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>
             </div>
         </div>
 
@@ -113,7 +113,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="pass" value="" size="24" maxlength='10'>
+                <input type="password" name="pass" value="" size="24" maxlength='10' style="width:170px;" required>
             </div>
         </div>
 
@@ -160,7 +160,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="radio" name="auth_id" value="1" checked>通常
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button value = "">変更</button>
+        </div>
 	</div>
 </div>
 </form>
@@ -177,7 +179,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7'>
+                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7' style="width:170px;" required>
             </div>
         </div>
         <div class = "start">
@@ -185,10 +187,12 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10'>
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button class = "submit" value = "">変更</button>
+        </div>
     </div>
 </div>
 </form>
@@ -205,10 +209,12 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 新しいパスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10'>
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button class = "submit" value = "">変更</button>
+        </div>
     </div>
 </div>
 </form>
@@ -243,8 +249,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                  <div class="quote"></div>
                  <div class="social">
                  </div>
-
-                     <a href="index.jsp" onclick="return confirm('ログアウトします')" >Logout</a>
+                 <div class="icon_center">
+                   	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+                  </div>
                      </div>
                  </div>
             </div>

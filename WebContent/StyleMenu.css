@@ -142,7 +142,7 @@ body h1 {
   font-size: 2em;
   font-weight: bold;
   letter-spacing: 2px;
-  color: #424242;
+  color: #F4E96B;
   text-shadow: -1px -1px #4f4f4f, 1px 1px #121212;
 }
 .info .quote {
@@ -382,8 +382,9 @@ footer {
 .center{
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center
+  justify-content: space-around;
+  align-items: center;
+  max-width:auto;
 }
 
 .center_change{
@@ -466,4 +467,27 @@ footer {
 	 transition: all 0.3s ease 0s;
 	 cursor: pointer;
 	 outline: none;
+}
+
+.icon_center {
+  height: 100%;
+}
+.icon_center li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  list-style-type: none;
+}
+.icon_center a {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 1.6em;
+  color: #999999;
+  text-shadow: 0 1px 0 black;
+  transition: all .5s ease-out;
+}
+.icon_center a:hover {
+  color: white;
+  -webkit-transform: translateX(10px) scale(1.2);
+          transform: translateX(10px) scale(1.2);
 }

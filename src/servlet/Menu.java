@@ -33,8 +33,7 @@ public class Menu extends HttpServlet {
 			throws ServletException, IOException {
 
 		// リクエスト先の指定
-		RequestDispatcher dispatcher = request.getRequestDispatcher(
-				"WEB-INF/jsp/menu.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -43,7 +42,7 @@ public class Menu extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 		// リクエスト先の指定
-		String select_button = request.getParameter("select");
+		String select_button = request.getParameter("select");		//選択した部署ボタンの内容を取得
 
 		//switch分岐用の変数の初期化
 		int button = -1;
@@ -58,38 +57,34 @@ public class Menu extends HttpServlet {
 			}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
 				select_button = "no";		//nullのままの場合下のswitch分岐で例外発生するので適当な文字列を代入
 			}
-			User user_auth_id = (User)session.getAttribute("user_auth_id");
-			Integer user_auth = user_auth_id.getAuth_id();
+			User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
+			Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 			String change = request.getParameter("change");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
 			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
 				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(change);
+				dao.DivisionChange(change);		//在席状況を変更するメソッドを実行
 			}
 
 		switch(select_button) {		//押したボタンごとに変数定義(部署の番号を代入)
-		case "all":
+		case "all":				//全表示ボタン
 			button = 0;
 			break;
-		case "tokyo":
+		case "tokyo":			//東京部署ボタン
 			button = 1;
 			break;
-		case "tokyo_make":
+		case "tokyo_make":		//東京(開発)ボタン
 			button = 2;
 			break;
-		case "miyazaki":
+		case "miyazaki":		//宮崎部署ボタン
 			button = 3;
 			break;
-		case "sapporo":
+		case "sapporo":			//札幌部署ボタン
 			button = 4;
 			break;
-		case "new_pass":		//setting.jspに移動
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
-			dispatcher.forward(request, response);
-			return;
 		}
 		User select_user = new User(button);		//選択した部署をUserに保存
-		EmployeeDAO dao = new EmployeeDAO();
+		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 		List<User> userList = dao.DivisionSelect(select_user,loginUser);		//選択した部署のユーザーを取得
 		List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 		session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存

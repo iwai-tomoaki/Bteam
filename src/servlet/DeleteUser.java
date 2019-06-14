@@ -58,13 +58,13 @@ public class DeleteUser extends HttpServlet {
 		} else { //ログイン済みの場合
 
 			EmployeeDAO empDao = new EmployeeDAO();
-			String str = request.getParameter("emp_num");
+			String str = request.getParameter("emp_num");		//入力した社員番号String型で取得
 
-			if (str.equals("")) {
-				str = "0";
+			if (str.equals("")) {		//社員番号が未入力の場合分岐
+				str = "0";		//社員番号にはいったん0を知れておく
 			}
 
-			int emp_num = Integer.parseInt(str);
+			int emp_num = Integer.parseInt(str);		//取得した社員番号をString型からint型に変換
 			User user = (User)request.getSession().getAttribute("loginUser");
 
 			// 自身を消そうとしていないか判定

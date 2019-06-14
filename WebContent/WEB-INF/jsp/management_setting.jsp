@@ -95,7 +95,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24">
+                <input type="text" name="emp_num" value="" size="24" maxlength='7'>
             </div>
         </div>
 
@@ -104,7 +104,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 ユーザー名
                 </div>
             <div>
-                <input type="text" name="emp_name" value="" size="24">
+                <input type="text" name="emp_name" value="" size="24" maxlength='15'>
             </div>
         </div>
 
@@ -113,7 +113,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="pass" value="" size="24">
+                <input type="password" name="pass" value="" size="24" maxlength='10'>
             </div>
         </div>
 
@@ -177,7 +177,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$">
+                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7'>
             </div>
         </div>
         <div class = "start">
@@ -185,7 +185,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10'>
             </div>
         </div>
         <button class = "submit" value = "">変更</button>
@@ -205,7 +205,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 新しいパスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10'>
             </div>
         </div>
         <button class = "submit" value = "">変更</button>

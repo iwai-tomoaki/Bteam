@@ -59,16 +59,13 @@ public class Login extends HttpServlet
  			if(dao.true_or_false) {
  	 			User user_auth_id = new User(2,2);			//ログインしたユーザーの権限を2(管理者)に設定
  	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
- 				//判定結果画面のフォワード(管理者画面へ)
-			 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-			 	dispatcher.forward(request, response);
  			}else {
  	 			User user_auth_id = new User(1,1);			//ログインしたユーザーの権限を1(一般)に設定
  	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
- 				//判定結果画面のフォワード(一般画面へ)
- 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
- 				dispatcher.forward(request, response);
  			}
+ 				//判定結果画面のフォワード(一般画面へ)
+ 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
+ 				dispatcher.forward(request, response);
  		}else {
  			Boolean result = false;		//ログインに失敗した場合に知らせる用の変数
 

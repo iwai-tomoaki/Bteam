@@ -29,12 +29,16 @@ public class Menu extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
-		//doPost(request, response);
-		// リクエスト先の指定
-		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/menu.jsp");
-		dispatcher.forward(request, response);
-
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//ログインしているか確認するため
+		//セッションスコープからユーザー情報を取得
+		HttpSession session = request.getSession();
+		User loginUser = (User) session.getAttribute("loginUser");
+		//ログインしていない場合
+		if (loginUser == null) {
+			//リダイレクト
+			response.sendRedirect("/Bteam/");
+		}
+		doPost(request, response);
 	}
 
 
@@ -55,13 +59,17 @@ public class Menu extends HttpServlet {
 			}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
 				select_button = "no";		//nullのままの場合下のswitch分岐で例外発生するので適当な文字列を代入
 			}
+			if(already == null) {
+				EmployeeDAO dao = new EmployeeDAO();
+				dao.DivisionChange(login_user,-1);
+			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
 			Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 			String change = request.getParameter("change");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
 			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
 				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(change);		//在席状況を変更するメソッドを実行
+				dao.DivisionChange(change,1);		//在席状況を変更するメソッドを実行
 			}
 
 		switch(select_button) {		//押したボタンごとに変数定義(部署の番号を代入)

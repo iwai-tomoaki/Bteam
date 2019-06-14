@@ -160,7 +160,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="radio" name="auth_id" value="1" checked>通常
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button value = "">変更</button>
+        </div>
 	</div>
 </div>
 </form>
@@ -188,7 +190,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button class = "submit" value = "">変更</button>
+        </div>
     </div>
 </div>
 </form>
@@ -208,7 +212,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
             </div>
         </div>
-        <button class = "submit" value = "">変更</button>
+        <div class="botton_end">
+        	<button class = "submit" value = "">変更</button>
+        </div>
     </div>
 </div>
 </form>
@@ -243,7 +249,6 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                  <div class="quote"></div>
                  <div class="social">
                  </div>
-
                      <a href="index.jsp" onclick="return confirm('ログアウトします')" >Logout</a>
                      </div>
                  </div>

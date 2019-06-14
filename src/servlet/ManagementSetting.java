@@ -84,16 +84,31 @@ public class ManagementSetting extends HttpServlet {
 			int divi_id = Integer.parseInt(divi);
 			int workPlace_id = Integer.parseInt(workPlace);
 			int auth_id = Integer.parseInt(auth);
-			//データベースにに使う値をchangeDataメソッドに送りデータベースを更新
-			Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
-			System.out.print(result);
+			User user = (User)request.getSession().getAttribute("loginUser");
+			// 自身を変更していないか判定
+			if (emp_num == user.getEmp_num()) {
+				Boolean result = false;
 
-			request.setAttribute("managementResult", result);
+				System.out.print(result);
 
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
-			dispatcher.forward(request, response);
+				request.setAttribute("managementResult", result);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				//データベースに使う値をchangeDataメソッドに送りデータベースを更新
+				Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
+
+				System.out.print(result);
+
+				request.setAttribute("managementResult", result);
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
+				dispatcher.forward(request, response);
+			}
+
 		}
 	}
 }

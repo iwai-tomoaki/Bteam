@@ -28,9 +28,7 @@ public class Menu extends HttpServlet {
    // }
 
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 
 		// リクエスト先の指定
 		RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/menu.jsp");

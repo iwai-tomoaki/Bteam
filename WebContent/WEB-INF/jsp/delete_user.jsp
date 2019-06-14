@@ -114,7 +114,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
     <div class="quote"></div>
     <div class="social"></div>
 
-        <a href="index.jsp" onclick="return confirm('ログアウトします')" value="Logout">Logout</a>
+        <a href="/Bteam/Logout" onclick="return confirm('ログアウトします')" value="Logout">Logout</a>
          </div>
      </div>
 </div>

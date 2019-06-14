@@ -60,7 +60,7 @@
                     <div class="social">
                     </div>
                     <div class="icon_center">
-                    	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+                    	<a href="/Bteam/Logout" onclick="return confirm('ログアウトします')">Logout</a>
                     </div>
 
                 </div>

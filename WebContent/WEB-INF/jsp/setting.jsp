@@ -95,10 +95,12 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
                  <div class="social">
                  </div>
 
-                     <a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
-                     </div>
+                    <div class="icon_center">
+                    	<a href="index.jsp" onclick="return confirm('ログアウトします')">Logout</a>
+                    </div>
                  </div>
-            </div>
+             </div>
+        </div>
 
 </body>
 </html>

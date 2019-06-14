@@ -469,14 +469,25 @@ footer {
 	 outline: none;
 }
 
-.emp_name{
-	margin-right:25px;
+.icon_center {
+  height: 100%;
 }
-
-.emp_num{
-
+.icon_center li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  list-style-type: none;
 }
-
-.status{
-
+.icon_center a {
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  font-size: 1.6em;
+  color: #999999;
+  text-shadow: 0 1px 0 black;
+  transition: all .5s ease-out;
+}
+.icon_center a:hover {
+  color: white;
+  -webkit-transform: translateX(10px) scale(1.2);
+          transform: translateX(10px) scale(1.2);
 }

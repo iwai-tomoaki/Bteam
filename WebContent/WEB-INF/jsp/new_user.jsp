@@ -58,7 +58,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
             ユーザー名
             </div>
         <div>
-            <input type="text" name="emp_name" value="" size="24">
+            <input type="text" name="emp_name" value="" size="24" maxlength='15'>
         </div>
     </div>
 
@@ -67,7 +67,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 			追加ユーザの社員番号
         </div>
         <div>
-        	<input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$">
+        	<input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7'>
        </div>
    </div>
 
@@ -76,7 +76,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
             パスワード
             </div>
         <div>
-            <input type="password" name="pass" value="" size="24" pattern="^[0-9A-Za-z]+$">
+            <input type="password" name="pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10'>
         </div>
     </div>
 

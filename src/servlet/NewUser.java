@@ -59,9 +59,9 @@ public class NewUser extends HttpServlet {
 			response.sendRedirect("/Bteam/");
 		} else { //ログイン済みの場合
 
-			EmployeeDAO empDao = new EmployeeDAO();
+			EmployeeDAO empDao = new EmployeeDAO();		//EmployeeDAOクラスをempDaoの変数名で使えるように
 
-			// 社員情報を追加
+			//入力した社員情報をString型で取得
 			String emp_name = request.getParameter("emp_name");
 			String num = request.getParameter("emp_num");
 			String pass = request.getParameter("pass");
@@ -81,14 +81,14 @@ public class NewUser extends HttpServlet {
 			}
 
 			if (pass.equals("")) {  	//パスワードが未入力の場合分岐
-				pass = "1234";		//未入力の場合デフォルトでいったん1234が入れられる
+				pass = "1234";		//未入力の場合デフォルトでいったん1234を入れる
 			}
-
+			//データベースでint型の物をStringからint型に変換(下x4)
 			int emp_num = Integer.parseInt(num);
 			int divi_id = Integer.parseInt(divi);
 			int workPlace_id = Integer.parseInt(workPlace);
 			int auth_id = Integer.parseInt(auth);
-
+			//入力した内容、変換した内容をEmployeeDAOクラスのcreateメソッドに送る
 			Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 
 			System.out.println(result);

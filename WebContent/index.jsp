@@ -40,7 +40,7 @@ Boolean result = (Boolean)request.getAttribute("loginResult");
 				ユーザID
 			</div>
 			<div class = "space">
-				<input type="text" name="input_num" value="" size="24" style="width:170px;">
+				<input type="text" name="input_num" value="" size="24" style="width:170px;" required>
 			</div>
 		</div>
 		<div class = "between">
@@ -48,7 +48,7 @@ Boolean result = (Boolean)request.getAttribute("loginResult");
 				password
 			</div>
 			<div class = "space">
-				<input type="password" name="input_pass" value="" size="24" style="width:170px;">
+				<input type="password" name="input_pass" value="" size="24" style="width:170px;" required>
 			</div>
 		</div>
 		<div class = "center">

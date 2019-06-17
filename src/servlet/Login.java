@@ -55,11 +55,11 @@ public class Login extends HttpServlet
  			EmployeeDAO dao = new EmployeeDAO(user);		//ログインしたユーザーの権限を識別
  			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
  			session.setAttribute("my_user",my_user);		//ログインしたユーザーの情報をスコープに保存
- 			//登録ユーザーの権限判定処理、daoのauthに権限番号を代入して取得
+ 			//daoのauthに権限番号を代入、その社員に一致する権限番号をuser_auth_idに
  	 		User user_auth_id = new User(dao.auth,0);			//ログインしたユーザーの権限を1(一般)に設定
  	 		session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
 
- 			//判定結果画面のフォワード(一般画面へ)
+ 			//判定結果画面のフォワード(メニュー画面の表示のためにMenu.javaに移動)
  			RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
  			dispatcher.forward(request, response);
  		}else {

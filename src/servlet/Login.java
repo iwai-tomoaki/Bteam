@@ -55,17 +55,13 @@ public class Login extends HttpServlet
  			EmployeeDAO dao = new EmployeeDAO(user);		//ログインしたユーザーの権限を識別
  			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
  			session.setAttribute("my_user",my_user);		//ログインしたユーザーの情報をスコープに保存
- 			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
- 			if(dao.true_or_false) {
- 	 			User user_auth_id = new User(2,2);			//ログインしたユーザーの権限を2(管理者)に設定
- 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
- 			}else {
- 	 			User user_auth_id = new User(1,1);			//ログインしたユーザーの権限を1(一般)に設定
- 	 			session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
- 			}
- 				//判定結果画面のフォワード(一般画面へ)
- 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
- 				dispatcher.forward(request, response);
+ 			//登録ユーザーの権限判定処理、daoのauthに権限番号を代入して取得
+ 	 		User user_auth_id = new User(dao.auth,0);			//ログインしたユーザーの権限を1(一般)に設定
+ 	 		session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
+
+ 			//判定結果画面のフォワード(一般画面へ)
+ 			RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
+ 			dispatcher.forward(request, response);
  		}else {
  			Boolean result = false;		//ログインに失敗した場合に知らせる用の変数
 

@@ -54,6 +54,8 @@ public class Menu extends HttpServlet {
 		Integer login_user_num = loginUser.getEmp_num();		//ログインしているユーザーの社員番号を取得
 		String login_user = login_user_num.toString();		//判定のためにいったんString型に変換
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
+		User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
+		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 				select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
 			}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
@@ -62,9 +64,16 @@ public class Menu extends HttpServlet {
 			if(already == null) {
 				EmployeeDAO dao = new EmployeeDAO();
 				dao.DivisionChange(login_user,-1,0);
+				if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}else {			//管理者以外のユーザーの場合に分岐
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
 			}
-			User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
-			Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 			String change = request.getParameter("change");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
 			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
@@ -105,7 +114,6 @@ public class Menu extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			dispatcher.forward(request, response);
 		}
-		//doGet(request, response);
 	}
 
 }

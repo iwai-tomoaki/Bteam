@@ -52,6 +52,14 @@ public class SettingUser extends HttpServlet {
 
 			EmployeeDAO empDao = new EmployeeDAO();
 			String pass = request.getParameter("new_pass");
+			String pass_confi = request.getParameter("new_pass_confi");
+			if(!(pass.equals(pass_confi))){		//一致していない場合分岐
+				System.out.println("不一致");
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 			User user = (User)request.getSession().getAttribute("loginUser");
 
 			Boolean result = empDao.changePass(pass, user.getEmp_num());

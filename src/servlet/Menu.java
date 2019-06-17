@@ -64,13 +64,6 @@ public class Menu extends HttpServlet {
 			if(already == null) {
 				EmployeeDAO dao = new EmployeeDAO();
 				dao.DivisionChange(login_user,-1,0);
-				if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-					dispatcher.forward(request, response);
-				}else {			//管理者以外のユーザーの場合に分岐
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-					dispatcher.forward(request, response);
-				}
 			}
 			String change = request.getParameter("change");
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定

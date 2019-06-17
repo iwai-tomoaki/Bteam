@@ -56,21 +56,36 @@ public class Menu extends HttpServlet {
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 		User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
 		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
-			if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
-				select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
-			}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
-				select_button = "no";		//nullのままの場合下のswitch分岐で例外発生するので適当な文字列を代入
+
+		if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
+			select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
+		}else if(select_button == null){		//部署番号を押していない場合分岐、部署を選択せずに在席・不在を切り替えられるように
+			select_button = "no";		//nullのままの場合下のswitch分岐で例外発生するので適当な文字列を代入
+		}
+		String change = request.getParameter("change");		//在席・不在ボタンが押された時の値(内容)を取得
+
+		if(change == null && already == null && select_button == "no") {
+			EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
+			dao.DivisionChange(login_user,-1,0);
+			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
+			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
+
+			if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}else {			//管理者以外のユーザーの場合に分岐
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+				dispatcher.forward(request, response);
+				return;
 			}
-			if(already == null) {
-				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(login_user,-1,0);
-			}
-			String change = request.getParameter("change");
-			//不在の社員か判定+押した社員と操作した社員が一致するか判定
-			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
-				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
-			}
+		}
+		//不在の社員か判定+押した社員と操作した社員が一致するか判定
+		if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
+			EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
+			dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
+		}
+
 
 		switch(select_button) {		//押したボタンごとに変数定義(部署の番号を代入)
 		case "all":				//全表示ボタン

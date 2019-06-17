@@ -9,6 +9,7 @@ import java.io.Serializable;
  		private String pass;  //パスワード PASS
  		private int pres_status; //在席状態 PRES_STATUS
  		private int divi_id; //部署ID DIVI_ID
+ 		private String divi_name;//勤務地、divi_idの内容で中身を決定
  		private int place_id; //勤務地ID WORKPLACE_ID
  		private int auth_id; //権限ID AUTH_ID
 
@@ -25,11 +26,12 @@ import java.io.Serializable;
 			this.auth_id = auth_id;
 		}
 
-		public User(String emp_name, int emp_num,int pres_status, int divi_id, int place_id) {
+		public User(String emp_name, int emp_num,int pres_status, int divi_id, String divi_name, int place_id) {
 			this.emp_name = emp_name;
 			this.emp_num = emp_num;
 			this.pres_status = pres_status;
 			this.divi_id = divi_id;
+			this.divi_name = divi_name;
 			this.place_id = place_id;
 		}
 
@@ -76,6 +78,10 @@ import java.io.Serializable;
 
 		public int getDivi_id() {
 			return divi_id;
+		}
+
+		public String getDivi_name() {
+			return divi_name;
 		}
 
 		public int getPlace_id() {

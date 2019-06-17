@@ -66,10 +66,11 @@
             <div class="testsize25">
             <div class="wrap">
 				<table class = "center">	<!-- tableを設定して縦に綺麗に並ぶようにする -->
-                    <tr><th class="emp_name">名前</th><th class="emp_num">社員番号</th><th class="status">在席</th></tr>
+                    <tr><th class="emp_name">名前</th><th class="emp_num">社員番号</th><th>所属部署</th><th class="status">在席</th></tr>
 						<c:forEach var="myUser" items="${my_user}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
 	                    <tr><th class="emp_name"><c:out value="${myUser.emp_name}" /></th>		<!-- userListに保存したUserの名前情報を一行ずつ出力 -->
 	                        <th class="emp=num"><c:out value="${myUser.emp_num}" /></th>
+	                        <th>未実装</th>
 	                        <!-- データベース内の在席情報の値を参照、不在なら==0、在席なら==1の処理が実行される、ボタンに表示しているので押すと在席が切り替わる -->
 	                        <c:choose>
 	                        <c:when test="${myUser.pres_status == 0}"><th><button class="leaving" type="submit" name="change" value="${myUser.emp_num}">不在</button></th></c:when>
@@ -84,6 +85,7 @@
                     <c:forEach var="user_List" items="${userList}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
                     <tr><th><c:out value="${user_List.emp_name}" /></th>		<!-- userListに保存したUserの名前情報を一行ずつ出力 -->
                         <th><c:out value="${user_List.emp_num}" /></th>
+						<th><c:out value="${user_List.divi_name}" /></th>
                         <!-- データベース内の在席情報の値を参照、不在なら==0、在席なら==1の処理が実行される、ボタンに表示しているので押すと在席が切り替わる -->
                         <c:choose>
                         <c:when test="${user_List.pres_status == 0}"><th><button class="leaving" style="pointer-events: none;">不在</button></th></c:when>

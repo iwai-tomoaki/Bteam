@@ -54,7 +54,7 @@ public class Login extends HttpServlet
  			session.setAttribute("loginUser",user);			//ユーザーの社員番号とパスワードをスコープに保存
  			EmployeeDAO dao = new EmployeeDAO(user);		//ログインしたユーザーの権限を識別
  			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
- 			session.setAttribute("my_user",my_user);		//老インしたユーザーの情報をスコープに保存
+ 			session.setAttribute("my_user",my_user);		//ログインしたユーザーの情報をスコープに保存
  			//登録ユーザーの権限判定処理、daoのtrue_or_falseを参照し真偽判定
  			if(dao.true_or_false) {
  	 			User user_auth_id = new User(2,2);			//ログインしたユーザーの権限を2(管理者)に設定

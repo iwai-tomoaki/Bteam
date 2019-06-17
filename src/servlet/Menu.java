@@ -67,11 +67,9 @@ public class Menu extends HttpServlet {
 				if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
 					dispatcher.forward(request, response);
-					return;
 				}else {			//管理者以外のユーザーの場合に分岐
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 					dispatcher.forward(request, response);
-					return;
 				}
 			}
 			String change = request.getParameter("change");

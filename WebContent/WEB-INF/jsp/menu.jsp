@@ -82,6 +82,7 @@
             </div>
             <c:if test="${not empty userList}">		<!-- ログインした直後はuserListが空なので付けないとエラーが発生する、部署を選択すればuserListに値が入るのでif文内が実行される、userListはMenu.javaのセッションスコープから取得 -->
                 <table class = "center">		<!-- tableを設定して縦に綺麗に並ぶようにする -->
+                <tr><th class="emp_name">名前</th><th class="emp_num">社員番号</th><th>所属部署</th><th class="status">在席</th></tr>
                     <c:forEach var="user_List" items="${userList}">		<!-- セッションスコープに保存したuserListの数分ループ実行 -->
                     <tr><th><c:out value="${user_List.emp_name}" /></th>		<!-- userListに保存したUserの名前情報を一行ずつ出力 -->
                         <th><c:out value="${user_List.emp_num}" /></th>

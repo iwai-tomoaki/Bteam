@@ -61,7 +61,7 @@ public class Menu extends HttpServlet {
 			}
 			if(already == null) {
 				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(login_user,-1);
+				dao.DivisionChange(login_user,-1,0);
 			}
 			User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
 			Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
@@ -69,7 +69,7 @@ public class Menu extends HttpServlet {
 			//不在の社員か判定+押した社員と操作した社員が一致するか判定
 			if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
 				EmployeeDAO dao = new EmployeeDAO();
-				dao.DivisionChange(change,1);		//在席状況を変更するメソッドを実行
+				dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
 			}
 
 		switch(select_button) {		//押したボタンごとに変数定義(部署の番号を代入)

@@ -60,12 +60,9 @@ public class DeleteUser extends HttpServlet {
 			EmployeeDAO empDao = new EmployeeDAO();
 			String str = request.getParameter("emp_num");		//入力した社員番号String型で取得
 
-			if (str.equals("")) {		//社員番号が未入力の場合分岐
-				str = "0";		//社員番号にはいったん0を知れておく
-			}
-
 			int emp_num = Integer.parseInt(str);		//取得した社員番号をString型からint型に変換
 			User user = (User)request.getSession().getAttribute("loginUser");
+			int check = 0;
 
 			// 自身を消そうとしていないか判定
 			if (emp_num != user.getEmp_num()) {		//消そうとしていない(ログインしているユーザーの社員番号と消そうとしている社員番号が一致しない場合実行)
@@ -78,13 +75,19 @@ public class DeleteUser extends HttpServlet {
 				Boolean result = false;
 
 				System.out.print(result);
-
+				check = 1;
 				request.setAttribute("deleteResult", result);
 			}
-
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-			dispatcher.forward(request, response);
+			if(check == 1) {
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+				dispatcher.forward(request, response);
+			}else {
+				session.setAttribute("delete",check);		//部署のユーザー情報をスコープに保存
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
+				dispatcher.forward(request, response);
+			}
 		}
 	}
 }

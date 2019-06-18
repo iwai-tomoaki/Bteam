@@ -51,14 +51,14 @@ public class SettingUser extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 
 			EmployeeDAO empDao = new EmployeeDAO();
-			String pass = request.getParameter("new_pass");
-			String pass_confi = request.getParameter("new_pass_confi");
+			String pass = request.getParameter("new_pass");		//入力した新パスワードを取得
+			String pass_confi = request.getParameter("new_pass_confi");		//確認のためにもう一度入力した新パスワードを取得
 			if(!(pass.equals(pass_confi))){		//一致していない場合分岐
-				System.out.println("不一致");
+				System.out.println("不一致");		//エクリプスでの確認用
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/setting.jsp");		//元の画面にフォワード
 				dispatcher.forward(request, response);
-				return;
+				return;		//書かないと動きはするがエラーが出る
 			}
 			User user = (User)request.getSession().getAttribute("loginUser");
 

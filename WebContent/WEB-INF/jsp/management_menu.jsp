@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="StyleManage.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+<title>管理者メニュー</title>
 </head>
 <body>
     <div class="fontsize">

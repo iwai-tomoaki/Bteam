@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="StyleMenu.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+<title>メニュー</title>
 </head>
 <body>
 	<div class="fontsize">

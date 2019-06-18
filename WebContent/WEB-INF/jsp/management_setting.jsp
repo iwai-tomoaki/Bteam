@@ -19,6 +19,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 <link rel="stylesheet" type="text/css" href="StyleManage.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+<title>社員再設定</title>
 
 <script type="text/javascript">
 	function managementStart() {
@@ -190,6 +191,14 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
             </div>
         </div>
+        <div class = "start">
+            <div class = "marginL30">
+                パスワード再入力
+                </div>
+            <div>
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;">
+            </div>
+        </div>
         <div class="botton_end">
         	<button class = "submit" value = "">変更</button>
         </div>
@@ -210,6 +219,14 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 </div>
             <div>
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
+            </div>
+        </div>
+        <div class = "start">
+            <div class = "marginL30">
+                パスワード再入力
+                </div>
+            <div>
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;">
             </div>
         </div>
         <div class="botton_end">

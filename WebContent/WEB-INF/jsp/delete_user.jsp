@@ -82,7 +82,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 		<tr><th><c:out value="${user_List.emp_name}" /></th>
 			<th><c:out value="${user_List.emp_num}" /></th>
 			<th><c:out value="${user_List.divi_name}" /></th>
-			<th><button type="submit" class="" name="emp_num" value="${user_List.emp_num}">削除</button></th>
+			<th><button type="submit" class="" name="emp_user_num" value="${user_List.emp_num}">削除</button></th>
 			</c:forEach>
 		</table>
 	</c:if>

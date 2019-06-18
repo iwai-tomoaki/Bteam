@@ -59,8 +59,14 @@ public class DeleteUser extends HttpServlet {
 
 			EmployeeDAO empDao = new EmployeeDAO();
 			String str = request.getParameter("emp_num");		//入力した社員番号String型で取得
+			String str_user = request.getParameter("emp_user_num");		//ボタンで取得した社員番号String型で取得
+			int emp_num = 0;
 
-			int emp_num = Integer.parseInt(str);		//取得した社員番号をString型からint型に変換
+			if(str != null) {
+				emp_num = Integer.parseInt(str);		//入力して取得した社員番号をString型からint型に変換
+			}else {
+				emp_num = Integer.parseInt(str_user);		//ボタンで取得した社員番号をString型からint型に変換
+			}
 			User user = (User)request.getSession().getAttribute("loginUser");
 			int check = 0;
 
@@ -78,7 +84,7 @@ public class DeleteUser extends HttpServlet {
 				check = 1;
 				request.setAttribute("deleteResult", result);
 			}
-			if(check == 1) {
+			if(check == 1 || str != null) {
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
 				dispatcher.forward(request, response);

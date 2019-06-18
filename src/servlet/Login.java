@@ -52,7 +52,7 @@ public class Login extends HttpServlet
  			HttpSession session = request.getSession();
  			session.setAttribute("loginUserName",user_name);		//ユーザーの名前をスコープに保存
  			session.setAttribute("loginUser",user);			//ユーザーの社員番号とパスワードをスコープに保存
- 			EmployeeDAO dao = new EmployeeDAO(user);		//ログインしたユーザーの権限を識別
+ 			EmployeeDAO dao = new EmployeeDAO();		//Dao.javaをdao変数に初期化
  			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
  			session.setAttribute("my_user",my_user);		//ログインしたユーザーの情報をスコープに保存
  			//daoのauthに権限番号を代入、その社員に一致する権限番号をuser_auth_idに

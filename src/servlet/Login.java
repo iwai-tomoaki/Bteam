@@ -56,7 +56,7 @@ public class Login extends HttpServlet
  			List<User> my_user = dao.MyUser(user);		//ログインユーザーの情報を取得
  			session.setAttribute("my_user",my_user);		//ログインしたユーザーの情報をスコープに保存
  			//daoのauthに権限番号を代入、その社員に一致する権限番号をuser_auth_idに
- 	 		User user_auth_id = new User(dao.auth,0);			//ログインしたユーザーの権限を1(一般)に設定
+ 	 		User user_auth_id = new User(loginLogic.auth,0);			//ログインしたユーザーの権限を設定
  	 		session.setAttribute("user_auth_id",user_auth_id);		//ログインしたユーザーの権限をスコープに保存
 
  			//判定結果画面のフォワード(メニュー画面の表示のためにMenu.javaに移動)

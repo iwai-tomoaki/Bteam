@@ -17,8 +17,10 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
 <link rel="stylesheet" type="text/css" href="StyleManage.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <title>社員再設定</title>
 
 <script type="text/javascript">
@@ -80,6 +82,29 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 			}
 		}
 	}
+	//■page topボタン
+	$(function(){
+		var topBtn=$('#pageTop');
+		topBtn.hide();
+
+		//◇ボタンの表示設定
+		$(window).scroll(function(){
+			if($(this).scrollTop()>80){
+				//---- 画面を80pxスクロールしたら、ボタンを表示する
+				topBtn.fadeIn();
+			}else{
+				//---- 画面が80pxより上なら、ボタンを表示しない
+				topBtn.fadeOut();
+			}
+		});
+
+		// ◇ボタンをクリックしたら、スクロールして上に戻る
+		topBtn.click(function(){
+			$('body,html').animate({
+			scrollTop: 0},500);
+			return false;
+		});
+	});
 </script>
 
 </head>
@@ -311,6 +336,6 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                      </div>
                  </div>
             </div>
-
+		<p id="pageTop"><a href="#"><i class="fa fa-chevron-up "></i></a></p>
     </body>
 </html>

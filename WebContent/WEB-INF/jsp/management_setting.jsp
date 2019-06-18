@@ -175,6 +175,35 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </div>
 </form>
 
+    <form action="/Bteam/ManagementUserName" method="post" onSubmit="return managementStart()">
+<div class = "center_change">
+	<div class="main">
+		<div class = "top">
+            <h2>社員名変更</h2>
+        </div>
+	<div class = "start">
+            <div class = "marginL30">
+                社員番号
+                </div>
+            <div>
+                <input type="text" name="emp_num" value="" size="24" maxlength='7' style="width:170px;" required>
+            </div>
+        </div>
+
+        <div class = "start">
+            <div class = "marginL30">
+                社員名
+                </div>
+            <div>
+                <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>
+            </div>
+        </div>
+        <div class="botton_end">
+        	<button value = "">変更</button>
+        </div>
+	</div>
+</div>
+</form>
 
 <form action="/Bteam/ManagementUser" method="post" onSubmit="return changeUserStart()">
 <div class="center_change">

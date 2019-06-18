@@ -85,6 +85,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </head>
 <body>
 <h1>セキワカル</h1>
+<a href="#name_only">社員名のみ変更</a>
+<a href="#pass_only">パスワードのみ変更</a>
+<a href="#my_pass">自身のパスワードを変更</a>
     <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">
@@ -176,7 +179,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </form>
 
     <form action="/Bteam/ManagementUserName" method="post" onSubmit="return managementStart()">
-<div class = "center_change">
+<div class = "center_change" id="name_only">
 	<div class="main">
 		<div class = "top">
             <h2>社員名変更</h2>
@@ -206,7 +209,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </form>
 
 <form action="/Bteam/ManagementUser" method="post" onSubmit="return changeUserStart()">
-<div class="center_change">
+<div class="center_change" id="pass_only">
     <div class = "main">
         <div class = "top">
             <h2>パスワードのみの変更</h2>
@@ -243,7 +246,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </form>
 
 <form action="/Bteam/SettingUesr" method="post" onSubmit="return changeStart()">
-<div class="center_change">
+<div class="center_change" id="my_pass">
     <div class = "main">
         <div class = "top">
             <h2>自身のパスワード変更</h2>

@@ -505,7 +505,7 @@ footer {
 }
 
 
-
+/*トップにスクロールする用のボタン*/
   #pageTop {
     position: fixed;
     bottom: 20px;
@@ -531,3 +531,4 @@ footer {
     text-decoration: none;
     opacity: 0.7;
   }
+/*ここまで*/

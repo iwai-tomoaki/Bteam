@@ -65,7 +65,7 @@ public class Menu extends HttpServlet {
 		}
 		String change = request.getParameter("change");		//在席・不在ボタンが押された時の値(内容)を取得
 
-		if(change == null && already == null && select_button == "no") {
+		if(change == null && already == null && select_button == "no" && delete == null) {
 			EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 			dao.DivisionChange(login_user,-1,0);
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
@@ -117,6 +117,7 @@ public class Menu extends HttpServlet {
 			//delete画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
 		if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");

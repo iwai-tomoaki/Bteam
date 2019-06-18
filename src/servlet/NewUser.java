@@ -88,8 +88,10 @@ public class NewUser extends HttpServlet {
 			int divi_id = Integer.parseInt(divi);
 			int workPlace_id = Integer.parseInt(workPlace);
 			int auth_id = Integer.parseInt(auth);
+
+			User user = new User(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 			//入力した内容、変換した内容をEmployeeDAOクラスのcreateメソッドに送る
-			Boolean result = empDao.create(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
+			Boolean result = empDao.create(user);
 
 			System.out.println(result);
 

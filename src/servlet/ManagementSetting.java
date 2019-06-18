@@ -91,8 +91,9 @@ public class ManagementSetting extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
 				dispatcher.forward(request, response);
 			} else {
+				User change_user = new User(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
 				//データベースに使う値をchangeDataメソッドに送りデータベースを更新
-				Boolean result = empDao.changeData(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
+				Boolean result = empDao.changeData(change_user);
 
 				System.out.print(result);
 

@@ -117,7 +117,14 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 <input type="password" name="pass" value="" size="24" maxlength='10' style="width:170px;" required>
             </div>
         </div>
-
+        <div class = "start">
+            <div class = "marginL30">
+                パスワード再入力
+                </div>
+            <div>
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;"required>
+            </div>
+        </div>
         <div class = "start">
             <div class = "marginL30">
                 部署
@@ -188,7 +195,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;"required>
             </div>
         </div>
         <div class = "start">
@@ -196,7 +203,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード再入力
                 </div>
             <div>
-                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;">
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;"required>
             </div>
         </div>
         <div class="botton_end">
@@ -218,7 +225,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 新しいパスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;"required>
             </div>
         </div>
         <div class = "start">
@@ -226,7 +233,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 パスワード再入力
                 </div>
             <div>
-                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;">
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;"required>
             </div>
         </div>
         <div class="botton_end">

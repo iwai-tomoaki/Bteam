@@ -63,20 +63,14 @@ public class ManagementSetting extends HttpServlet {
 			String divi = request.getParameter("divi_id");
 			String workPlace = request.getParameter("workPlace_id");
 			String auth = request.getParameter("auth_id");
+			String pass_confi = request.getParameter("new_pass_confi");		//確認のためにもう一度入力した新パスワードを取得
 
-			if(emp_name.equals("") || num.equals("")) {		//ユーザー名か社員番号が未入力のとき分岐する
-				Boolean result = false;
-
-				System.out.print(result);
-
-				request.setAttribute("managementResult", result);
-
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
+			if(!(pass.equals(pass_confi))){		//一致していない場合分岐、上の条件に一致したパターンによって代入したcheckの値によっても分岐
+				System.out.println("パスワード不一致");		//エクリプスでの確認用
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//元の画面にフォワード
 				dispatcher.forward(request, response);
-			}
-
-			if (pass.equals("")) {		//パスワードが入力されていない場合分岐
-				pass = "1234";
+				return;		//書かないと動きはするがエラーが出る
 			}
 
 			//String型で取得していた内容の一部をデータベースに合わせてint型に変換

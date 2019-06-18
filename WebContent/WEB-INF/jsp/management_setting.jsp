@@ -23,7 +23,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
 <script type="text/javascript">
 	function managementStart() {
-		var message = "指定したユーザーの情報を変更します、よろしいですか？";
+		var message = "指定した社員の情報を変更します、よろしいですか？";
 		// OKボタンを押したとき
 		if (confirm(message)) {
 			return true;
@@ -33,7 +33,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 	}
 
 	function changeUserStart() {
-		var message = "指定したユーザーのパスワードを変更します、よろしいですか？";
+		var message = "指定した社員のパスワードを変更します、よろしいですか？";
 		// OKボタンを押したとき
 		if (confirm(message)) {
 			return true;
@@ -89,7 +89,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">
-            <h2>ユーザー情報変更</h2>
+            <h2>社員情報変更</h2>
         </div>
 	<div class = "start">
             <div class = "marginL30">
@@ -102,7 +102,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                ユーザー名
+                社員名
                 </div>
             <div>
                 <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>
@@ -111,7 +111,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                パスワード
+                新規パスワード
                 </div>
             <div>
                 <input type="password" name="pass" value="" size="24" maxlength='10' style="width:170px;" required>
@@ -221,7 +221,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
         </div>
         <div class = "start">
             <div class = "marginL30">
-                パスワード
+                新規パスワード
                 </div>
             <div>
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;"required>
@@ -251,7 +251,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                新しいパスワード
+                新規パスワード
                 </div>
             <div>
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;"required>

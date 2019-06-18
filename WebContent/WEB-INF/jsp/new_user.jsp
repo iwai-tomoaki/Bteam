@@ -18,7 +18,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 
-<title>新規ユーザー登録</title>
+<title>新規社員登録</title>
 
 <script type="text/javascript">
 	function newStart() {
@@ -51,11 +51,11 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">
-            <h2>新規ユーザー登録</h2>
+            <h2>新規社員登録</h2>
         </div>
 	<div class = "start">
         <div class = "marginL30">
-            ユーザー名
+            社員名
             </div>
         <div>
             <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>
@@ -64,7 +64,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 
 	<div class = "start">
 		<div class = "marginL30">
-			追加ユーザの社員番号
+			新規社員の社員番号
         </div>
         <div>
         	<input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7' style="width:170px;" required>

@@ -55,7 +55,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                新しいパスワード
+                新規パスワード
                 </div>
             <div>
                 <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;" required>

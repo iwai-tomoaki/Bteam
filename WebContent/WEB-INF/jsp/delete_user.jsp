@@ -51,11 +51,11 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 <div class = "center_change">
 	<div class="main">
 		<div class = "top">
-            <h2>ユーザー削除</h2>
+            <h2>社員削除</h2>
         </div>
 	<div class = "start">
         <div class = "marginL30">
-             削除するユーザの社員番号
+             削除する社員の社員番号
             </div>
 	            <div>
 	                <input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7' style="width:170px;" required>
@@ -68,8 +68,8 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 	        </div>
 
 	        <div class = "red_text">
-	            ※これは強制的にユーザーを削除します。<br>
-	              削除しても問題のないユーザーか再度一度確認してください。
+	            ※これは強制的に社員を削除します。<br>
+	              削除しても問題のない社員か再度確認してください。
 	        </div>
 		</div>
 	</div>
@@ -77,7 +77,7 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 <form action="/Bteam/DeleteUser" method="post" onSubmit="return deleteStart()">
 	<c:if test="${not empty userList}">
 		<table class = "center">
-		<tr><th>名前</th><th>社員番号</th><th>所属部署</th><th>在席</th></tr>
+		<tr><th>名前</th><th>社員番号</th><th>所属部署</th><th>削除ボタン</th></tr>
 		<c:forEach var="user_List" items="${userList}">
 		<tr><th><c:out value="${user_List.emp_name}" /></th>
 			<th><c:out value="${user_List.emp_num}" /></th>

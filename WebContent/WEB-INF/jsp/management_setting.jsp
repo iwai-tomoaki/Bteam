@@ -85,9 +85,9 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 </head>
 <body>
 <h1>セキワカル</h1>
-<a href="#name_only">社員名のみ変更</a>
-<a href="#pass_only">パスワードのみ変更</a>
-<a href="#my_pass">自身のパスワードを変更</a>
+<div class = "center_change"><a href="#name_only">社員名のみ変更</a></div>
+<div class = "center_change"><a href="#pass_only">パスワードのみ変更</a></div>
+<div class = "center_change"><a href="#my_pass">自身のパスワードを変更</a></div>
     <form action="/Bteam/ManagementSetting" method="post" onSubmit="return managementStart()">
 <div class = "center_change">
 	<div class="main">

@@ -74,6 +74,19 @@ Boolean result = (Boolean)request.getAttribute("deleteResult");
 		</div>
 	</div>
 </form>
+<form action="/Bteam/DeleteUser" method="post" onSubmit="return deleteStart()">
+	<c:if test="${not empty userList}">
+		<table class = "center">
+		<tr><th>名前</th><th>社員番号</th><th>所属部署</th><th>在席</th></tr>
+		<c:forEach var="user_List" items="${userList}">
+		<tr><th><c:out value="${user_List.emp_name}" /></th>
+			<th><c:out value="${user_List.emp_num}" /></th>
+			<th><c:out value="${user_List.divi_name}" /></th>
+			<th><button type="submit" class="" name="emp_num" value="${user_List.emp_num}">削除</button></th>
+			</c:forEach>
+		</table>
+	</c:if>
+</form>
 <div>
     <div id="nav" class="nav">
     	<div class="icon">

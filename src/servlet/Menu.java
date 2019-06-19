@@ -43,7 +43,7 @@ public class Menu extends HttpServlet {
 		int button = -1;
 		//ログイン情報、前回選択したボタンを判別できるように
 		HttpSession session = request.getSession();
-		Integer delete = (Integer) session.getAttribute("delete");		//deleteへの分岐用
+		Integer delete = (Integer) request.getAttribute("delete");		//deleteへの分岐用
 		User loginUser = (User) session.getAttribute("loginUser");		//ログイン情報をスコープより取得
 		Integer login_user_num = loginUser.getEmp_num();		//ログインしているユーザーの社員番号を取得
 		String login_user = login_user_num.toString();		//判定のためにいったんString型に変換
@@ -124,7 +124,6 @@ public class Menu extends HttpServlet {
 		session.setAttribute("userList",userList);		//部署のユーザー情報をスコープに保存
 
 		if(delete != null && delete == 1) {
-			session.setAttribute("delete",0);		//部署表示を更新してまた分岐しないように0を入れておく
 			//delete画面にフォワード
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
 			dispatcher.forward(request, response);

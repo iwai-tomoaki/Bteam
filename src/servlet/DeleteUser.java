@@ -88,7 +88,7 @@ public class DeleteUser extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
 				dispatcher.forward(request, response);
 			}else {
-				session.setAttribute("delete",check);		//部署表示処理からdeleteページに戻れるように適当な数を入れておく
+				request.setAttribute("delete",check);		//部署表示処理からdeleteページに戻れるように適当な数を入れておく
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
 				dispatcher.forward(request, response);

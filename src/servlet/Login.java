@@ -20,8 +20,6 @@ public class Login extends HttpServlet
 
 	protected void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 
-		//リクエストパラメータの取得
-		request.setCharacterEncoding("UTF-8");
 		int input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
 		String input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
 		if(true) {		//前回ログインした時の部署選択情報が残っているので実行するたびにスコープを破棄

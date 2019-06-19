@@ -80,6 +80,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 			}
 		}
 	}
+
 	//■page topボタン
 	$(function(){
 		var topBtn=$('#pageTop');
@@ -128,7 +129,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                社員名
+                新規社員名
                 </div>
             <div>
                 <input type="text" name="emp_name" value="" size="24"  pattern="^[0-9]+$" maxlength='15' style="width:170px;" required>
@@ -218,7 +219,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
 
         <div class = "start">
             <div class = "marginL30">
-                社員名
+                新規社員名
                 </div>
             <div>
                 <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>

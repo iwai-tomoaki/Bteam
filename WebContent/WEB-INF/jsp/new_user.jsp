@@ -53,7 +53,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
         </div>
 	<div class = "start">
         <div class = "marginL30">
-            社員名
+            新規社員の社員名
             </div>
         <div>
             <input type="text" name="emp_name" value="" size="24" maxlength='15' style="width:170px;" required>

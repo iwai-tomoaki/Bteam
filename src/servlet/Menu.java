@@ -57,6 +57,7 @@ public class Menu extends HttpServlet {
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 		User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
 		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
+		Integer my_divi = (Integer) session.getAttribute("my_divi");		//deleteへの分岐用
 		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 
 		if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
@@ -70,6 +71,7 @@ public class Menu extends HttpServlet {
 			dao.DivisionChange(login_user,-1,0);
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
+			session.setAttribute("my_divi",dao.divi);		//ログインしているユーザーをスコープに保存
 
 			if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
@@ -118,6 +120,16 @@ public class Menu extends HttpServlet {
 			break;
 		}
 		User select_user = new User(button);		//選択した部署をUserに保存
+		System.out.println(button);
+		System.out.println(my_divi);
+		System.out.println(user_auth);
+		if(change != null && button != 0 && my_divi != button && user_auth != 2) {
+			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
+			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 		List<User> userList = dao.DivisionSelect(select_user,loginUser);		//選択した部署のユーザーを取得
 		List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 		session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存

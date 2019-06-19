@@ -3,9 +3,7 @@
 <%@ page import="model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%
-// セッションスコープからユーザー情報を取得
-User loginUser = (User) session.getAttribute("loginUser");
-User loginUserName = (User) session.getAttribute("loginUserName");
+// セッションスコープから情報を取得
 Boolean management_result = (Boolean)request.getAttribute("managementResult");
 Boolean changeUser_result = (Boolean)request.getAttribute("changeUserResult");
 Boolean change_result = (Boolean)request.getAttribute("changeResult");

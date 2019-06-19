@@ -43,6 +43,13 @@ import java.io.Serializable;
 			this.divi_name = divi_name;
 			this.place_id = place_id;
 		}
+		//ログインした社員の値
+		public User(int emp_num, String emp_name, String pass,int auth_id) {
+			this.emp_name = emp_name;
+			this.emp_num = emp_num;
+			this.pass = pass;
+			this.auth_id = auth_id;
+		}
 
 		public User(int emp_num, String pass) {
 			this.emp_num = emp_num;

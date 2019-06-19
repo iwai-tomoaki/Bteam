@@ -57,6 +57,7 @@ public class Menu extends HttpServlet {
 		String already = (String) session.getAttribute("select_button");		//前回選択したボタンの番号を取得
 		User user_auth_id = (User)session.getAttribute("user_auth_id");		//ログインユーザーの権限をできるように
 		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
+		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 
 		if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 			select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
@@ -66,7 +67,6 @@ public class Menu extends HttpServlet {
 		String change = request.getParameter("change");		//在席・不在ボタンが押された時の値(内容)を取得
 
 		if(change == null && already == null && select_button == "no" && delete == null) {
-			EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 			dao.DivisionChange(login_user,-1,0);
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
@@ -83,7 +83,6 @@ public class Menu extends HttpServlet {
 		}
 		//不在の社員か判定+押した社員と操作した社員が一致するか判定
 		if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
-			EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 			dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
 		}
 
@@ -106,7 +105,6 @@ public class Menu extends HttpServlet {
 			break;
 		}
 		User select_user = new User(button);		//選択した部署をUserに保存
-		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
 		List<User> userList = dao.DivisionSelect(select_user,loginUser);		//選択した部署のユーザーを取得
 		List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 		session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存

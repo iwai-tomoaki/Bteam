@@ -52,8 +52,8 @@ public class Menu extends HttpServlet {
 		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 		Integer my_divi = (Integer) session.getAttribute("my_divi");		//deleteへの分岐用
 		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
-		RequestDispatcher dispatcher_manage = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-		RequestDispatcher dispatcher_normal = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+		RequestDispatcher dispatcher_manage = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");	//↓と同じ
+		RequestDispatcher dispatcher_normal = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");	//何度も書くので外側に書いて行数削減
 
 		if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 			select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得

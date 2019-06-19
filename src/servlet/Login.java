@@ -22,16 +22,8 @@ public class Login extends HttpServlet
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("UTF-8");
-		int input_num = 0;			//tryの中で定義する数字をtry外でも使えるようにするために外で初期化
-		String input_pass = null;		//tryの中で定義する数字をtry外でも使えるようにするために外で初期化
-		//入力内容の取得、および"num"をint型に変換
-		try{
-			input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
-			input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
-		}catch (Exception E) {			//入力内容でエラーが発生した時に実行
-			response.sendRedirect("/Bteam");		//エラーが発生した時にリダイレクトを実行
-			return;			//returnを使わないとコンパイルエラー
-		}
+		int input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
+		String input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
 		if(true) {		//前回ログインした時の部署選択情報が残っているので実行するたびにスコープを破棄
 			HttpSession session = request.getSession();
 			session.invalidate();

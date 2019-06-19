@@ -40,7 +40,7 @@ Boolean result = (Boolean)request.getAttribute("loginResult");
 				社員番号
 			</div>
 			<div class = "space">
-				<input type="text" name="input_num" value="" size="24" style="width:170px;" required>
+				<input type="text" name="input_num" value="" size="24" pattern="^[0-9]+$" title="0～9の半角数字" style="width:170px;" required>
 			</div>
 		</div>
 		<div class = "between">

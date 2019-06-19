@@ -119,7 +119,6 @@ public class Menu extends HttpServlet {
 			button = 4;
 			break;
 		}
-		User select_user = new User(button);		//選択した部署をUserに保存
 		if(change != null && button != 0 && my_divi != button && user_auth != 2) {
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
@@ -127,6 +126,7 @@ public class Menu extends HttpServlet {
 			dispatcher.forward(request, response);
 			return;
 		}
+		User select_user = new User(button);		//選択した部署をUserに保存
 		List<User> userList = dao.DivisionSelect(select_user,loginUser);		//選択した部署のユーザーを取得
 		List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 		session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存

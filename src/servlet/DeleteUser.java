@@ -75,21 +75,21 @@ public class DeleteUser extends HttpServlet {
 				Boolean result = empDao.delete(emp_num);
 
 				System.out.print(result);
-
+				check = 1;
 				request.setAttribute("deleteResult", result);
 			} else {
 				Boolean result = false;
 
 				System.out.print(result);
-				check = 1;
 				request.setAttribute("deleteResult", result);
 			}
-			if(check == 1 || str != null) {
+			System.out.println(check);
+			if(check == 1 && str != null) {
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
 				dispatcher.forward(request, response);
 			}else {
-				session.setAttribute("delete",check);		//部署のユーザー情報をスコープに保存
+				session.setAttribute("delete",check);		//部署表示処理からdeleteページに戻れるように適当な数を入れておく
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Menu");
 				dispatcher.forward(request, response);

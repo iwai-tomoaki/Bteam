@@ -52,6 +52,8 @@ public class Menu extends HttpServlet {
 		Integer user_auth = user_auth_id.getAuth_id();			//ログインユーザーの権限を取得し変数に代入
 		Integer my_divi = (Integer) session.getAttribute("my_divi");		//deleteへの分岐用
 		EmployeeDAO dao = new EmployeeDAO();		//Employeeクラスをdao変数に初期設定
+		RequestDispatcher dispatcher_manage = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+		RequestDispatcher dispatcher_normal = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 
 		if(already != null && select_button == null) {			//初回ではない、部署ボタンを押してない場合分岐
 			select_button = (String) session.getAttribute("select_button");		//スコープに保存した部署番号を取得
@@ -67,12 +69,10 @@ public class Menu extends HttpServlet {
 			session.setAttribute("my_divi",dao.divi);		//ログインしているユーザーをスコープに保存
 
 			if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-				dispatcher.forward(request, response);
+				dispatcher_manage.forward(request, response);
 				return;
 			}else {			//管理者以外のユーザーの場合に分岐
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-				dispatcher.forward(request, response);
+				dispatcher_normal.forward(request, response);
 				return;
 			}
 		}
@@ -83,12 +83,10 @@ public class Menu extends HttpServlet {
 				List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 				session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
 				if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-					dispatcher.forward(request, response);
+					dispatcher_manage.forward(request, response);
 					return;
 				}else {			//管理者以外のユーザーの場合に分岐
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-					dispatcher.forward(request, response);
+					dispatcher_normal.forward(request, response);
 					return;
 				}
 			}
@@ -115,8 +113,7 @@ public class Menu extends HttpServlet {
 		if(change != null && button != 0 && my_divi != button && user_auth != 2) {
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-			dispatcher.forward(request, response);
+			dispatcher_normal.forward(request, response);
 			return;
 		}
 		User select_user = new User(button);		//選択した部署をUserに保存
@@ -126,18 +123,19 @@ public class Menu extends HttpServlet {
 		session.setAttribute("select_button",select_button);		//選択した部署をスコープに保存
 		session.setAttribute("userList",userList);		//部署のユーザー情報をスコープに保存
 
-		if(delete != null) {
-			//delete画面にフォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-			dispatcher.forward(request, response);
-			return;
+		if( delete != null) {
+			if(delete == 1) {
+				session.setAttribute("delete",0);		//部署表示を更新してまた分岐しないように0を入れておく
+				//delete画面にフォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 		}
 		if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
-			dispatcher.forward(request, response);
+			dispatcher_manage.forward(request, response);
 		}else {			//管理者以外のユーザーの場合に分岐
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-			dispatcher.forward(request, response);
+			dispatcher_normal.forward(request, response);
 		}
 	}
 

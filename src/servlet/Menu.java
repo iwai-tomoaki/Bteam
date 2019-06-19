@@ -84,6 +84,19 @@ public class Menu extends HttpServlet {
 		//不在の社員か判定+押した社員と操作した社員が一致するか判定
 		if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
 			dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
+			if(select_button == "no") {
+				List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
+				session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
+				if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_menu.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}else {			//管理者以外のユーザーの場合に分岐
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+			}
 		}
 
 

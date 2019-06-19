@@ -81,7 +81,7 @@ public class Menu extends HttpServlet {
 				return;
 			}
 		}
-		//不在の社員か判定+押した社員と操作した社員が一致するか判定
+		//在席状態ボタンが押されたか判定+押した社員と操作した社員が一致するか判定or管理者か判定
 		if((change != null && user_auth ==2) || (change != null && login_user.equals(change))){
 			dao.DivisionChange(change,1,0);		//在席状況を変更するメソッドを実行
 			if(select_button == "no") {

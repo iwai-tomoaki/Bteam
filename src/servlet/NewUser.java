@@ -69,17 +69,6 @@ public class NewUser extends HttpServlet {
 			String workPlace = request.getParameter("workPlace_id");
 			String auth = request.getParameter("auth_id");
 
-			if(emp_name.equals("") || num.equals("")) {		//ユーザー名、社員番号が未入力の場合分岐
-				Boolean result = false;
-
-				System.out.print(result);
-
-				request.setAttribute("managementResult", result);
-				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//エラーが発生した時にリダイレクトを実行
-				dispatcher.forward(request, response);
-			}
-
 			if (pass.equals("")) {  	//パスワードが未入力の場合分岐
 				pass = "1234";		//未入力の場合デフォルトでいったん1234を入れる
 			}

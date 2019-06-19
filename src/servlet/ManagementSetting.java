@@ -64,11 +64,11 @@ public class ManagementSetting extends HttpServlet {
 			String workPlace = request.getParameter("workPlace_id");
 			String auth = request.getParameter("auth_id");
 			String pass_confi = request.getParameter("new_pass_confi");		//確認のためにもう一度入力した新パスワードを取得
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//元の画面にフォワード、複数あるので外側にリンク指定
 
 			if(!(pass.equals(pass_confi))){		//一致していない場合分岐、上の条件に一致したパターンによって代入したcheckの値によっても分岐
 				System.out.println("パスワード不一致");		//エクリプスでの確認用
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//元の画面にフォワード
 				dispatcher.forward(request, response);
 				return;		//書かないと動きはするがエラーが出る
 			}
@@ -88,7 +88,6 @@ public class ManagementSetting extends HttpServlet {
 
 				request.setAttribute("managementResult", result);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
 				dispatcher.forward(request, response);
 			} else {
 				User change_user = new User(emp_name, emp_num, pass, divi_id, workPlace_id, auth_id);
@@ -100,7 +99,6 @@ public class ManagementSetting extends HttpServlet {
 				request.setAttribute("managementResult", result);
 
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");
 				dispatcher.forward(request, response);
 			}
 

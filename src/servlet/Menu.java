@@ -123,14 +123,12 @@ public class Menu extends HttpServlet {
 		session.setAttribute("select_button",select_button);		//選択した部署をスコープに保存
 		session.setAttribute("userList",userList);		//部署のユーザー情報をスコープに保存
 
-		if( delete != null) {
-			if(delete == 1) {
-				session.setAttribute("delete",0);		//部署表示を更新してまた分岐しないように0を入れておく
-				//delete画面にフォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
-				dispatcher.forward(request, response);
-				return;
-			}
+		if(delete != null && delete == 1) {
+			session.setAttribute("delete",0);		//部署表示を更新してまた分岐しないように0を入れておく
+			//delete画面にフォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");
+			dispatcher.forward(request, response);
+			return;
 		}
 		if(user_auth == 2) {		//管理者権限を持っているユーザーの場合に分岐
 			dispatcher_manage.forward(request, response);

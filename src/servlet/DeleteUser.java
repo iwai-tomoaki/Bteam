@@ -83,7 +83,6 @@ public class DeleteUser extends HttpServlet {
 				System.out.print(result);
 				request.setAttribute("deleteResult", result);
 			}
-			System.out.println(check);
 			if(check == 1 && str != null) {
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/delete_user.jsp");

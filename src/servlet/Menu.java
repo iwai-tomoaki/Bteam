@@ -120,9 +120,6 @@ public class Menu extends HttpServlet {
 			break;
 		}
 		User select_user = new User(button);		//選択した部署をUserに保存
-		System.out.println(button);
-		System.out.println(my_divi);
-		System.out.println(user_auth);
 		if(change != null && button != 0 && my_divi != button && user_auth != 2) {
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存

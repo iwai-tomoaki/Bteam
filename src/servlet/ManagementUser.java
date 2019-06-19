@@ -67,8 +67,7 @@ public class ManagementUser extends HttpServlet {
 			String pass = request.getParameter("new_pass");		//入力した新しいパスワードを取得
 			String pass_confi = request.getParameter("new_pass_confi");		//確認のためにもう一度入力した新パスワードを取得
 
-			if(!(pass.equals(pass_confi))){		//一致していない場合分岐、上の条件に一致したパターンによって代入したcheckの値によっても分岐
-				System.out.println("不一致");		//エクリプスでの確認用
+			if(!(pass.equals(pass_confi))){		//一致していない場合分岐
 				//フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/management_setting.jsp");		//元の画面にフォワード
 				dispatcher.forward(request, response);
@@ -77,7 +76,7 @@ public class ManagementUser extends HttpServlet {
 
 			int emp_num = Integer.parseInt(num);		//String型で取得したemp_numをint型に変換
 
-			Boolean result = empDao.changeUserPass(pass, emp_num);		//ユーザーのパスワードを再設定するメソッドを実行、成功をjspで通知できるように戻り値をbooean型にする
+			Boolean result = empDao.changePass(pass, emp_num);		//ユーザーのパスワードを再設定するメソッドを実行、成功をjspで通知できるように戻り値をbooean型にする
 
 			System.out.println(result);
 

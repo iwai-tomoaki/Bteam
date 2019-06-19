@@ -21,13 +21,6 @@ import model.User;
 public class Menu extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-   // public Menu() {
-        //super();
-        // TODO Auto-generated constructor stub
-   // }
-
-
 	protected void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException {
 		//ログインしているか確認するため
 		//セッションスコープからユーザー情報を取得

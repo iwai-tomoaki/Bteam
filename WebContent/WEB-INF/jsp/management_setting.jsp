@@ -213,7 +213,7 @@ Boolean change_result = (Boolean)request.getAttribute("changeResult");
                 社員番号
                 </div>
             <div>
-                <input type="text" name="emp_num" value="" size="24"  pattern="^[0-9]+$" maxlength='7' style="width:170px;" required>
+                <input type="text" name="emp_num" value="" size="24"  pattern="^[0-9]+$" title="0～9の半角数字" maxlength='7' style="width:170px;" required>
             </div>
         </div>
 

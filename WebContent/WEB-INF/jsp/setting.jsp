@@ -56,7 +56,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
                 新規パスワード
                 </div>
             <div>
-                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;" required>
+                <input type="password" name="new_pass" value="" size="24" pattern="^[0-9A-Za-z]+$" title="0～9の半角数字、a～zまでの全角・半角アルファベット" style="width:170px;" required>
             </div>
         </div>
         <div class = "start">
@@ -64,7 +64,7 @@ Boolean result = (Boolean)request.getAttribute("changeResult");
                 パスワード再入力
                 </div>
             <div>
-                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" style="width:170px;" required>
+                <input type="password" name="new_pass_confi" value="" size="24" pattern="^[0-9A-Za-z]+$" title="0～9の半角数字、a～zまでの全角・半角アルファベット" style="width:170px;" required>
             </div>
         </div>
         <div class="botton_end">

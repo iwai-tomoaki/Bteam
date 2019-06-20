@@ -65,7 +65,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
 			新規社員の社員番号
         </div>
         <div>
-        	<input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" maxlength='7' style="width:170px;" required>
+        	<input type="text" name="emp_num" value="" size="24" pattern="^[0-9]+$" title="0～9の半角数字" maxlength='7' style="width:170px;" required>
        </div>
    </div>
 
@@ -74,7 +74,7 @@ Boolean result = (Boolean)request.getAttribute("newResult");
             パスワード
             </div>
         <div>
-            <input type="password" name="pass" value="" size="24" pattern="^[0-9A-Za-z]+$" maxlength='10' style="width:170px;">
+            <input type="password" name="pass" value="" size="24" pattern="^[0-9A-Za-z]+$" title="0～9の半角数字、a～zまでの全角・半角アルファベット" maxlength='10' style="width:170px;">
         </div>
     </div>
 

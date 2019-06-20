@@ -18,8 +18,7 @@ public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//リクエストパラメータの取得
-		request.setCharacterEncoding("UTF-8");
+
 		//セッションスコープからユーザー情報を取得
 		HttpSession session = request.getSession();
 		User loginUser = (User) session.getAttribute("loginUser");		//ログイン情報をスコープより取得

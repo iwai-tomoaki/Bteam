@@ -48,7 +48,7 @@ Boolean result = (Boolean)request.getAttribute("loginResult");
 				パスワード
 			</div>
 			<div class = "space">
-				<input type="password" name="input_pass" value="" size="24" style="width:170px;" required>
+				<input type="password" name="input_pass" value="" size="24"  pattern="^[0-9A-Za-z]+$" title="0～9の半角数字、a～zまでの全角・半角アルファベット" style="width:170px;" required>
 			</div>
 		</div>
 		<div class = "center">

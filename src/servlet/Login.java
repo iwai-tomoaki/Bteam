@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.EmployeeDAO;
 import model.LoginLogic;
 import model.User;
 
@@ -21,6 +22,7 @@ public class Login extends HttpServlet{
 
 		int input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
 		String input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
+		String cansel = request.getParameter("cansel");		//管理者が初期化ボタンを押したときに使用
 		if(true) {		//前回ログインした時の部署選択情報が残っているので実行するたびにスコープを破棄
 			HttpSession session = request.getSession();
 			session.invalidate();
@@ -34,6 +36,14 @@ public class Login extends HttpServlet{
  		//ログイン成功時の処理、loginLogiのtrue_or_falseを参照し真偽判定
  		if(loginLogic.true_or_false)
  		{
+ 	 		if(cansel != null && loginLogic.auth != 1) {
+ 	 			EmployeeDAO dao = new EmployeeDAO();
+ 	 			dao.Initialize();
+ 	 			System.out.println("成功");
+ 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+ 				dispatcher.forward(request, response);
+ 				return;
+ 	 		}
  			User user_name = new User(loginLogic.user_name);
  			//ユーザー情報をセクションスコープへ保存
  			HttpSession session = request.getSession();

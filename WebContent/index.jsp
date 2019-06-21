@@ -52,6 +52,8 @@ Boolean result = (Boolean)request.getAttribute("loginResult");
 			</div>
 		</div>
 		<div class = "center">
+			<input type="submit" name = "cansel" value="管理者用：在席状況初期化" class="btn-flat-border"  >
+			<pre>　　　　　　</pre>
 			<input type="submit" value="ログイン" class="btn-flat-border" >
 		</div>
 	</div>

@@ -64,6 +64,13 @@ public class Menu extends HttpServlet {
 
 		if(change == null && already == null && select_button == "no" && delete == null) {
 			dao.DivisionChange(login_user,-1,0);
+			if(dao.cancel ==1) {
+				System.out.println("既にログイン中です");
+				session.invalidate();
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}
 			List<User> my_user = dao.MyUser(loginUser);			//ログインしているユーザーの情報を取得
 			session.setAttribute("my_user",my_user);		//ログインしているユーザーをスコープに保存
 			session.setAttribute("my_divi",dao.divi);		//ログインしているユーザーをスコープに保存

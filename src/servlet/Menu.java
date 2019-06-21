@@ -65,8 +65,6 @@ public class Menu extends HttpServlet {
 		if(change == null && already == null && select_button == "no" && delete == null) {
 			dao.DivisionChange(login_user,-1,0);
 			if(dao.cancel ==1) {
-				System.out.println("既にログイン中です");
-				session.invalidate();
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
 				return;

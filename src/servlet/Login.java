@@ -23,10 +23,6 @@ public class Login extends HttpServlet{
 		int input_num = Integer.parseInt(request.getParameter("input_num"));		//入力したnumをStringで取得してint型に変換
 		String input_pass = request.getParameter("input_pass");		//入力した内容をStringで取得
 		String cansel = request.getParameter("cansel");		//管理者が初期化ボタンを押したときに使用
-		if(true) {		//前回ログインした時の部署選択情報が残っているので実行するたびにスコープを破棄
-			HttpSession session = request.getSession();
-			session.invalidate();
-		}
 		//Userインスタンス(ユーザー情報)の生成
 		User user = new User(input_num,input_pass);
 

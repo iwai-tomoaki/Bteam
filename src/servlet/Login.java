@@ -35,7 +35,6 @@ public class Login extends HttpServlet{
  	 		if(cansel != null && loginLogic.auth != 1) {
  	 			EmployeeDAO dao = new EmployeeDAO();
  	 			dao.Initialize();
- 	 			System.out.println("成功");
  				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
  				dispatcher.forward(request, response);
  				return;
